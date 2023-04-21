@@ -16,7 +16,7 @@
 Existing initiative trackers never feel good to use. They always feel less efficient than simple pen and paper. Technology is all about implementing speed and efficiency, so that is what I aim to bring. 
 
 ## Version Goals
-### Version 1 - Battle Tracker Shortcuts
+### Version 1 - Battle Manager w/ Shortcuts
 - [ ] Initiative Order
 - [ ] Health Tracking
 - [ ] AC Display
