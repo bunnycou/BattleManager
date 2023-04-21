@@ -26,7 +26,7 @@ Damage selected position
 ## Why?
 Existing initiative trackers never feel good to use. They always feel less efficient than simple pen and paper. Technology is all about implementing speed and efficiency, so that is what I aim to bring. 
 
-## Version Goals
+## Version Roadmap
 ### Version 1 - Battle Manager w/ Shortcuts
 - [x] Initiative Order
 - [x] Health Tracking
