@@ -61,7 +61,7 @@
             this.btnChar.Name = "btnChar";
             this.btnChar.Size = new System.Drawing.Size(80, 23);
             this.btnChar.TabIndex = 3;
-            this.btnChar.Text = "Add PCs";
+            this.btnChar.Text = "Add Chars";
             this.btnChar.UseVisualStyleBackColor = true;
             this.btnChar.Click += new System.EventHandler(this.btnChar_Click);
             // 
