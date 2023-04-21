@@ -12,6 +12,16 @@
 - [ ] Existing Stat Blocks
 - [ ] Keyboard shortcuts to make things easy!
 
+## Keyboard Shortcuts
+#### Ctrl + Num
+Select position in initiative
+
+#### Shift + Num
+Heal selected position
+
+#### Alt + Num
+Damage selected position
+
 ## Why?
 Existing initiative trackers never feel good to use. They always feel less efficient than simple pen and paper. Technology is all about implementing speed and efficiency, so that is what I aim to bring. 
 
