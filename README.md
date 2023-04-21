@@ -3,10 +3,10 @@
 ### A Battle Tracker for DND
 
 ## Features
-- [ ] Initiative Order
-- [ ] Health Tracking
-- [ ] AC Display
-- [ ] DC Display
+- [x] Initiative Order
+- [x] Health Tracking
+- [x] AC Display
+- [x] DC Display
 - [ ] Damage Wk/St
 - [ ] Custom Stat Blocks
 - [ ] Existing Stat Blocks
@@ -17,10 +17,10 @@ Existing initiative trackers never feel good to use. They always feel less effic
 
 ## Version Goals
 ### Version 1 - Battle Manager w/ Shortcuts
-- [ ] Initiative Order
-- [ ] Health Tracking
-- [ ] AC Display
-- [ ] Keyboard Shortcuts
+- [x] Initiative Order
+- [x] Health Tracking
+- [x] AC Display
+- [x] Keyboard Shortcuts
 
 ### Version 2 - Extra Info
 - [ ] DC Display
