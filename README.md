@@ -10,7 +10,8 @@
 - [ ] Damage Wk/St
 - [ ] Custom Stat Blocks
 - [ ] Existing Stat Blocks
-- [ ] Keyboard shortcuts to make things easy!
+- [ ] Create/Add Parties
+- [x] Keyboard shortcuts to make things easy!
 
 ## Keyboard Shortcuts
 #### Ctrl + Num
@@ -32,10 +33,19 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [x] AC Display
 - [x] Keyboard Shortcuts
 
+#### Version 1.1 - Key Tweaks
+- [ ] Ctrl/Shift/Alt+99
+- [ ] Click then Shift/Alt
+
 ### Version 2 - Extra Info
 - [ ] DC Display
 - [ ] Damage Wk/St
 
-### Version 3 - Stat Blocks
+### Version 3 - Friends
+- [ ] Create Party Set
+- [ ] Export/Import Party Set
+- [ ] Add Party Set to tracker
+
+### Version 4 - Foe's
 - [ ] Custom Stat Blocks
 - [ ] Existing Stat Blocks
