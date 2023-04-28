@@ -4,3 +4,5 @@ project = "BattleManager.sln"
 [github]
 user = "bunnycou"
 repo = "BattleManager"
+[nuget]
+publish = "false"
