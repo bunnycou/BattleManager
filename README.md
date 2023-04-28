@@ -12,6 +12,7 @@
 - [ ] Existing Stat Blocks
 - [ ] Create/Add Parties
 - [x] Keyboard shortcuts to make things easy!
+- [ ] Battle Log
 
 ## Keyboard Shortcuts
 #### Ctrl + Num
