@@ -6,3 +6,5 @@ user = "bunnycou"
 repo = "BattleManager"
 [nuget]
 publish = "false"
+[msbuild.properties]
+PublishTrimmed = false
