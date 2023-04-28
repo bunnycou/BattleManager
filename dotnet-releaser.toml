@@ -5,6 +5,9 @@ project = "BattleManager.sln"
 user = "bunnycou"
 repo = "BattleManager"
 [nuget]
-publish = "false"
+publish = false
 [msbuild.properties]
 PublishTrimmed = false
+[[pack]]
+rid = ["win-x64"]
+kinds = ["zip"]
