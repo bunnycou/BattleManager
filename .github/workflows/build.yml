@@ -9,20 +9,20 @@ on:
 jobs:
   publish:
     name: build, pack, test & publish
-    runs-on: ubuntu-latest
-    env:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-      DOTNET_CLI_TELEMETRY_OPTOUT: true
-      DOTNET_NOLOGO: true
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@main
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-      - name: Install latest .NET SDK
-        uses: Elskom/setup-latest-dotnet@main
+    - name: Install .NET 7.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '7.0.x'
 
-      - name: Restore, Build, test, and pack
-        uses: Elskom/build-dotnet@main
-        with:
-          TEST: false
-          PACK: true
+    - name: Build, Tests, Cover, Pack and Publish (on push tag)
+      shell: bash
+      run: |
+        dotnet tool install --global dotnet-releaser
+        dotnet-releaser run --github-token "${{secrets.GITHUB_TOKEN}}" src/dotnet-releaser.toml
