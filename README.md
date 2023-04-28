@@ -2,6 +2,9 @@
 
 ### A Battle Tracker for DND
 
+## Why?
+Existing initiative trackers never feel good to use. They always feel less efficient than simple pen and paper. Technology is all about implementing speed and efficiency, so that is what I aim to bring. 
+
 ## Features
 - [x] Initiative Order
 - [x] Health Tracking
@@ -15,17 +18,17 @@
 - [ ] Battle Log
 
 ## Keyboard Shortcuts
-#### Ctrl + Num
+#### Ctrl then num then ctrl
 Select position in initiative
 
-#### Shift + Num
+#### Shift then num then shift
 Heal selected position
 
-#### Alt + Num
+#### Alt then num then shift
 Damage selected position
 
-## Why?
-Existing initiative trackers never feel good to use. They always feel less efficient than simple pen and paper. Technology is all about implementing speed and efficiency, so that is what I aim to bring. 
+#### Z
+Undo last action
 
 ## Version Roadmap
 ### Version 1 - Battle Manager w/ Shortcuts
@@ -35,8 +38,14 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [x] Keyboard Shortcuts
 
 #### Version 1.1 - Key Tweaks
-- [ ] Ctrl/Shift/Alt+99
-- [ ] Click then Shift/Alt
+- [x] Ctrl/Shift/Alt+99
+- [x] Click then Shift/Alt
+- [x] Battle log
+- [x] Initiative sorting
+- [x] Undo
+
+### Version 1.2 - Buttons
+- [ ] Buttons for damaging, healing, undoing
 
 ### Version 2 - Extra Info
 - [ ] DC Display

@@ -30,14 +30,17 @@
         {
             this.lstInitiative = new System.Windows.Forms.ListBox();
             this.btnChar = new System.Windows.Forms.Button();
-            this.numChar = new System.Windows.Forms.NumericUpDown();
+            this.numInput = new System.Windows.Forms.NumericUpDown();
             this.lstHealth = new System.Windows.Forms.ListBox();
             this.lstAC = new System.Windows.Forms.ListBox();
             this.txtName = new System.Windows.Forms.Label();
             this.txtHealth = new System.Windows.Forms.Label();
             this.txtAC = new System.Windows.Forms.Label();
             this.lblDebug = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numChar)).BeginInit();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnDebugChars = new System.Windows.Forms.Button();
+            this.lstLog = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numInput)).BeginInit();
             this.SuspendLayout();
             // 
             // lstInitiative
@@ -65,13 +68,18 @@
             this.btnChar.UseVisualStyleBackColor = true;
             this.btnChar.Click += new System.EventHandler(this.btnChar_Click);
             // 
-            // numChar
+            // numInput
             // 
-            this.numChar.Location = new System.Drawing.Point(379, 17);
-            this.numChar.Name = "numChar";
-            this.numChar.Size = new System.Drawing.Size(80, 20);
-            this.numChar.TabIndex = 9;
-            this.numChar.Value = new decimal(new int[] {
+            this.numInput.Location = new System.Drawing.Point(379, 17);
+            this.numInput.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numInput.Name = "numInput";
+            this.numInput.Size = new System.Drawing.Size(80, 20);
+            this.numInput.TabIndex = 9;
+            this.numInput.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -132,25 +140,58 @@
             // lblDebug
             // 
             this.lblDebug.AutoSize = true;
-            this.lblDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebug.Location = new System.Drawing.Point(315, 148);
+            this.lblDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDebug.Location = new System.Drawing.Point(282, 302);
             this.lblDebug.Name = "lblDebug";
-            this.lblDebug.Size = new System.Drawing.Size(230, 37);
+            this.lblDebug.Size = new System.Drawing.Size(61, 25);
             this.lblDebug.TabIndex = 15;
-            this.lblDebug.Text = "DEBUG_TEXT";
+            this.lblDebug.Text = "Hello";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(623, 14);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(80, 23);
+            this.btnClear.TabIndex = 16;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnDebugChars
+            // 
+            this.btnDebugChars.Location = new System.Drawing.Point(752, 17);
+            this.btnDebugChars.Name = "btnDebugChars";
+            this.btnDebugChars.Size = new System.Drawing.Size(80, 42);
+            this.btnDebugChars.TabIndex = 17;
+            this.btnDebugChars.Text = "Add 3 Test Characters";
+            this.btnDebugChars.UseVisualStyleBackColor = true;
+            this.btnDebugChars.Click += new System.EventHandler(this.btnDebugChars_Click);
+            // 
+            // lstLog
+            // 
+            this.lstLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstLog.FormattingEnabled = true;
+            this.lstLog.ItemHeight = 16;
+            this.lstLog.Location = new System.Drawing.Point(752, 377);
+            this.lstLog.Name = "lstLog";
+            this.lstLog.Size = new System.Drawing.Size(500, 292);
+            this.lstLog.TabIndex = 18;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.lstLog);
+            this.Controls.Add(this.btnDebugChars);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.txtAC);
             this.Controls.Add(this.txtHealth);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lstAC);
             this.Controls.Add(this.lstHealth);
-            this.Controls.Add(this.numChar);
+            this.Controls.Add(this.numInput);
             this.Controls.Add(this.btnChar);
             this.Controls.Add(this.lstInitiative);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -158,7 +199,7 @@
             this.Name = "Form1";
             this.Text = "Battle Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numChar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,13 +208,16 @@
         #endregion
         private System.Windows.Forms.ListBox lstInitiative;
         private System.Windows.Forms.Button btnChar;
-        private System.Windows.Forms.NumericUpDown numChar;
+        private System.Windows.Forms.NumericUpDown numInput;
         private System.Windows.Forms.ListBox lstHealth;
         private System.Windows.Forms.ListBox lstAC;
         private System.Windows.Forms.Label txtName;
         private System.Windows.Forms.Label txtHealth;
         private System.Windows.Forms.Label txtAC;
         private System.Windows.Forms.Label lblDebug;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDebugChars;
+        private System.Windows.Forms.ListBox lstLog;
     }
 }
 

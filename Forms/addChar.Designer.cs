@@ -35,8 +35,11 @@
             this.numAC = new System.Windows.Forms.NumericUpDown();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnDone = new System.Windows.Forms.Button();
+            this.numInit = new System.Windows.Forms.NumericUpDown();
+            this.lblInit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numHealth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numInit)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -109,20 +112,44 @@
             // btnDone
             // 
             this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(74, 90);
+            this.btnDone.Location = new System.Drawing.Point(74, 116);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(120, 39);
-            this.btnDone.TabIndex = 4;
+            this.btnDone.TabIndex = 5;
             this.btnDone.Text = "Finish";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // numInit
+            // 
+            this.numInit.Location = new System.Drawing.Point(74, 90);
+            this.numInit.Name = "numInit";
+            this.numInit.Size = new System.Drawing.Size(120, 20);
+            this.numInit.TabIndex = 4;
+            this.numInit.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // lblInit
+            // 
+            this.lblInit.AutoSize = true;
+            this.lblInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInit.Location = new System.Drawing.Point(12, 91);
+            this.lblInit.Name = "lblInit";
+            this.lblInit.Size = new System.Drawing.Size(31, 20);
+            this.lblInit.TabIndex = 5;
+            this.lblInit.Text = "Init";
             // 
             // addChar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 141);
+            this.ClientSize = new System.Drawing.Size(229, 167);
             this.ControlBox = false;
+            this.Controls.Add(this.numInit);
+            this.Controls.Add(this.lblInit);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.numAC);
@@ -132,8 +159,10 @@
             this.Controls.Add(this.lblName);
             this.Name = "addChar";
             this.Text = "Character";
+            this.Load += new System.EventHandler(this.addChar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numHealth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numInit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +177,7 @@
         private System.Windows.Forms.NumericUpDown numAC;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.NumericUpDown numInit;
+        private System.Windows.Forms.Label lblInit;
     }
 }

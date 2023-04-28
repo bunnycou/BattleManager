@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BattleManager
@@ -16,6 +9,7 @@ namespace BattleManager
         public String name;
         public int health;
         public int AC;
+        public int init;
 
         public addChar(int num)
         {
@@ -43,8 +37,14 @@ namespace BattleManager
             name = txtName.Text;
             health = (int)numHealth.Value;
             AC = (int)numAC.Value;
+            init = (int)numInit.Value;
             this.Enabled = false;
             this.Close();
+        }
+
+        private void addChar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
