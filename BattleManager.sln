@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleManager", "BattleManager.csproj", "{25256A40-33F9-46C4-99E9-1610BF6869C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BattleManager", "BattleManager.csproj", "{25256A40-33F9-46C4-99E9-1610BF6869C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{256E02B6-CDD3-4754-8A8E-24686DFA9579}"
 	ProjectSection(SolutionItems) = preProject
