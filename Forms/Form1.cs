@@ -25,23 +25,23 @@ namespace BattleManager
         // custom functions
         private void ctrlRelease()
         {
-            onRelease();
             selIndex = inputNum;
             lblDebug.Text = $"Selected {lstInitiative.Items[selIndex]}";
+            onRelease();
         }
 
         private void shiftRelease()
         {
-            onRelease();
             modHealth(inputNum, selIndex);
             lblDebug.Text = $"Healed {lstInitiative.Items[selIndex]} for {inputNum}";
+            onRelease();
         }
 
         private void altRelease()
         {
-            onRelease();
             modHealth(inputNum * -1, selIndex);
             lblDebug.Text = $"Damaged {lstInitiative.Items[selIndex]} for {inputNum}";
+            onRelease();
         }
 
         private void onRelease()
@@ -55,12 +55,13 @@ namespace BattleManager
             int amount = log[0, 0];
             int selection = log[0, 1];
             modHealth(amount * -1, selection);
-            if ( amount > -1)
+            if (amount > -1)
             {
                 lblDebug.Text = $"Undid {amount} healing to {lstInitiative.Items[selection]}";
-            } else
+            }
+            else
             {
-                lblDebug.Text = $"Undid {amount*-1} damage to {lstInitiative.Items[selection]}";
+                lblDebug.Text = $"Undid {amount * -1} damage to {lstInitiative.Items[selection]}";
             }
         }
 
@@ -70,7 +71,8 @@ namespace BattleManager
             if (keyPressed)
             {
                 return;
-            } else
+            }
+            else
             {
                 keyPressed = true;
             }
@@ -81,7 +83,8 @@ namespace BattleManager
                 {
                     inputNum = (inputNum * 10) + num;
                     lblDebug.Text = inputNum.ToString();
-                } else
+                }
+                else
                 {
                     switch (e.Modifiers)
                     {
@@ -90,20 +93,23 @@ namespace BattleManager
                         case Keys.Alt: e.SuppressKeyPress = true; altRelease(); reading = false; break;
                     }
                 }
-            } else // no active input being read
+            }
+            else // no active input being read
             {
                 int num = keyToNum(e);
                 if (num != -1)
                 {
                     int niV = (int)numInput.Value;
-                    if (niV >= numInput.Maximum/10)
+                    if (niV >= numInput.Maximum / 10)
                     {
                         numInput.Value = num;
-                    } else
+                    }
+                    else
                     {
                         numInput.Value = (numInput.Value * 10) + num;
                     }
-                } else
+                }
+                else
                 {
                     switch (e.Modifiers)
                     {
@@ -119,7 +125,7 @@ namespace BattleManager
                     }
                 }
             }
-            
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -132,10 +138,13 @@ namespace BattleManager
             // i keep double clicking the form to access the code so this will always be here-
         }
 
+
+        // drag and drop reorder
         private void lstInitiative_MouseDown(object sender, MouseEventArgs e)
         {
             if (lstInitiative.SelectedItem == null) return;
             oldIndex = lstInitiative.SelectedIndex;
+            selIndex = lstInitiative.SelectedIndex;
             lstInitiative.DoDragDrop(lstInitiative.SelectedItem, DragDropEffects.Move);
         }
 
@@ -163,6 +172,7 @@ namespace BattleManager
             lstAC.Items.RemoveAt(oldIndex);
             lstAC.Items.Insert(index, ac);
         }
+        // end drag and drop reorder
 
         private void btnChar_Click(object sender, EventArgs e)
         {
@@ -181,11 +191,23 @@ namespace BattleManager
             }
         }
 
+        private void btnHeal_Click(object sender, EventArgs e)
+        {
+            modHealth((int)numInput.Value, selIndex);
+        }
+
+        private void btnDamage_Click(object sender, EventArgs e)
+        {
+            modHealth((int)numInput.Value * -1, selIndex);
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             lstInitiative.Items.Clear();
             lstHealth.Items.Clear();
             lstAC.Items.Clear();
+            lstLog.Items.Clear();
+            lblDebug.Text = "Hello";
         }
 
         private void btnDebugChars_Click(object sender, EventArgs e)
@@ -198,6 +220,11 @@ namespace BattleManager
             }
         }
 
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+            undoLog();
+        }
+
 
         // utility functions
         private void modHealth(int i, int index)
@@ -206,6 +233,12 @@ namespace BattleManager
             health += i;
             lstHealth.Items.RemoveAt(index);
             lstHealth.Items.Insert(index, health);
+            if (i > -1) { //healed
+                lblDebug.Text = $"Healed {lstInitiative.Items[index]} for {i}";
+            } else // damaged
+            {
+                lblDebug.Text = $"Damaged {lstInitiative.Items[index]} for {i*-1}";
+            }
             appendLog(i, index);
         }
 
@@ -219,7 +252,7 @@ namespace BattleManager
         private void appendLog(int amount, int selection)
         {
             // modify log array
-            for (int i = 0; i < log.GetLength(0)-1; i++)
+            for (int i = 0; i < log.GetLength(0) - 1; i++)
             {
                 log[i + 1, 0] = log[i, 0];
                 log[i + 1, 1] = log[i, 1];
@@ -233,9 +266,10 @@ namespace BattleManager
             if (amount > -1)
             {
                 logMsg = $"Healed {charName} for {amount}";
-            } else
+            }
+            else
             {
-                logMsg = $"Damaged {charName} for {amount*-1}";
+                logMsg = $"Damaged {charName} for {amount * -1}";
             }
             lstLog.Items.Add(logMsg);
         }

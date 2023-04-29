@@ -28,181 +28,225 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstInitiative = new System.Windows.Forms.ListBox();
-            this.btnChar = new System.Windows.Forms.Button();
-            this.numInput = new System.Windows.Forms.NumericUpDown();
-            this.lstHealth = new System.Windows.Forms.ListBox();
-            this.lstAC = new System.Windows.Forms.ListBox();
-            this.txtName = new System.Windows.Forms.Label();
-            this.txtHealth = new System.Windows.Forms.Label();
-            this.txtAC = new System.Windows.Forms.Label();
-            this.lblDebug = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnDebugChars = new System.Windows.Forms.Button();
-            this.lstLog = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numInput)).BeginInit();
-            this.SuspendLayout();
+            lstInitiative = new System.Windows.Forms.ListBox();
+            btnChar = new System.Windows.Forms.Button();
+            numInput = new System.Windows.Forms.NumericUpDown();
+            lstHealth = new System.Windows.Forms.ListBox();
+            lstAC = new System.Windows.Forms.ListBox();
+            txtName = new System.Windows.Forms.Label();
+            txtHealth = new System.Windows.Forms.Label();
+            txtAC = new System.Windows.Forms.Label();
+            lblDebug = new System.Windows.Forms.Label();
+            btnClear = new System.Windows.Forms.Button();
+            btnDebugChars = new System.Windows.Forms.Button();
+            lstLog = new System.Windows.Forms.ListBox();
+            btnHeal = new System.Windows.Forms.Button();
+            btnDamage = new System.Windows.Forms.Button();
+            btnUndo = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
+            SuspendLayout();
             // 
             // lstInitiative
             // 
-            this.lstInitiative.AllowDrop = true;
-            this.lstInitiative.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstInitiative.FormattingEnabled = true;
-            this.lstInitiative.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.lstInitiative.ItemHeight = 25;
-            this.lstInitiative.Location = new System.Drawing.Point(13, 38);
-            this.lstInitiative.Name = "lstInitiative";
-            this.lstInitiative.Size = new System.Drawing.Size(125, 629);
-            this.lstInitiative.TabIndex = 2;
-            this.lstInitiative.DragDrop += new System.Windows.Forms.DragEventHandler(this.lstInitiative_DragDrop);
-            this.lstInitiative.DragOver += new System.Windows.Forms.DragEventHandler(this.lstInitiative_DragOver);
-            this.lstInitiative.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstInitiative_MouseDown);
+            lstInitiative.AllowDrop = true;
+            lstInitiative.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lstInitiative.FormattingEnabled = true;
+            lstInitiative.ImeMode = System.Windows.Forms.ImeMode.On;
+            lstInitiative.ItemHeight = 25;
+            lstInitiative.Location = new System.Drawing.Point(15, 44);
+            lstInitiative.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            lstInitiative.Name = "lstInitiative";
+            lstInitiative.Size = new System.Drawing.Size(145, 629);
+            lstInitiative.TabIndex = 2;
+            lstInitiative.DragDrop += lstInitiative_DragDrop;
+            lstInitiative.DragOver += lstInitiative_DragOver;
+            lstInitiative.MouseDown += lstInitiative_MouseDown;
             // 
             // btnChar
             // 
-            this.btnChar.Location = new System.Drawing.Point(486, 14);
-            this.btnChar.Name = "btnChar";
-            this.btnChar.Size = new System.Drawing.Size(80, 23);
-            this.btnChar.TabIndex = 3;
-            this.btnChar.Text = "Add Chars";
-            this.btnChar.UseVisualStyleBackColor = true;
-            this.btnChar.Click += new System.EventHandler(this.btnChar_Click);
+            btnChar.Location = new System.Drawing.Point(486, 12);
+            btnChar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnChar.Name = "btnChar";
+            btnChar.Size = new System.Drawing.Size(93, 27);
+            btnChar.TabIndex = 3;
+            btnChar.Text = "Add Chars";
+            btnChar.UseVisualStyleBackColor = true;
+            btnChar.Click += btnChar_Click;
             // 
             // numInput
             // 
-            this.numInput.Location = new System.Drawing.Point(379, 17);
-            this.numInput.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numInput.Name = "numInput";
-            this.numInput.Size = new System.Drawing.Size(80, 20);
-            this.numInput.TabIndex = 9;
-            this.numInput.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numInput.Location = new System.Drawing.Point(373, 45);
+            numInput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            numInput.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
+            numInput.Name = "numInput";
+            numInput.Size = new System.Drawing.Size(93, 23);
+            numInput.TabIndex = 9;
+            numInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // lstHealth
             // 
-            this.lstHealth.AllowDrop = true;
-            this.lstHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstHealth.FormattingEnabled = true;
-            this.lstHealth.ItemHeight = 25;
-            this.lstHealth.Location = new System.Drawing.Point(144, 38);
-            this.lstHealth.Name = "lstHealth";
-            this.lstHealth.Size = new System.Drawing.Size(63, 629);
-            this.lstHealth.TabIndex = 10;
+            lstHealth.AllowDrop = true;
+            lstHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lstHealth.FormattingEnabled = true;
+            lstHealth.ItemHeight = 25;
+            lstHealth.Location = new System.Drawing.Point(168, 44);
+            lstHealth.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            lstHealth.Name = "lstHealth";
+            lstHealth.Size = new System.Drawing.Size(73, 629);
+            lstHealth.TabIndex = 10;
             // 
             // lstAC
             // 
-            this.lstAC.AllowDrop = true;
-            this.lstAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstAC.FormattingEnabled = true;
-            this.lstAC.ItemHeight = 25;
-            this.lstAC.Location = new System.Drawing.Point(213, 38);
-            this.lstAC.Name = "lstAC";
-            this.lstAC.Size = new System.Drawing.Size(63, 629);
-            this.lstAC.TabIndex = 11;
+            lstAC.AllowDrop = true;
+            lstAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lstAC.FormattingEnabled = true;
+            lstAC.ItemHeight = 25;
+            lstAC.Location = new System.Drawing.Point(248, 44);
+            lstAC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            lstAC.Name = "lstAC";
+            lstAC.Size = new System.Drawing.Size(73, 629);
+            lstAC.TabIndex = 11;
             // 
             // txtName
             // 
-            this.txtName.AutoSize = true;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(12, 9);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(61, 24);
-            this.txtName.TabIndex = 12;
-            this.txtName.Text = "Name";
+            txtName.AutoSize = true;
+            txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtName.Location = new System.Drawing.Point(14, 10);
+            txtName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            txtName.Name = "txtName";
+            txtName.Size = new System.Drawing.Size(61, 24);
+            txtName.TabIndex = 12;
+            txtName.Text = "Name";
             // 
             // txtHealth
             // 
-            this.txtHealth.AutoSize = true;
-            this.txtHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHealth.Location = new System.Drawing.Point(140, 9);
-            this.txtHealth.Name = "txtHealth";
-            this.txtHealth.Size = new System.Drawing.Size(64, 24);
-            this.txtHealth.TabIndex = 13;
-            this.txtHealth.Text = "Health";
+            txtHealth.AutoSize = true;
+            txtHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtHealth.Location = new System.Drawing.Point(163, 10);
+            txtHealth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            txtHealth.Name = "txtHealth";
+            txtHealth.Size = new System.Drawing.Size(64, 24);
+            txtHealth.TabIndex = 13;
+            txtHealth.Text = "Health";
             // 
             // txtAC
             // 
-            this.txtAC.AutoSize = true;
-            this.txtAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAC.Location = new System.Drawing.Point(209, 9);
-            this.txtAC.Name = "txtAC";
-            this.txtAC.Size = new System.Drawing.Size(36, 24);
-            this.txtAC.TabIndex = 14;
-            this.txtAC.Text = "AC";
+            txtAC.AutoSize = true;
+            txtAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtAC.Location = new System.Drawing.Point(244, 10);
+            txtAC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            txtAC.Name = "txtAC";
+            txtAC.Size = new System.Drawing.Size(36, 24);
+            txtAC.TabIndex = 14;
+            txtAC.Text = "AC";
             // 
             // lblDebug
             // 
-            this.lblDebug.AutoSize = true;
-            this.lblDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebug.Location = new System.Drawing.Point(282, 302);
-            this.lblDebug.Name = "lblDebug";
-            this.lblDebug.Size = new System.Drawing.Size(61, 25);
-            this.lblDebug.TabIndex = 15;
-            this.lblDebug.Text = "Hello";
+            lblDebug.AutoSize = true;
+            lblDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblDebug.Location = new System.Drawing.Point(668, 317);
+            lblDebug.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDebug.Name = "lblDebug";
+            lblDebug.Size = new System.Drawing.Size(61, 25);
+            lblDebug.TabIndex = 15;
+            lblDebug.Text = "Hello";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(623, 14);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(80, 23);
-            this.btnClear.TabIndex = 16;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            btnClear.Location = new System.Drawing.Point(727, 16);
+            btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new System.Drawing.Size(93, 27);
+            btnClear.TabIndex = 16;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnDebugChars
             // 
-            this.btnDebugChars.Location = new System.Drawing.Point(752, 17);
-            this.btnDebugChars.Name = "btnDebugChars";
-            this.btnDebugChars.Size = new System.Drawing.Size(80, 42);
-            this.btnDebugChars.TabIndex = 17;
-            this.btnDebugChars.Text = "Add 3 Test Characters";
-            this.btnDebugChars.UseVisualStyleBackColor = true;
-            this.btnDebugChars.Click += new System.EventHandler(this.btnDebugChars_Click);
+            btnDebugChars.Location = new System.Drawing.Point(877, 20);
+            btnDebugChars.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnDebugChars.Name = "btnDebugChars";
+            btnDebugChars.Size = new System.Drawing.Size(93, 48);
+            btnDebugChars.TabIndex = 17;
+            btnDebugChars.Text = "Add 3 Test Characters";
+            btnDebugChars.UseVisualStyleBackColor = true;
+            btnDebugChars.Click += btnDebugChars_Click;
             // 
             // lstLog
             // 
-            this.lstLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstLog.FormattingEnabled = true;
-            this.lstLog.ItemHeight = 16;
-            this.lstLog.Location = new System.Drawing.Point(752, 377);
-            this.lstLog.Name = "lstLog";
-            this.lstLog.Size = new System.Drawing.Size(500, 292);
-            this.lstLog.TabIndex = 18;
+            lstLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lstLog.FormattingEnabled = true;
+            lstLog.ItemHeight = 16;
+            lstLog.Location = new System.Drawing.Point(668, 345);
+            lstLog.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            lstLog.Name = "lstLog";
+            lstLog.Size = new System.Drawing.Size(583, 324);
+            lstLog.TabIndex = 18;
+            // 
+            // btnHeal
+            // 
+            btnHeal.Location = new System.Drawing.Point(486, 45);
+            btnHeal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnHeal.Name = "btnHeal";
+            btnHeal.Size = new System.Drawing.Size(93, 27);
+            btnHeal.TabIndex = 19;
+            btnHeal.Text = "Heal";
+            btnHeal.UseVisualStyleBackColor = true;
+            btnHeal.Click += btnHeal_Click;
+            // 
+            // btnDamage
+            // 
+            btnDamage.Location = new System.Drawing.Point(486, 78);
+            btnDamage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnDamage.Name = "btnDamage";
+            btnDamage.Size = new System.Drawing.Size(93, 27);
+            btnDamage.TabIndex = 20;
+            btnDamage.Text = "Damage";
+            btnDamage.UseVisualStyleBackColor = true;
+            btnDamage.Click += btnDamage_Click;
+            // 
+            // btnUndo
+            // 
+            btnUndo.Location = new System.Drawing.Point(486, 155);
+            btnUndo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnUndo.Name = "btnUndo";
+            btnUndo.Size = new System.Drawing.Size(93, 27);
+            btnUndo.TabIndex = 21;
+            btnUndo.Text = "Undo";
+            btnUndo.UseVisualStyleBackColor = true;
+            btnUndo.Click += btnUndo_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.lstLog);
-            this.Controls.Add(this.btnDebugChars);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.lblDebug);
-            this.Controls.Add(this.txtAC);
-            this.Controls.Add(this.txtHealth);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lstAC);
-            this.Controls.Add(this.lstHealth);
-            this.Controls.Add(this.numInput);
-            this.Controls.Add(this.btnChar);
-            this.Controls.Add(this.lstInitiative);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.KeyPreview = true;
-            this.Name = "Form1";
-            this.Text = "Battle Manager";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numInput)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1264, 681);
+            Controls.Add(btnUndo);
+            Controls.Add(btnDamage);
+            Controls.Add(btnHeal);
+            Controls.Add(lstLog);
+            Controls.Add(btnDebugChars);
+            Controls.Add(btnClear);
+            Controls.Add(lblDebug);
+            Controls.Add(txtAC);
+            Controls.Add(txtHealth);
+            Controls.Add(txtName);
+            Controls.Add(lstAC);
+            Controls.Add(lstHealth);
+            Controls.Add(numInput);
+            Controls.Add(btnChar);
+            Controls.Add(lstInitiative);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            HelpButton = true;
+            KeyPreview = true;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Form1";
+            Text = "Battle Manager";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)numInput).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -218,6 +262,9 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDebugChars;
         private System.Windows.Forms.ListBox lstLog;
+        private System.Windows.Forms.Button btnHeal;
+        private System.Windows.Forms.Button btnDamage;
+        private System.Windows.Forms.Button btnUndo;
     }
 }
 

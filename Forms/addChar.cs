@@ -6,7 +6,7 @@ namespace BattleManager
     public partial class addChar : Form
     {
 
-        public String name;
+        public string name;
         public int health;
         public int AC;
         public int init;

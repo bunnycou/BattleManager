@@ -45,7 +45,11 @@ Undo last action
 - [x] Undo
 
 ### Version 0.1.2 - Buttons
-- [ ] Buttons for damaging, healing, undoing
+- [x] Buttons for damaging, healing, undoing
+
+### Version 0.1.3 - Fixing for the future
+- [ ] Proper undo, not just undo the last action which also undoes the undo
+- [ ] Better way of displaying info
 
 ### Version 0.2 - Extra Info
 - [ ] DC Display
