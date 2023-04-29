@@ -37,7 +37,7 @@ Undo last action
 - [x] AC Display
 - [x] Keyboard Shortcuts
 
-#### Version 0.1.1 - Key Tweaks
+### Version 0.1.1 - Key Tweaks
 - [x] Ctrl/Shift/Alt+99
 - [x] Click then Shift/Alt
 - [x] Battle log
