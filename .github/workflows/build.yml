@@ -15,9 +15,9 @@ jobs:
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - run: dotnet publish -c release --sc -p:PublishSIngleFile=true -r win-x64 -o /result
+      - run: dotnet publish -c release --sc -p:PublishSIngleFile=true -r win-x64
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          files: /result/*.exe
+          files: bin/Release/net7.0-windows/win-x64/publish/*.exe
