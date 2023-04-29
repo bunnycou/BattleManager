@@ -15,7 +15,7 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [ ] Existing Stat Blocks
 - [ ] Create/Add Parties
 - [x] Keyboard shortcuts to make things easy!
-- [ ] Battle Log
+- [x] Battle Log
 
 ## Keyboard Shortcuts
 #### Ctrl then num then ctrl
