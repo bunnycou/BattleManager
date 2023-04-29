@@ -19,16 +19,16 @@ Existing initiative trackers never feel good to use. They always feel less effic
 
 ## Keyboard Shortcuts
 #### Ctrl then num then ctrl
-Select position in initiative
+- Select position in initiative
 
 #### Shift then num then shift
-Heal selected position
+- Heal selected position
 
 #### Alt then num then shift
-Damage selected position
+- Damage selected position
 
 #### Z
-Undo last action
+- Undo last action
 
 ## Version Roadmap
 ### Version 0.1 - Battle Manager w/ Shortcuts
@@ -48,8 +48,8 @@ Undo last action
 - [x] Buttons for damaging, healing, undoing
 
 ### Version 0.1.3 - Fixing for the future
-- [ ] Proper undo, not just undo the last action which also undoes the undo
-- [ ] Better way of displaying info
+- [x] Proper undo, not just undo the last action which also undoes the undo
+- [x] Better way of displaying info
 
 ### Version 0.2 - Extra Info
 - [ ] DC Display
