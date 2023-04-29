@@ -31,31 +31,35 @@ Damage selected position
 Undo last action
 
 ## Version Roadmap
-### Version 1 - Battle Manager w/ Shortcuts
+### Version 0.1 - Battle Manager w/ Shortcuts
 - [x] Initiative Order
 - [x] Health Tracking
 - [x] AC Display
 - [x] Keyboard Shortcuts
 
-#### Version 1.1 - Key Tweaks
+#### Version 0.1.1 - Key Tweaks
 - [x] Ctrl/Shift/Alt+99
 - [x] Click then Shift/Alt
 - [x] Battle log
 - [x] Initiative sorting
 - [x] Undo
 
-### Version 1.2 - Buttons
+### Version 0.1.2 - Buttons
 - [ ] Buttons for damaging, healing, undoing
 
-### Version 2 - Extra Info
+### Version 0.2 - Extra Info
 - [ ] DC Display
 - [ ] Damage Wk/St
 
-### Version 3 - Friends
+### Version 0.3 - Friends
 - [ ] Create Party Set
 - [ ] Export/Import Party Set
 - [ ] Add Party Set to tracker
 
-### Version 4 - Foe's
+### Version 0.4 - Foe's
 - [ ] Custom Stat Blocks
 - [ ] Existing Stat Blocks
+
+### Version 1.0
+- [ ] Everything above
+- [ ] App Icon and cleaned up UI
