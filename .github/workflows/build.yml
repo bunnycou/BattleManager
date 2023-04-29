@@ -20,4 +20,4 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          files: bin/Release/net7.0-windows/win-x64/publish/*.exe
+          files: /home/runner/work/BattleManager/BattleManager/bin/Release/net7.0-windows/win-x64/publish/*.exe
