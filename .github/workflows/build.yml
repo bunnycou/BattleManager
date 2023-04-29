@@ -8,14 +8,14 @@ on:
 jobs:
   tagged-release:
     name: "Tagged Release"
-    runs-on: "ubuntu-latest"
+    runs-on: "dot-latest"
 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - run: dotnet publish -c release --sc -p:PublishSIngleFile=true -o /result
+      - run: dotnet publish -c release --sc -p:PublishSIngleFile=true -r win-x64 -o /result
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
