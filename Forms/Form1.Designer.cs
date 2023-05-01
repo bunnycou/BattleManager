@@ -38,6 +38,7 @@
             btnHeal = new System.Windows.Forms.Button();
             btnDamage = new System.Windows.Forms.Button();
             btnUndo = new System.Windows.Forms.Button();
+            btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
             SuspendLayout();
             // 
@@ -154,11 +155,23 @@
             btnUndo.UseVisualStyleBackColor = true;
             btnUndo.Click += btnUndo_Click;
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new System.Drawing.Point(716, 121);
+            btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new System.Drawing.Size(93, 27);
+            btnDelete.TabIndex = 22;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1264, 681);
+            Controls.Add(btnDelete);
             Controls.Add(btnUndo);
             Controls.Add(btnDamage);
             Controls.Add(btnHeal);
@@ -192,6 +205,7 @@
         private System.Windows.Forms.Button btnHeal;
         private System.Windows.Forms.Button btnDamage;
         private System.Windows.Forms.Button btnUndo;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

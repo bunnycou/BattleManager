@@ -21,7 +21,7 @@ namespace BattleManager
         // custom functions
         private void ctrlRelease()
         {
-            selIndex = (int)numInput.Value+1;
+            selIndex = (int)numInput.Value + 1;
             if (selIndex >= lstInitiative.Items.Count) selIndex = lstInitiative.Items.Count - 1;
             if (selIndex < 2) selIndex = 2;
             lblDebug.Text = $"Selected {getNameFromInitList(selIndex)}";
@@ -69,6 +69,7 @@ namespace BattleManager
                     case Keys.Back: numInput.Value = 0; break;
                     // case Keys.Enter: btnChar_Click(sender, e); break; // might be annoying to include
                     case Keys.Z: undoLog(); break;
+                    case Keys.Delete: btnDelete_Click(sender, e); break;
                 }
             }
             else
@@ -120,6 +121,8 @@ namespace BattleManager
         }
         // end drag and drop reorder
 
+
+        // BUTTONS
         private void btnChar_Click(object sender, EventArgs e)
         {
             int niV = (int)numInput.Value;
@@ -139,6 +142,7 @@ namespace BattleManager
 
         private void btnHeal_Click(object sender, EventArgs e)
         {
+            if (!isValidSel()) return;
             int num = (int)numInput.Value;
             modHealth(num, selIndex);
             appendLog(num, selIndex);
@@ -147,10 +151,11 @@ namespace BattleManager
 
         private void btnDamage_Click(object sender, EventArgs e)
         {
+            if (!isValidSel()) return;
             int num = (int)numInput.Value * -1;
             modHealth(num, selIndex);
             appendLog(num, selIndex);
-            lblDebug.Text = $"Damaged {getNameFromInitList(selIndex)} for {num*-1}";
+            lblDebug.Text = $"Damaged {getNameFromInitList(selIndex)} for {num * -1}";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -159,7 +164,18 @@ namespace BattleManager
             lstInitiative.Items.Add("| Name                     | HP  | AC |");
             lstInitiative.Items.Add("---------------------------------------");
             lstLog.Items.Clear();
+            for (int i = 0; i < log.GetLength(0); i++)
+            {
+                log[i, 0] = 0;
+                log[i, 1] = 0;
+            }
             lblDebug.Text = "Hello";
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (!isValidSel()) return;
+            lstInitiative.Items.RemoveAt(selIndex);
         }
 
         private void btnDebugChars_Click(object sender, EventArgs e)
@@ -209,7 +225,7 @@ namespace BattleManager
             log[0, 1] = selection;
 
             // modify log box
-            string charName = lstInitiative.Items[selection].ToString();
+            string charName = getNameFromInitList(selection);
             string logMsg;
             if (amount > -1)
             {
@@ -282,6 +298,11 @@ namespace BattleManager
         private int getACFromInitList(int selection)
         {
             return int.Parse(lstInitiative.Items[selection].ToString().Split("|")[3].Trim());
+        }
+
+        private bool isValidSel()
+        {
+            if (selIndex >= lstInitiative.Items.Count) return false; return true;
         }
 
         private int keyToNum(KeyEventArgs e)
