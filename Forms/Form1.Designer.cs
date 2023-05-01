@@ -64,7 +64,7 @@
             btnChar.Name = "btnChar";
             btnChar.Size = new System.Drawing.Size(93, 27);
             btnChar.TabIndex = 3;
-            btnChar.Text = "Add Chars";
+            btnChar.Text = "Quick Add";
             btnChar.UseVisualStyleBackColor = true;
             btnChar.Click += btnChar_Click;
             // 
@@ -76,7 +76,6 @@
             numInput.Name = "numInput";
             numInput.Size = new System.Drawing.Size(93, 23);
             numInput.TabIndex = 9;
-            numInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // lblDebug
             // 
@@ -102,7 +101,7 @@
             // 
             // btnDebugChars
             // 
-            btnDebugChars.Location = new System.Drawing.Point(866, 82);
+            btnDebugChars.Location = new System.Drawing.Point(861, 67);
             btnDebugChars.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnDebugChars.Name = "btnDebugChars";
             btnDebugChars.Size = new System.Drawing.Size(93, 48);

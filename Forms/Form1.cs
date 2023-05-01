@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
-using System.Reflection;
 
 namespace BattleManager
 {
@@ -17,39 +16,15 @@ namespace BattleManager
         }
 
         private int selIndex = 2;
-        private int inputNum = 0;
-        private bool reading = false;
         private int[,] log = new int[100, 2];
 
         // custom functions
         private void ctrlRelease()
         {
-            selIndex = inputNum;
-            if (selIndex > lstInitiative.Items.Count) selIndex = lstInitiative.Items.Count - 1;
+            selIndex = (int)numInput.Value+1;
+            if (selIndex >= lstInitiative.Items.Count) selIndex = lstInitiative.Items.Count - 1;
             if (selIndex < 2) selIndex = 2;
             lblDebug.Text = $"Selected {getNameFromInitList(selIndex)}";
-            onRelease();
-        }
-
-        private void shiftRelease()
-        {
-            modHealth(inputNum, selIndex);
-            appendLog(inputNum, selIndex);
-            lblDebug.Text = $"Healed {getNameFromInitList(selIndex)} for {inputNum}";
-            onRelease();
-        }
-
-        private void altRelease()
-        {
-            modHealth(inputNum * -1, selIndex);
-            appendLog(inputNum * -1, selIndex);
-            lblDebug.Text = $"Damaged {getNameFromInitList(selIndex)} for {inputNum}";
-            onRelease();
-        }
-
-        private void onRelease()
-        {
-            reading = false;
             numInput.Value = 0;
         }
 
@@ -69,7 +44,7 @@ namespace BattleManager
             }
             // handle reverting the log array and log list
             lstLog.Items.RemoveAt(0);
-            for (int i = 0; i < log.GetLength(0)-1; i++)
+            for (int i = 0; i < log.GetLength(0) - 1; i++)
             {
                 log[i, 0] = log[i + 1, 0];
                 log[i, 1] = log[i + 1, 1];
@@ -79,54 +54,26 @@ namespace BattleManager
         // event functions
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (reading) // reading input
+            // restructure to make pressing the button perform the action with the number in the input box
+            int num = keyToNum(e);
+            if (num == -1)
             {
-                int num = keyToNum(e);
-                if (num != -1)
+                switch (e.Modifiers)
                 {
-                    inputNum = (inputNum * 10) + num;
-                    lblDebug.Text = inputNum.ToString();
+                    case Keys.Control: ctrlRelease(); break;
+                    case Keys.Shift: btnHeal_Click(sender, e); break;
+                    case Keys.Alt: btnDamage_Click(sender, e); e.SuppressKeyPress = true; break;
                 }
-                else
+                switch (e.KeyCode)
                 {
-                    switch (e.Modifiers)
-                    {
-                        case Keys.Control: ctrlRelease(); reading = false; break;
-                        case Keys.Shift: shiftRelease(); reading = false; break;
-                        case Keys.Alt: e.SuppressKeyPress = true; altRelease(); reading = false; break;
-                    }
+                    case Keys.Back: numInput.Value = 0; break;
+                    // case Keys.Enter: btnChar_Click(sender, e); break; // might be annoying to include
+                    case Keys.Z: undoLog(); break;
                 }
             }
-            else // no active input being read
+            else
             {
-                int num = keyToNum(e);
-                if (num != -1)
-                {
-                    int niV = (int)numInput.Value;
-                    if (niV >= numInput.Maximum / 10)
-                    {
-                        numInput.Value = num;
-                    }
-                    else
-                    {
-                        numInput.Value = (numInput.Value * 10) + num;
-                    }
-                }
-                else
-                {
-                    switch (e.Modifiers)
-                    {
-                        case Keys.Control: inputNum = 0; reading = true; break;
-                        case Keys.Shift: inputNum = 0; reading = true; break;
-                        case Keys.Alt: e.SuppressKeyPress = true; inputNum = 0; reading = true; break;
-                    }
-                    switch (e.KeyCode)
-                    {
-                        case Keys.Back: numInput.Value = 0; break;
-                        case Keys.Enter: btnChar_Click(sender, e); break;
-                        case Keys.Z: undoLog(); break;
-                    }
-                }
+                numInput.Value = (numInput.Value * 10) + num;
             }
 
         }
@@ -140,6 +87,9 @@ namespace BattleManager
         {
             lstInitiative.Items.Add("| Name                     | HP  | AC |");
             lstInitiative.Items.Add("---------------------------------------");
+
+            // check if folders for json exist, create if not, read if they do
+            //TODO
         }
 
 
@@ -189,14 +139,18 @@ namespace BattleManager
 
         private void btnHeal_Click(object sender, EventArgs e)
         {
-            modHealth((int)numInput.Value, selIndex);
-            appendLog((int)numInput.Value, selIndex);
+            int num = (int)numInput.Value;
+            modHealth(num, selIndex);
+            appendLog(num, selIndex);
+            lblDebug.Text = $"Healed {getNameFromInitList(selIndex)} for {num}";
         }
 
         private void btnDamage_Click(object sender, EventArgs e)
         {
-            modHealth((int)numInput.Value * -1, selIndex);
-            appendLog((int)numInput.Value * -1, selIndex);
+            int num = (int)numInput.Value * -1;
+            modHealth(num, selIndex);
+            appendLog(num, selIndex);
+            lblDebug.Text = $"Damaged {getNameFromInitList(selIndex)} for {num*-1}";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -248,7 +202,7 @@ namespace BattleManager
             // modify log array
             for (int i = log.GetLength(0) - 1; i > 0; i--)
             {
-                log[i, 0] = log[i - 1 , 0];
+                log[i, 0] = log[i - 1, 0];
                 log[i, 1] = log[i - 1, 1];
             }
             log[0, 0] = amount;
@@ -265,7 +219,7 @@ namespace BattleManager
             {
                 logMsg = $"Damaged {charName} for {amount * -1}";
             }
-            lstLog.Items.Insert(0,logMsg);
+            lstLog.Items.Insert(0, logMsg);
         }
 
         private void addToInitList(string name, int health, int ac, int index = -1)
@@ -322,12 +276,12 @@ namespace BattleManager
 
         private int getHealthFromInitList(int selection)
         {
-            return Int32.Parse(lstInitiative.Items[selection].ToString().Split("|")[2].Trim());
+            return int.Parse(lstInitiative.Items[selection].ToString().Split("|")[2].Trim());
         }
 
         private int getACFromInitList(int selection)
         {
-            return Int32.Parse(lstInitiative.Items[selection].ToString().Split("|")[3].Trim());
+            return int.Parse(lstInitiative.Items[selection].ToString().Split("|")[3].Trim());
         }
 
         private int keyToNum(KeyEventArgs e)

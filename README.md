@@ -17,20 +17,26 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [x] Keyboard shortcuts to make things easy!
 - [x] Battle Log
 
-### Download and install the  [dotnet 7 runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-7.0.5-windows-x64-installer) if the program does not run
+## Download and install the  [dotnet 7 runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-7.0.5-windows-x64-installer) if the program does not run
 
 ## Keyboard Shortcuts
-#### Ctrl then num then ctrl
-- Select position in initiative
+- ### Ctrl
+  - Select position in initiative from number input
 
-#### Shift then num then shift
-- Heal selected position
+- ### Shift
+  - Heal selected position from number input
 
-#### Alt then num then shift
-- Damage selected position
+- ### Alt
+  - Damage selected position from number input
 
-#### Z
-- Undo last action
+- ### Z
+  - Undo last action
+
+- ### Backspace
+  - Clear number input to 0
+
+- ### Number keys
+  - Input numbers into input box
 
 ## Version Roadmap
 ### Version 0.1 - Battle Manager w/ Shortcuts
@@ -52,6 +58,10 @@ Existing initiative trackers never feel good to use. They always feel less effic
 ### Version 0.1.3 - Fixing for the future
 - [x] Proper undo, not just undo the last action which also undoes the undo
 - [x] Better way of displaying info
+
+### Version 0.1.4 - Better Buttons
+- [x] Better button inputs
+- [x] Quicker code (slightly)
 
 ### Version 0.2 - Extra Info
 - [ ] DC Display
