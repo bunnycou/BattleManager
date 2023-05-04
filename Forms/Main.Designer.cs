@@ -1,6 +1,6 @@
 ﻿namespace BattleManager
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -166,7 +166,7 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // Form1
+            // Main
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -186,9 +186,11 @@
             HelpButton = true;
             KeyPreview = true;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            Name = "Form1";
+            Name = "Main";
             Text = "Battle Manager";
-            Load += Form1_Load;
+            Load += Main_Load;
+            KeyDown += Main_KeyDown;
+            KeyUp += Main_KeyUp;
             ((System.ComponentModel.ISupportInitialize)numInput).EndInit();
             ResumeLayout(false);
             PerformLayout();

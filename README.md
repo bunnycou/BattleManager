@@ -66,7 +66,7 @@ Existing initiative trackers never feel good to use. They always feel less effic
 ### Version 0.1.5 - Deleting characters
 - [x] Delete button and key for removing selection from initiative  
 
-There has been a lot of sub updates for 0.1. The goal of 0.1 is to achieve a version that is fully usable (although undo may be in excess to this idea) but not fully featured. Hopefully this will be the last amendment to version 0.1 so that I can work on more convenient features and less tweaks to the base system. 
+There has been a lot of sub updates for 0.1. The goal of 0.1 is to achieve a version that is fully usable (although 'undo' may be in excess to the following idea) but not fully featured. Hopefully this will be the last amendment to version 0.1 so that I can work on more convenient features and less tweaks to the base system. 
 
 ### Version 0.2 - Friends and Info
 - [ ] Create Party Set

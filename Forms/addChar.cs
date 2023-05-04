@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleManager.Forms;
+using System;
 using System.Windows.Forms;
 
 namespace BattleManager
@@ -38,8 +39,8 @@ namespace BattleManager
             health = (int)numHealth.Value;
             AC = (int)numAC.Value;
             init = (int)numInit.Value;
-            this.Enabled = false;
-            this.Close();
+            Enabled = false;
+            Close();
         }
 
         private void addChar_Load(object sender, EventArgs e)
@@ -47,9 +48,17 @@ namespace BattleManager
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void btnOptions_Click(object sender, EventArgs e)
         {
+            Character character = new(name, init, health, AC);
+            CharOptions charOptions = new(txtName.Text, character);
+            charOptions.ShowDialog();
 
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            Text = txtName.Text;
         }
     }
 }

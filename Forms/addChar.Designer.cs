@@ -103,6 +103,7 @@
             txtName.Size = new System.Drawing.Size(139, 23);
             txtName.TabIndex = 1;
             txtName.Text = "Char";
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // btnDone
             // 
@@ -144,6 +145,7 @@
             btnOptions.TabIndex = 6;
             btnOptions.Text = "Advanced Options";
             btnOptions.UseVisualStyleBackColor = true;
+            btnOptions.Click += btnOptions_Click;
             // 
             // addChar
             // 

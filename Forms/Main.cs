@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq;
+using System.Linq; 
 
 namespace BattleManager
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
-            KeyDown += Form1_KeyDown;
-            KeyUp += Form1_KeyUp;
         }
 
         private int selIndex = 2;
         private int[,] log = new int[100, 2];
+        private Dictionary<string, Character> charDict = new(); // string will be 20 char ID, Character will contain the character data // Dictionaries are not sorted!
 
         // custom functions
-        private void ctrlRelease()
+        private void select()
         {
+            if (!isValidSel()) return;
             selIndex = (int)numInput.Value + 1;
             if (selIndex >= lstInitiative.Items.Count) selIndex = lstInitiative.Items.Count - 1;
             if (selIndex < 2) selIndex = 2;
@@ -52,15 +52,15 @@ namespace BattleManager
         }
 
         // event functions
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Main_KeyDown(object sender, KeyEventArgs e)
         {
             // restructure to make pressing the button perform the action with the number in the input box
-            int num = keyToNum(e);
+            int num = Utility.keyToNum(e);
             if (num == -1)
             {
                 switch (e.Modifiers)
                 {
-                    case Keys.Control: ctrlRelease(); break;
+                    case Keys.Control: select(); break;
                     case Keys.Shift: btnHeal_Click(sender, e); break;
                     case Keys.Alt: btnDamage_Click(sender, e); e.SuppressKeyPress = true; break;
                 }
@@ -74,17 +74,17 @@ namespace BattleManager
             }
             else
             {
-                numInput.Value = (numInput.Value * 10) + num;
+                if (numInput.Value > 99) numInput.Value = num; else numInput.Value = (numInput.Value * 10) + num;
             }
 
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        private void Main_KeyUp(object sender, KeyEventArgs e)
         {
             // nothing yet
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
             lstInitiative.Items.Add("| Name                     | HP  | AC |");
             lstInitiative.Items.Add("---------------------------------------");
@@ -131,12 +131,12 @@ namespace BattleManager
             {
                 addChar win = new(i);
                 win.ShowDialog();
-                chars.Add(new Character() { name = win.name, init = win.init, health = win.health, AC = win.AC });
+                chars.Add(new Character(win.name, win.init, win.health, win.AC));
             }
             chars = chars.OrderBy(c => c.init).ToList();
             foreach (Character c in chars)
             {
-                appendChar(c);
+                addToInitList(c);
             }
         }
 
@@ -182,7 +182,8 @@ namespace BattleManager
         {
             for (int i = 1; i <= 3; i++)
             {
-                addToInitList($"char{i}", 20 + i, 10 + i);
+                Character character = new($"char{i}", 20 + i, 10 + i);
+                addToInitList(character);
             }
         }
 
@@ -197,7 +198,8 @@ namespace BattleManager
         {
             int health = getHealthFromInitList(index);
             health += i;
-            addToInitList(getNameFromInitList(index), health, getACFromInitList(index), index);
+            Character character = new(getNameFromInitList(index), health, getACFromInitList(index));
+            addToInitList(character, index);
             if (i > -1)
             { //healed
                 lblDebug.Text = $"Healed {getNameFromInitList(index)} for {i}";
@@ -206,11 +208,6 @@ namespace BattleManager
             {
                 lblDebug.Text = $"Damaged {getNameFromInitList(index)} for {i * -1}";
             }
-        }
-
-        private void appendChar(Character c)
-        {
-            addToInitList(c.name, c.health, c.AC);
         }
 
         private void appendLog(int amount, int selection)
@@ -238,41 +235,41 @@ namespace BattleManager
             lstLog.Items.Insert(0, logMsg);
         }
 
-        private void addToInitList(string name, int health, int ac, int index = -1)
+        private void addToInitList(Character c, int index = -1)
         {
             /*
              * Formatting is 
              * | Name                     | HP  | AC | 
-             * 12345678901234567890123456789012345678901234567890 (this will be a line of - )
+             * 12345678901234567890123456789012345678901234567890 (this will be a line of '-' )
              * | 123456789012345678901234 | 999 | 99 | Left align items
             */
 
             string healthTxt;
 
             // format everything to fit
-            if (name.Length > 24)
+            if (c.name.Length > 24)
             {
-                name = $"{name[..21]}...";
+                c.name = $"{c.name[..21]}...";
             }
             else
             {
-                for (int i = 0; name.Length < 24; i++)
+                for (int i = 0; c.name.Length < 24; i++)
                 {
-                    name += " ";
+                    c.name += " ";
                 }
             }
 
-            if (health > 999) health = 999; // I don't think anything gets this high?
+            if (c.health > 999) c.health = 999; // I don't think anything gets this high?
 
-            if (health < 100)
+            if (c.health < 100)
             {
-                healthTxt = health + " ";
+                healthTxt = c.health + " ";
             }
-            else healthTxt = health.ToString();
+            else healthTxt = c.health.ToString();
 
-            if (ac > 99) ac = 99;
+            if (c.AC > 99) c.AC = 99;
 
-            string obj = $"| {name} | {healthTxt} | {ac} |";
+            string obj = $"| {c.name} | {healthTxt} | {c.AC} |";
 
             if (index == -1)
             {
@@ -304,30 +301,5 @@ namespace BattleManager
         {
             if (selIndex >= lstInitiative.Items.Count) return false; return true;
         }
-
-        private int keyToNum(KeyEventArgs e)
-        {
-            return e.KeyData switch
-            {
-                Keys.D1 or Keys.NumPad1 => 1,
-                Keys.D2 or Keys.NumPad2 => 2,
-                Keys.D3 or Keys.NumPad3 => 3,
-                Keys.D4 or Keys.NumPad4 => 4,
-                Keys.D5 or Keys.NumPad5 => 5,
-                Keys.D6 or Keys.NumPad6 => 6,
-                Keys.D7 or Keys.NumPad7 => 7,
-                Keys.D8 or Keys.NumPad8 => 8,
-                Keys.D9 or Keys.NumPad9 => 9,
-                Keys.D0 or Keys.NumPad0 => 0,
-                _ => -1,
-            };
-        }
-    }
-    class Character
-    {
-        public string name { get; set; }
-        public int init { get; set; }
-        public int health { get; set; }
-        public int AC { get; set; }
     }
 }

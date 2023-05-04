@@ -135,6 +135,8 @@
             lblWisdom = new System.Windows.Forms.Label();
             lblCharisma = new System.Windows.Forms.Label();
             lblAdvantage = new System.Windows.Forms.Label();
+            btnDone = new System.Windows.Forms.Button();
+            panel1 = new System.Windows.Forms.Panel();
             tblAcid.SuspendLayout();
             tblHeaders.SuspendLayout();
             tblDamageTypes.SuspendLayout();
@@ -158,6 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)numInt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numWis).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCha).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // tblAcid
@@ -1307,7 +1310,7 @@
             gbDC.Size = new System.Drawing.Size(256, 202);
             gbDC.TabIndex = 1;
             gbDC.TabStop = false;
-            gbDC.Text = "Saving Throws";
+            gbDC.Text = "Saving Throw Modifiers";
             // 
             // tblDC
             // 
@@ -1353,7 +1356,6 @@
             numStr.Name = "numStr";
             numStr.Size = new System.Drawing.Size(94, 23);
             numStr.TabIndex = 12;
-            numStr.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // numDex
             // 
@@ -1362,7 +1364,6 @@
             numDex.Name = "numDex";
             numDex.Size = new System.Drawing.Size(94, 23);
             numDex.TabIndex = 13;
-            numDex.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // numCon
             // 
@@ -1371,7 +1372,6 @@
             numCon.Name = "numCon";
             numCon.Size = new System.Drawing.Size(94, 23);
             numCon.TabIndex = 14;
-            numCon.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // numInt
             // 
@@ -1380,7 +1380,6 @@
             numInt.Name = "numInt";
             numInt.Size = new System.Drawing.Size(94, 23);
             numInt.TabIndex = 15;
-            numInt.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // numWis
             // 
@@ -1389,7 +1388,6 @@
             numWis.Name = "numWis";
             numWis.Size = new System.Drawing.Size(94, 23);
             numWis.TabIndex = 16;
-            numWis.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // numCha
             // 
@@ -1398,7 +1396,6 @@
             numCha.Name = "numCha";
             numCha.Size = new System.Drawing.Size(94, 23);
             numCha.TabIndex = 17;
-            numCha.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // chkStrAdv
             // 
@@ -1548,16 +1545,39 @@
             lblAdvantage.TabIndex = 2;
             lblAdvantage.Text = "Advantage?";
             // 
+            // btnDone
+            // 
+            btnDone.Dock = System.Windows.Forms.DockStyle.Fill;
+            btnDone.Location = new System.Drawing.Point(85, 70);
+            btnDone.MaximumSize = new System.Drawing.Size(100, 75);
+            btnDone.Name = "btnDone";
+            btnDone.Size = new System.Drawing.Size(100, 75);
+            btnDone.TabIndex = 3;
+            btnDone.Text = "Done";
+            btnDone.UseVisualStyleBackColor = true;
+            btnDone.Click += btnDone_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnDone);
+            panel1.Location = new System.Drawing.Point(12, 238);
+            panel1.Name = "panel1";
+            panel1.Padding = new System.Windows.Forms.Padding(85, 70, 0, 0);
+            panel1.Size = new System.Drawing.Size(270, 240);
+            panel1.TabIndex = 4;
+            // 
             // CharOptions
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 487);
+            Controls.Add(panel1);
             Controls.Add(lblAdvantage);
             Controls.Add(gbDC);
             Controls.Add(tblDamageTypes);
             Name = "CharOptions";
             Text = "CharOptions";
+            Load += CharOptions_Load;
             tblAcid.ResumeLayout(false);
             tblAcid.PerformLayout();
             tblHeaders.ResumeLayout(false);
@@ -1597,6 +1617,7 @@
             ((System.ComponentModel.ISupportInitialize)numInt).EndInit();
             ((System.ComponentModel.ISupportInitialize)numWis).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCha).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1709,5 +1730,7 @@
         private System.Windows.Forms.NumericUpDown numCon;
         private System.Windows.Forms.NumericUpDown numDex;
         private System.Windows.Forms.NumericUpDown numStr;
+        private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.Panel panel1;
     }
 }
