@@ -1355,7 +1355,7 @@
             numStr.Location = new System.Drawing.Point(115, 3);
             numStr.Name = "numStr";
             numStr.Size = new System.Drawing.Size(94, 23);
-            numStr.TabIndex = 12;
+            numStr.TabIndex = 1;
             // 
             // numDex
             // 
@@ -1363,7 +1363,7 @@
             numDex.Location = new System.Drawing.Point(115, 33);
             numDex.Name = "numDex";
             numDex.Size = new System.Drawing.Size(94, 23);
-            numDex.TabIndex = 13;
+            numDex.TabIndex = 2;
             // 
             // numCon
             // 
@@ -1371,7 +1371,7 @@
             numCon.Location = new System.Drawing.Point(115, 63);
             numCon.Name = "numCon";
             numCon.Size = new System.Drawing.Size(94, 23);
-            numCon.TabIndex = 14;
+            numCon.TabIndex = 3;
             // 
             // numInt
             // 
@@ -1379,7 +1379,7 @@
             numInt.Location = new System.Drawing.Point(115, 93);
             numInt.Name = "numInt";
             numInt.Size = new System.Drawing.Size(94, 23);
-            numInt.TabIndex = 15;
+            numInt.TabIndex = 4;
             // 
             // numWis
             // 
@@ -1387,7 +1387,7 @@
             numWis.Location = new System.Drawing.Point(115, 123);
             numWis.Name = "numWis";
             numWis.Size = new System.Drawing.Size(94, 23);
-            numWis.TabIndex = 16;
+            numWis.TabIndex = 5;
             // 
             // numCha
             // 
@@ -1395,7 +1395,7 @@
             numCha.Location = new System.Drawing.Point(115, 153);
             numCha.Name = "numCha";
             numCha.Size = new System.Drawing.Size(94, 23);
-            numCha.TabIndex = 17;
+            numCha.TabIndex = 6;
             // 
             // chkStrAdv
             // 
@@ -1578,6 +1578,7 @@
             Name = "CharOptions";
             Text = "CharOptions";
             Load += CharOptions_Load;
+            KeyDown += CharOptions_KeyDown;
             tblAcid.ResumeLayout(false);
             tblAcid.PerformLayout();
             tblHeaders.ResumeLayout(false);

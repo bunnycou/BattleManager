@@ -6,23 +6,13 @@ namespace BattleManager
 {
     public partial class addChar : Form
     {
-
-        public string name;
-        public int health;
-        public int AC;
-        public int init;
-
+        public Character character = new();
         public addChar(int num)
         {
             InitializeComponent();
 
             Text = $"Character {num}";
             txtName.Text = $"Char {num}";
-
-            txtName.KeyDown += onEnter;
-            numHealth.KeyDown += onEnter;
-            numAC.KeyDown += onEnter;
-            KeyDown += onEnter;
         }
 
         private void onEnter(object sender, KeyEventArgs e)
@@ -35,11 +25,10 @@ namespace BattleManager
 
         private void btnDone_Click(object sender, EventArgs e)
         {
-            name = txtName.Text;
-            health = (int)numHealth.Value;
-            AC = (int)numAC.Value;
-            init = (int)numInit.Value;
-            Enabled = false;
+            character.name = txtName.Text;
+            character.health = (int)numHealth.Value;
+            character.AC = (int)numAC.Value;
+            character.init = (int)numInit.Value;
             Close();
         }
 
@@ -50,7 +39,6 @@ namespace BattleManager
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
-            Character character = new(name, init, health, AC);
             CharOptions charOptions = new(txtName.Text, character);
             charOptions.ShowDialog();
 

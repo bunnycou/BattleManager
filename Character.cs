@@ -43,6 +43,11 @@ namespace BattleManager
             Slashing
         }
 
+        public Character()
+        {
+            // Empty constructor
+        }
+
         public Character(string name, int health, int AC) // Construct without init for temp use (will likely be deleted)
         {
             this.name = name;

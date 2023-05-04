@@ -167,6 +167,7 @@
             Name = "addChar";
             Text = "Character";
             Load += addChar_Load;
+            KeyDown += onEnter;
             ((System.ComponentModel.ISupportInitialize)numHealth).EndInit();
             ((System.ComponentModel.ISupportInitialize)numAC).EndInit();
             ((System.ComponentModel.ISupportInitialize)numInit).EndInit();

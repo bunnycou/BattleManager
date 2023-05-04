@@ -131,10 +131,16 @@ namespace BattleManager
             {
                 addChar win = new(i);
                 win.ShowDialog();
-                chars.Add(new Character(win.name, win.init, win.health, win.AC));
+                if (win.character.name.Length > 24) win.character.name = $"{win.character.name[..21]}...";
+                if (charDict.ContainsKey(win.character.name)) {
+                    MessageBox.Show($"{win.character.name} already exists! It will not be added");
+                } else
+                {
+                    chars.Add(win.character);
+                    charDict.Add(win.character.name, win.character);
+                }
             }
-            chars = chars.OrderBy(c => c.init).ToList();
-            foreach (Character c in chars)
+            foreach (Character c in chars.OrderBy(c => c.init).ToList())
             {
                 addToInitList(c);
             }
@@ -247,7 +253,7 @@ namespace BattleManager
             string healthTxt;
 
             // format everything to fit
-            if (c.name.Length > 24)
+            if (c.name.Length > 24) // might be obsolete now...
             {
                 c.name = $"{c.name[..21]}...";
             }
