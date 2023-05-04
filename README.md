@@ -21,13 +21,16 @@ Existing initiative trackers never feel good to use. They always feel less effic
 
 ## Keyboard Shortcuts
 - ### Ctrl
-  - Select position in initiative from number input
+  - Select position in initiative based on number input
 
 - ### Shift
-  - Heal selected position from number input
+  - Heal selected position based on number input
 
 - ### Alt
-  - Damage selected position from number input
+  - Damage selected position based on number input
+
+- ### Delete
+  - Delete selected position
 
 - ### Z
   - Undo last action
