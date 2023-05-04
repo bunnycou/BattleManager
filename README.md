@@ -72,8 +72,8 @@ There has been a lot of sub updates for 0.1. The goal of 0.1 is to achieve a ver
 - [ ] Create Party Set
 - [ ] Export/Import Party Set
 - [ ] Add Party Set to tracker
-- [ ] Saving Throws
-- [ ] Damage Wk/St
+- [x] Saving Throw Modifiers
+- [x] Damage Resistances
 
 ### Version 0.3 - Foe's
 - [ ] Custom Stat Blocks
