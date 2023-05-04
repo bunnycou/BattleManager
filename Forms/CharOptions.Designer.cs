@@ -1576,6 +1576,7 @@
             Controls.Add(gbDC);
             Controls.Add(tblDamageTypes);
             Name = "CharOptions";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "CharOptions";
             Load += CharOptions_Load;
             KeyDown += CharOptions_KeyDown;

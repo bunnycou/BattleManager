@@ -165,6 +165,7 @@
             Controls.Add(lblName);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "addChar";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Character";
             Load += addChar_Load;
             KeyDown += onEnter;

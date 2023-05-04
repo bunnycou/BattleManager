@@ -126,7 +126,6 @@ namespace BattleManager
         private void btnChar_Click(object sender, EventArgs e)
         {
             int niV = (int)numInput.Value;
-            List<Character> chars = new();
             for (int i = 1; i <= niV; i++)
             {
                 addChar win = new(i);
@@ -136,11 +135,12 @@ namespace BattleManager
                     MessageBox.Show($"{win.character.name} already exists! It will not be added");
                 } else
                 {
-                    chars.Add(win.character);
                     charDict.Add(win.character.name, win.character);
                 }
             }
-            foreach (Character c in chars.OrderBy(c => c.init).ToList())
+            // clear initiative and redraw it for each person in the charDict
+            clearInit();
+            foreach (Character c in charDict.Values.OrderBy(c => c.init))
             {
                 addToInitList(c);
             }
@@ -166,9 +166,8 @@ namespace BattleManager
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            lstInitiative.Items.Clear();
-            lstInitiative.Items.Add("| Name                     | HP  | AC |");
-            lstInitiative.Items.Add("---------------------------------------");
+            charDict.Clear();
+            clearInit();
             lstLog.Items.Clear();
             for (int i = 0; i < log.GetLength(0); i++)
             {
@@ -176,6 +175,13 @@ namespace BattleManager
                 log[i, 1] = 0;
             }
             lblDebug.Text = "Hello";
+        }
+
+        private void clearInit()
+        {
+            lstInitiative.Items.Clear();
+            lstInitiative.Items.Add("| Name                     | HP  | AC |");
+            lstInitiative.Items.Add("---------------------------------------");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
