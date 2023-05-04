@@ -9,7 +9,7 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [x] Initiative Order
 - [x] Health Tracking
 - [x] AC Display
-- [x] DC Display
+- [ ] DC Display
 - [ ] Damage Wk/St
 - [ ] Custom Stat Blocks
 - [ ] Existing Stat Blocks
