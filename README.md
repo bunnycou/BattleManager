@@ -6,7 +6,7 @@
 Existing initiative trackers never feel good to use. They always feel less efficient than simple pen and paper. Technology is all about implementing speed and efficiency, so that is what I aim to bring. 
 
 ## Features
-- [x] Initiative Order
+- [x] Initiative Re/Order
 - [x] Health Tracking
 - [x] AC Display
 - [ ] Saving Throw Display
