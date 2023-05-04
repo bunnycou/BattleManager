@@ -37,6 +37,7 @@
             btnDone = new System.Windows.Forms.Button();
             numInit = new System.Windows.Forms.NumericUpDown();
             lblInit = new System.Windows.Forms.Label();
+            btnOptions = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)numHealth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numAC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numInit).BeginInit();
@@ -135,12 +136,22 @@
             lblInit.TabIndex = 5;
             lblInit.Text = "Init";
             // 
+            // btnOptions
+            // 
+            btnOptions.Location = new System.Drawing.Point(4, 134);
+            btnOptions.Name = "btnOptions";
+            btnOptions.Size = new System.Drawing.Size(75, 45);
+            btnOptions.TabIndex = 6;
+            btnOptions.Text = "Advanced Options";
+            btnOptions.UseVisualStyleBackColor = true;
+            // 
             // addChar
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(246, 193);
             ControlBox = false;
+            Controls.Add(btnOptions);
             Controls.Add(numInit);
             Controls.Add(lblInit);
             Controls.Add(btnDone);
@@ -172,5 +183,6 @@
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.NumericUpDown numInit;
         private System.Windows.Forms.Label lblInit;
+        private System.Windows.Forms.Button btnOptions;
     }
 }
