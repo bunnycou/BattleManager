@@ -1353,6 +1353,7 @@
             // 
             numStr.Dock = System.Windows.Forms.DockStyle.Fill;
             numStr.Location = new System.Drawing.Point(115, 3);
+            numStr.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
             numStr.Name = "numStr";
             numStr.Size = new System.Drawing.Size(94, 23);
             numStr.TabIndex = 1;
@@ -1361,6 +1362,7 @@
             // 
             numDex.Dock = System.Windows.Forms.DockStyle.Fill;
             numDex.Location = new System.Drawing.Point(115, 33);
+            numDex.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
             numDex.Name = "numDex";
             numDex.Size = new System.Drawing.Size(94, 23);
             numDex.TabIndex = 2;
@@ -1369,6 +1371,7 @@
             // 
             numCon.Dock = System.Windows.Forms.DockStyle.Fill;
             numCon.Location = new System.Drawing.Point(115, 63);
+            numCon.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
             numCon.Name = "numCon";
             numCon.Size = new System.Drawing.Size(94, 23);
             numCon.TabIndex = 3;
@@ -1377,6 +1380,7 @@
             // 
             numInt.Dock = System.Windows.Forms.DockStyle.Fill;
             numInt.Location = new System.Drawing.Point(115, 93);
+            numInt.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
             numInt.Name = "numInt";
             numInt.Size = new System.Drawing.Size(94, 23);
             numInt.TabIndex = 4;
@@ -1385,6 +1389,7 @@
             // 
             numWis.Dock = System.Windows.Forms.DockStyle.Fill;
             numWis.Location = new System.Drawing.Point(115, 123);
+            numWis.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
             numWis.Name = "numWis";
             numWis.Size = new System.Drawing.Size(94, 23);
             numWis.TabIndex = 5;
@@ -1393,6 +1398,7 @@
             // 
             numCha.Dock = System.Windows.Forms.DockStyle.Fill;
             numCha.Location = new System.Drawing.Point(115, 153);
+            numCha.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
             numCha.Name = "numCha";
             numCha.Size = new System.Drawing.Size(94, 23);
             numCha.TabIndex = 6;

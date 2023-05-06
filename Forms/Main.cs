@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq; 
+using System.Linq;
+using BattleManager.Forms;
+using System.IO;
+using System.Reflection;
 
 namespace BattleManager
 {
@@ -21,11 +24,38 @@ namespace BattleManager
         private void select()
         {
             if (!isValidSel()) return;
-            selIndex = (int)numInput.Value + 1;
             if (selIndex >= lstInitiative.Items.Count) selIndex = lstInitiative.Items.Count - 1;
             if (selIndex < 2) selIndex = 2;
             lblDebug.Text = $"Selected {getNameFromInitList(selIndex)}";
             numInput.Value = 0;
+            loadCharacterDisplay();
+        }
+
+        private void loadCharacterDisplay()
+        {
+            // get char
+            Character c = getCharFromInitList(selIndex);
+            // set base
+            gpCharacter.Text = c.name;
+            lblHealth.Text = c.health.ToString();
+            lblAC.Text = c.AC.ToString();
+            lblInit.Text = c.init.ToString();
+            //set dc
+            lblStrVal.Text = c.savingThrows[Character.Stat.Str][0] > 0 ? $"+{c.savingThrows[Character.Stat.Str][0]}" : c.savingThrows[Character.Stat.Str][0].ToString();
+            lblDexVal.Text = c.savingThrows[Character.Stat.Dex][0] > 0 ? $"+{c.savingThrows[Character.Stat.Dex][0]}" : c.savingThrows[Character.Stat.Dex][0].ToString();
+            lblConVal.Text = c.savingThrows[Character.Stat.Con][0] > 0 ? $"+{c.savingThrows[Character.Stat.Con][0]}" : c.savingThrows[Character.Stat.Con][0].ToString();
+            lblIntVal.Text = c.savingThrows[Character.Stat.Int][0] > 0 ? $"+{c.savingThrows[Character.Stat.Int][0]}" : c.savingThrows[Character.Stat.Int][0].ToString();
+            lblWisVal.Text = c.savingThrows[Character.Stat.Wis][0] > 0 ? $"+{c.savingThrows[Character.Stat.Wis][0]}" : c.savingThrows[Character.Stat.Wis][0].ToString();
+            lblChaVal.Text = c.savingThrows[Character.Stat.Cha][0] > 0 ? $"+{c.savingThrows[Character.Stat.Cha][0]}" : c.savingThrows[Character.Stat.Cha][0].ToString();
+            // dc adv
+            cbStrAdv.Checked = c.savingThrows[Character.Stat.Str][1] == 1 ? true : false;
+            cbDexAdv.Checked = c.savingThrows[Character.Stat.Dex][1] == 1 ? true : false;
+            cbConAdv.Checked = c.savingThrows[Character.Stat.Con][1] == 1 ? true : false;
+            cbIntAdv.Checked = c.savingThrows[Character.Stat.Int][1] == 1 ? true : false;
+            cbWisAdv.Checked = c.savingThrows[Character.Stat.Wis][1] == 1 ? true : false;
+            cbChaAdv.Checked = c.savingThrows[Character.Stat.Cha][1] == 1 ? true : false;
+            //set res
+
         }
 
         private void undoLog()
@@ -51,6 +81,123 @@ namespace BattleManager
             }
         }
 
+        private void modHealth(int i, int index)
+        {
+            Character character = charDict[getNameFromInitList(index)];
+            character.health += i;
+            loadInitiative();
+            if (i > -1)
+            { //healed
+                lblDebug.Text = $"Healed {getNameFromInitList(index)} for {i}";
+            }
+            else // damaged
+            {
+                lblDebug.Text = $"Damaged {getNameFromInitList(index)} for {i * -1}";
+            }
+            loadCharacterDisplay();
+        }
+
+        private void appendLog(int amount, int selection)
+        {
+            // modify log array
+            for (int i = log.GetLength(0) - 1; i > 0; i--)
+            {
+                log[i, 0] = log[i - 1, 0];
+                log[i, 1] = log[i - 1, 1];
+            }
+            log[0, 0] = amount;
+            log[0, 1] = selection;
+
+            // modify log box
+            string charName = getNameFromInitList(selection);
+            string logMsg;
+            if (amount > -1)
+            {
+                logMsg = $"Healed {charName} for {amount}";
+            }
+            else
+            {
+                logMsg = $"Damaged {charName} for {amount * -1}";
+            }
+            lstLog.Items.Insert(0, logMsg);
+        }
+
+        private void loadInitiative()
+        {
+            clearInit();
+            foreach (Character c in charDict.Values.OrderBy(c => c.init))
+            {
+                lstInitiative.Items.Add(charToString(c));
+            }
+        }
+
+        private void updateInitiative(Character c)
+        {
+            charDict[c.name].init = getCharFromInitList(lstInitiative.Items.IndexOf(charToString(c)) - 1).init - 1;
+        }
+
+        private string charToString(Character c)
+        {
+            string health;
+            string name = c.name;
+            string ac = c.AC.ToString();
+
+            for (int i = 0; name.Length < 24; i++)
+            {
+                name += " ";
+            }
+
+            if (c.health > 999) c.health = 999; // I don't think anything gets this high?
+
+            if (c.health < 100) health = c.health + " ";
+            else health = c.health.ToString();
+
+            if (c.AC > 99) ac = "99";
+
+            return $"| {name} | {health} | {ac} |";
+        }
+
+        private string getNameFromInitList(int selection)
+        {
+            if (selection < 2) selection = 2;
+            else if (selection > lstInitiative.Items.Count - 1) selection = lstInitiative.Items.Count - 1;
+            return lstInitiative.Items[selection].ToString().Split("|")[1].Trim();
+        }
+
+        private Character getCharFromInitList(int selection)
+        {
+            return charDict[getNameFromInitList(selection)];
+        }
+
+        private bool isValidSel()
+        {
+            if (selIndex >= lstInitiative.Items.Count) return false; return true;
+        }
+
+        private void addCharToDict(Character character)
+        {
+            if (charDict.ContainsKey(character.name)) MessageBox.Show($"{character.name} already exists! It will not be added");
+            else charDict.Add(character.name, character);
+        }
+
+        private void loadParties()
+        {
+            cbParty.Items.Clear();
+            foreach (string f in Utility.getPartyFiles())
+            {
+                cbParty.Items.Add(f.Split("\\")[^1][..^5]);
+            }
+        }
+
+        private void loadStatblocks()
+        {
+            cbStatBlock.Items.Clear();
+            foreach (string f in Utility.getStatFiles())
+            {
+                cbStatBlock.Items.Add(f.Split("\\")[^1][..^5]);
+            }
+        }
+
         // event functions
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
@@ -60,7 +207,7 @@ namespace BattleManager
             {
                 switch (e.Modifiers)
                 {
-                    case Keys.Control: select(); break;
+                    case Keys.Control: selIndex = selIndex = (int)numInput.Value + 1; numInput.Value = 0; select(); break;
                     case Keys.Shift: btnHeal_Click(sender, e); break;
                     case Keys.Alt: btnDamage_Click(sender, e); e.SuppressKeyPress = true; break;
                 }
@@ -89,8 +236,10 @@ namespace BattleManager
             lstInitiative.Items.Add("| Name                     | HP  | AC |");
             lstInitiative.Items.Add("---------------------------------------");
 
-            // check if folders for json exist, create if not, read if they do
-            //TODO
+            // Initialize folders if needed
+            Utility.initializeFolders();
+            loadParties();
+            loadStatblocks();
         }
 
 
@@ -100,6 +249,7 @@ namespace BattleManager
             if (lstInitiative.SelectedItem == null) return;
             selIndex = lstInitiative.SelectedIndex;
             if (selIndex < 2) return;
+            select();
             lstInitiative.DoDragDrop(lstInitiative.SelectedItem, DragDropEffects.Move);
         }
 
@@ -115,9 +265,9 @@ namespace BattleManager
             if (index == -1) index = lstInitiative.Items.Count - 1;
             if (index < 2) index = 2;
             object data = e.Data.GetData(typeof(String));
-            // name
             lstInitiative.Items.Remove(data);
             lstInitiative.Items.Insert(index, data);
+            updateInitiative(getCharFromInitList(lstInitiative.Items.IndexOf(data)));
         }
         // end drag and drop reorder
 
@@ -130,20 +280,11 @@ namespace BattleManager
             {
                 addChar win = new(i);
                 win.ShowDialog();
-                if (win.character.name.Length > 24) win.character.name = $"{win.character.name[..21]}...";
-                if (charDict.ContainsKey(win.character.name)) {
-                    MessageBox.Show($"{win.character.name} already exists! It will not be added");
-                } else
-                {
-                    charDict.Add(win.character.name, win.character);
-                }
+                addCharToDict(win.character);
             }
             // clear initiative and redraw it for each person in the charDict
             clearInit();
-            foreach (Character c in charDict.Values.OrderBy(c => c.init))
-            {
-                addToInitList(c);
-            }
+            loadInitiative();
         }
 
         private void btnHeal_Click(object sender, EventArgs e)
@@ -174,7 +315,7 @@ namespace BattleManager
                 log[i, 0] = 0;
                 log[i, 1] = 0;
             }
-            lblDebug.Text = "Hello";
+            lblDebug.Text = "Welcome to BattleManager!";
         }
 
         private void clearInit()
@@ -195,8 +336,9 @@ namespace BattleManager
             for (int i = 1; i <= 3; i++)
             {
                 Character character = new($"char{i}", 20 + i, 10 + i);
-                addToInitList(character);
+                addCharToDict(character);
             }
+            loadInitiative();
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -204,114 +346,51 @@ namespace BattleManager
             undoLog();
         }
 
-
-        // utility functions
-        private void modHealth(int i, int index)
+        private void btnCreateParty_Click(object sender, EventArgs e)
         {
-            int health = getHealthFromInitList(index);
-            health += i;
-            Character character = new(getNameFromInitList(index), health, getACFromInitList(index));
-            addToInitList(character, index);
-            if (i > -1)
-            { //healed
-                lblDebug.Text = $"Healed {getNameFromInitList(index)} for {i}";
-            }
-            else // damaged
-            {
-                lblDebug.Text = $"Damaged {getNameFromInitList(index)} for {i * -1}";
-            }
+            addParty win = new();
+            win.ShowDialog();
+            loadParties();
         }
 
-        private void appendLog(int amount, int selection)
+        private void btnDeleteParty_Click(object sender, EventArgs e)
         {
-            // modify log array
-            for (int i = log.GetLength(0) - 1; i > 0; i--)
-            {
-                log[i, 0] = log[i - 1, 0];
-                log[i, 1] = log[i - 1, 1];
-            }
-            log[0, 0] = amount;
-            log[0, 1] = selection;
-
-            // modify log box
-            string charName = getNameFromInitList(selection);
-            string logMsg;
-            if (amount > -1)
-            {
-                logMsg = $"Healed {charName} for {amount}";
-            }
-            else
-            {
-                logMsg = $"Damaged {charName} for {amount * -1}";
-            }
-            lstLog.Items.Insert(0, logMsg);
+            Utility.deletePartyFile(cbParty.Text);
+            cbParty.Text = "";
+            loadParties();
         }
 
-        private void addToInitList(Character c, int index = -1)
+        private void btnAddParty_Click(object sender, EventArgs e)
         {
-            /*
-             * Formatting is 
-             * | Name                     | HP  | AC | 
-             * 12345678901234567890123456789012345678901234567890 (this will be a line of '-' )
-             * | 123456789012345678901234 | 999 | 99 | Left align items
-            */
-
-            string healthTxt;
-
-            // format everything to fit
-            if (c.name.Length > 24) // might be obsolete now...
+            if (Utility.getParty(cbParty.Text) == null) return;
+            foreach (Character c in Utility.getParty(cbParty.Text).Values)
             {
-                c.name = $"{c.name[..21]}...";
+                addChar win = new(0);
+                win.txtName.Text = c.name;
+                win.numAC.Value = c.AC;
+                win.numHealth.Value = c.health;
+                win.character = c;
+                win.ShowDialog();
+                charDict.Add(c.name, c);
             }
-            else
-            {
-                for (int i = 0; c.name.Length < 24; i++)
-                {
-                    c.name += " ";
-                }
-            }
-
-            if (c.health > 999) c.health = 999; // I don't think anything gets this high?
-
-            if (c.health < 100)
-            {
-                healthTxt = c.health + " ";
-            }
-            else healthTxt = c.health.ToString();
-
-            if (c.AC > 99) c.AC = 99;
-
-            string obj = $"| {c.name} | {healthTxt} | {c.AC} |";
-
-            if (index == -1)
-            {
-                lstInitiative.Items.Add(obj);
-            }
-            else
-            {
-                lstInitiative.Items.RemoveAt(index);
-                lstInitiative.Items.Insert(index, obj);
-            }
+            loadInitiative();
         }
 
-        private string getNameFromInitList(int selection)
+        private void btnEditParty_Click(object sender, EventArgs e)
         {
-            return lstInitiative.Items[selection].ToString().Split("|")[1].Trim();
-        }
-
-        private int getHealthFromInitList(int selection)
-        {
-            return int.Parse(lstInitiative.Items[selection].ToString().Split("|")[2].Trim());
-        }
-
-        private int getACFromInitList(int selection)
-        {
-            return int.Parse(lstInitiative.Items[selection].ToString().Split("|")[3].Trim());
-        }
-
-        private bool isValidSel()
-        {
-            if (selIndex >= lstInitiative.Items.Count) return false; return true;
+            Dictionary<string, Character> members = new();
+            if (Utility.getParty(cbParty.Text) == null) return;
+            foreach (Character c in Utility.getParty(cbParty.Text).Values)
+            {
+                addChar win = new(0);
+                win.txtName.Text = c.name;
+                win.numAC.Value = c.AC;
+                win.numHealth.Value = c.health;
+                win.character = c;
+                win.ShowDialog();
+                members.Add(win.character.name, win.character);
+            }
+            Utility.writePartyFile(cbParty.Text, members);
         }
     }
 }

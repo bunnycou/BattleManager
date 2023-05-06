@@ -41,19 +41,23 @@
             // lblPartyName
             // 
             lblPartyName.AutoSize = true;
+            lblPartyName.Dock = System.Windows.Forms.DockStyle.Fill;
             lblPartyName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lblPartyName.Location = new System.Drawing.Point(3, 0);
             lblPartyName.Name = "lblPartyName";
-            lblPartyName.Size = new System.Drawing.Size(91, 21);
+            lblPartyName.Size = new System.Drawing.Size(102, 45);
             lblPartyName.TabIndex = 0;
             lblPartyName.Text = "Party Name";
+            lblPartyName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtPartyName
             // 
+            txtPartyName.Dock = System.Windows.Forms.DockStyle.Fill;
             txtPartyName.Location = new System.Drawing.Point(111, 3);
             txtPartyName.Name = "txtPartyName";
-            txtPartyName.Size = new System.Drawing.Size(275, 23);
+            txtPartyName.Size = new System.Drawing.Size(296, 23);
             txtPartyName.TabIndex = 1;
+            txtPartyName.Text = "Party";
             // 
             // tblParty
             // 
@@ -75,19 +79,23 @@
             // lblPartyCount
             // 
             lblPartyCount.AutoSize = true;
+            lblPartyCount.Dock = System.Windows.Forms.DockStyle.Fill;
             lblPartyCount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lblPartyCount.Location = new System.Drawing.Point(3, 45);
             lblPartyCount.Name = "lblPartyCount";
-            lblPartyCount.Size = new System.Drawing.Size(91, 21);
+            lblPartyCount.Size = new System.Drawing.Size(102, 46);
             lblPartyCount.TabIndex = 2;
             lblPartyCount.Text = "Party Count";
+            lblPartyCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // numCount
             // 
+            numCount.Dock = System.Windows.Forms.DockStyle.Left;
             numCount.Location = new System.Drawing.Point(111, 48);
             numCount.Name = "numCount";
-            numCount.Size = new System.Drawing.Size(92, 23);
+            numCount.Size = new System.Drawing.Size(100, 23);
             numCount.TabIndex = 2;
+            numCount.Value = new decimal(new int[] { 3, 0, 0, 0 });
             // 
             // btnDone
             // 
@@ -98,6 +106,7 @@
             btnDone.TabIndex = 3;
             btnDone.Text = "Create Party";
             btnDone.UseVisualStyleBackColor = true;
+            btnDone.Click += btnDone_Click;
             // 
             // addParty
             // 
@@ -108,6 +117,7 @@
             Controls.Add(tblParty);
             Name = "addParty";
             Text = "New Party";
+            Load += addParty_Load;
             tblParty.ResumeLayout(false);
             tblParty.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numCount).EndInit();

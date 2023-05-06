@@ -177,16 +177,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblHealth;
-        private System.Windows.Forms.Label lblAC;
-        private System.Windows.Forms.NumericUpDown numHealth;
-        private System.Windows.Forms.NumericUpDown numAC;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnDone;
-        private System.Windows.Forms.NumericUpDown numInit;
-        private System.Windows.Forms.Label lblInit;
-        private System.Windows.Forms.Button btnOptions;
+        public System.Windows.Forms.NumericUpDown numInit;
+        public System.Windows.Forms.Label lblName;
+        public System.Windows.Forms.Label lblHealth;
+        public System.Windows.Forms.Label lblAC;
+        public System.Windows.Forms.NumericUpDown numHealth;
+        public System.Windows.Forms.NumericUpDown numAC;
+        public System.Windows.Forms.TextBox txtName;
+        public System.Windows.Forms.Button btnDone;
+        public System.Windows.Forms.Label lblInit;
+        public System.Windows.Forms.Button btnOptions;
     }
 }

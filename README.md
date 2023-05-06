@@ -72,11 +72,12 @@ Existing initiative trackers never feel good to use. They always feel less effic
 There has been a lot of sub updates for 0.1. The goal of 0.1 is to achieve a version that is fully usable (although 'undo' may be in excess to the following idea) but not fully featured. Hopefully this will be the last amendment to version 0.1 so that I can work on more convenient features and less tweaks to the base system. 
 
 ### Version 0.2 - Friends and Info
-- [ ] Create Party Set
-- [ ] Export/Import Party Set
-- [ ] Add Party Set to tracker
+- [x] Create Party Set
+- [x] ~~Export/Import Party Set~~ _This is implemented through sharing json files_
+- [x] Add Party Set to tracker
 - [x] Saving Throw Modifiers
 - [x] Damage Resistances
+- [ ] Display Info
 
 ### Version 0.3 - Foe's
 - [ ] Custom Stat Blocks
