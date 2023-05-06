@@ -9,11 +9,11 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [x] Initiative Re/Order
 - [x] Health Tracking
 - [x] AC Display
-- [ ] Saving Throw Display
-- [ ] Damage Wk/St
+- [x] Saving Throw Display
+- [x] Damage Wk/St
 - [ ] Custom Stat Blocks
 - [ ] Existing Stat Blocks
-- [ ] Create/Add Parties
+- [x] Create/Add Parties
 - [x] Keyboard shortcuts to make things easy!
 - [x] Battle Log
 
