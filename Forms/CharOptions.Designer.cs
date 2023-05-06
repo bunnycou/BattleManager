@@ -116,27 +116,42 @@
             rdbSlashingV = new System.Windows.Forms.RadioButton();
             gbDC = new System.Windows.Forms.GroupBox();
             tblDC = new System.Windows.Forms.TableLayoutPanel();
+            numLevel = new System.Windows.Forms.NumericUpDown();
+            lblLevel = new System.Windows.Forms.Label();
+            chkChaAdv = new System.Windows.Forms.CheckBox();
+            chkWisAdv = new System.Windows.Forms.CheckBox();
+            chkIntAdv = new System.Windows.Forms.CheckBox();
+            chkConAdv = new System.Windows.Forms.CheckBox();
+            chkDexAdv = new System.Windows.Forms.CheckBox();
             numStr = new System.Windows.Forms.NumericUpDown();
             numDex = new System.Windows.Forms.NumericUpDown();
             numCon = new System.Windows.Forms.NumericUpDown();
             numInt = new System.Windows.Forms.NumericUpDown();
             numWis = new System.Windows.Forms.NumericUpDown();
             numCha = new System.Windows.Forms.NumericUpDown();
-            chkStrAdv = new System.Windows.Forms.CheckBox();
-            chkDexAdv = new System.Windows.Forms.CheckBox();
-            chkConAdv = new System.Windows.Forms.CheckBox();
-            chkIntAdv = new System.Windows.Forms.CheckBox();
-            chkWisAdv = new System.Windows.Forms.CheckBox();
-            chkChaAdv = new System.Windows.Forms.CheckBox();
             lblStrength = new System.Windows.Forms.Label();
             lblDexterity = new System.Windows.Forms.Label();
             lblConstitution = new System.Windows.Forms.Label();
             lblIntelligence = new System.Windows.Forms.Label();
             lblWisdom = new System.Windows.Forms.Label();
             lblCharisma = new System.Windows.Forms.Label();
-            lblAdvantage = new System.Windows.Forms.Label();
+            chkStrAdv = new System.Windows.Forms.CheckBox();
             btnDone = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            numStrMod = new System.Windows.Forms.NumericUpDown();
+            numDexMod = new System.Windows.Forms.NumericUpDown();
+            numConMod = new System.Windows.Forms.NumericUpDown();
+            numIntMod = new System.Windows.Forms.NumericUpDown();
+            numWisMod = new System.Windows.Forms.NumericUpDown();
+            numChaMod = new System.Windows.Forms.NumericUpDown();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
             tblAcid.SuspendLayout();
             tblHeaders.SuspendLayout();
             tblDamageTypes.SuspendLayout();
@@ -154,6 +169,7 @@
             tblSlashing.SuspendLayout();
             gbDC.SuspendLayout();
             tblDC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numLevel).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numStr).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDex).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCon).BeginInit();
@@ -161,6 +177,14 @@
             ((System.ComponentModel.ISupportInitialize)numWis).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCha).BeginInit();
             panel1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numStrMod).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numDexMod).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numConMod).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numIntMod).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numWisMod).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numChaMod).BeginInit();
             SuspendLayout();
             // 
             // tblAcid
@@ -1305,251 +1329,293 @@
             // gbDC
             // 
             gbDC.Controls.Add(tblDC);
-            gbDC.Location = new System.Drawing.Point(12, 15);
+            gbDC.Location = new System.Drawing.Point(12, 12);
             gbDC.Name = "gbDC";
-            gbDC.Size = new System.Drawing.Size(256, 202);
+            gbDC.Size = new System.Drawing.Size(127, 231);
             gbDC.TabIndex = 1;
             gbDC.TabStop = false;
-            gbDC.Text = "Saving Throw Modifiers";
+            gbDC.Text = "Character Stats";
             // 
             // tblDC
             // 
-            tblDC.ColumnCount = 3;
-            tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            tblDC.ColumnCount = 4;
+            tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            tblDC.Controls.Add(numLevel, 1, 6);
+            tblDC.Controls.Add(lblLevel, 0, 6);
+            tblDC.Controls.Add(chkChaAdv, 2, 5);
+            tblDC.Controls.Add(chkWisAdv, 2, 4);
+            tblDC.Controls.Add(chkIntAdv, 2, 3);
+            tblDC.Controls.Add(chkConAdv, 2, 2);
+            tblDC.Controls.Add(chkDexAdv, 2, 1);
             tblDC.Controls.Add(numStr, 1, 0);
             tblDC.Controls.Add(numDex, 1, 1);
             tblDC.Controls.Add(numCon, 1, 2);
             tblDC.Controls.Add(numInt, 1, 3);
             tblDC.Controls.Add(numWis, 1, 4);
             tblDC.Controls.Add(numCha, 1, 5);
-            tblDC.Controls.Add(chkStrAdv, 2, 0);
-            tblDC.Controls.Add(chkDexAdv, 2, 1);
-            tblDC.Controls.Add(chkConAdv, 2, 2);
-            tblDC.Controls.Add(chkIntAdv, 2, 3);
-            tblDC.Controls.Add(chkWisAdv, 2, 4);
-            tblDC.Controls.Add(chkChaAdv, 2, 5);
             tblDC.Controls.Add(lblStrength, 0, 0);
             tblDC.Controls.Add(lblDexterity, 0, 1);
             tblDC.Controls.Add(lblConstitution, 0, 2);
             tblDC.Controls.Add(lblIntelligence, 0, 3);
             tblDC.Controls.Add(lblWisdom, 0, 4);
             tblDC.Controls.Add(lblCharisma, 0, 5);
+            tblDC.Controls.Add(chkStrAdv, 2, 0);
             tblDC.Dock = System.Windows.Forms.DockStyle.Fill;
             tblDC.Location = new System.Drawing.Point(3, 19);
             tblDC.Name = "tblDC";
-            tblDC.RowCount = 6;
+            tblDC.RowCount = 7;
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            tblDC.Size = new System.Drawing.Size(250, 180);
+            tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tblDC.Size = new System.Drawing.Size(121, 209);
             tblDC.TabIndex = 0;
             // 
-            // numStr
+            // numLevel
             // 
-            numStr.Dock = System.Windows.Forms.DockStyle.Fill;
-            numStr.Location = new System.Drawing.Point(115, 3);
-            numStr.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numStr.Name = "numStr";
-            numStr.Size = new System.Drawing.Size(94, 23);
-            numStr.TabIndex = 1;
+            numLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            numLevel.Location = new System.Drawing.Point(53, 183);
+            numLevel.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
+            numLevel.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numLevel.Name = "numLevel";
+            numLevel.Size = new System.Drawing.Size(44, 23);
+            numLevel.TabIndex = 14;
+            numLevel.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numLevel.ValueChanged += numLevel_ValueChanged;
             // 
-            // numDex
+            // lblLevel
             // 
-            numDex.Dock = System.Windows.Forms.DockStyle.Fill;
-            numDex.Location = new System.Drawing.Point(115, 33);
-            numDex.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numDex.Name = "numDex";
-            numDex.Size = new System.Drawing.Size(94, 23);
-            numDex.TabIndex = 2;
-            // 
-            // numCon
-            // 
-            numCon.Dock = System.Windows.Forms.DockStyle.Fill;
-            numCon.Location = new System.Drawing.Point(115, 63);
-            numCon.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numCon.Name = "numCon";
-            numCon.Size = new System.Drawing.Size(94, 23);
-            numCon.TabIndex = 3;
-            // 
-            // numInt
-            // 
-            numInt.Dock = System.Windows.Forms.DockStyle.Fill;
-            numInt.Location = new System.Drawing.Point(115, 93);
-            numInt.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numInt.Name = "numInt";
-            numInt.Size = new System.Drawing.Size(94, 23);
-            numInt.TabIndex = 4;
-            // 
-            // numWis
-            // 
-            numWis.Dock = System.Windows.Forms.DockStyle.Fill;
-            numWis.Location = new System.Drawing.Point(115, 123);
-            numWis.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numWis.Name = "numWis";
-            numWis.Size = new System.Drawing.Size(94, 23);
-            numWis.TabIndex = 5;
-            // 
-            // numCha
-            // 
-            numCha.Dock = System.Windows.Forms.DockStyle.Fill;
-            numCha.Location = new System.Drawing.Point(115, 153);
-            numCha.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numCha.Name = "numCha";
-            numCha.Size = new System.Drawing.Size(94, 23);
-            numCha.TabIndex = 6;
-            // 
-            // chkStrAdv
-            // 
-            chkStrAdv.AutoSize = true;
-            chkStrAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            chkStrAdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            chkStrAdv.Location = new System.Drawing.Point(215, 3);
-            chkStrAdv.Name = "chkStrAdv";
-            chkStrAdv.Size = new System.Drawing.Size(32, 24);
-            chkStrAdv.TabIndex = 6;
-            chkStrAdv.UseVisualStyleBackColor = true;
-            // 
-            // chkDexAdv
-            // 
-            chkDexAdv.AutoSize = true;
-            chkDexAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            chkDexAdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            chkDexAdv.Location = new System.Drawing.Point(215, 33);
-            chkDexAdv.Name = "chkDexAdv";
-            chkDexAdv.Size = new System.Drawing.Size(32, 24);
-            chkDexAdv.TabIndex = 7;
-            chkDexAdv.UseVisualStyleBackColor = true;
-            // 
-            // chkConAdv
-            // 
-            chkConAdv.AutoSize = true;
-            chkConAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            chkConAdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            chkConAdv.Location = new System.Drawing.Point(215, 63);
-            chkConAdv.Name = "chkConAdv";
-            chkConAdv.Size = new System.Drawing.Size(32, 24);
-            chkConAdv.TabIndex = 8;
-            chkConAdv.UseVisualStyleBackColor = true;
-            // 
-            // chkIntAdv
-            // 
-            chkIntAdv.AutoSize = true;
-            chkIntAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            chkIntAdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            chkIntAdv.Location = new System.Drawing.Point(215, 93);
-            chkIntAdv.Name = "chkIntAdv";
-            chkIntAdv.Size = new System.Drawing.Size(32, 24);
-            chkIntAdv.TabIndex = 9;
-            chkIntAdv.UseVisualStyleBackColor = true;
-            // 
-            // chkWisAdv
-            // 
-            chkWisAdv.AutoSize = true;
-            chkWisAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            chkWisAdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            chkWisAdv.Location = new System.Drawing.Point(215, 123);
-            chkWisAdv.Name = "chkWisAdv";
-            chkWisAdv.Size = new System.Drawing.Size(32, 24);
-            chkWisAdv.TabIndex = 10;
-            chkWisAdv.UseVisualStyleBackColor = true;
+            lblLevel.AutoSize = true;
+            lblLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblLevel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            lblLevel.Location = new System.Drawing.Point(3, 180);
+            lblLevel.Name = "lblLevel";
+            lblLevel.Size = new System.Drawing.Size(44, 30);
+            lblLevel.TabIndex = 13;
+            lblLevel.Text = "LVL";
+            lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chkChaAdv
             // 
             chkChaAdv.AutoSize = true;
             chkChaAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             chkChaAdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            chkChaAdv.Location = new System.Drawing.Point(215, 153);
+            chkChaAdv.Location = new System.Drawing.Point(103, 153);
             chkChaAdv.Name = "chkChaAdv";
-            chkChaAdv.Size = new System.Drawing.Size(32, 24);
-            chkChaAdv.TabIndex = 11;
+            chkChaAdv.Size = new System.Drawing.Size(17, 24);
+            chkChaAdv.TabIndex = 12;
             chkChaAdv.UseVisualStyleBackColor = true;
+            chkChaAdv.CheckedChanged += numCha_ValueChanged;
+            // 
+            // chkWisAdv
+            // 
+            chkWisAdv.AutoSize = true;
+            chkWisAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            chkWisAdv.Dock = System.Windows.Forms.DockStyle.Fill;
+            chkWisAdv.Location = new System.Drawing.Point(103, 123);
+            chkWisAdv.Name = "chkWisAdv";
+            chkWisAdv.Size = new System.Drawing.Size(17, 24);
+            chkWisAdv.TabIndex = 11;
+            chkWisAdv.UseVisualStyleBackColor = true;
+            chkWisAdv.CheckedChanged += numWis_ValueChanged;
+            // 
+            // chkIntAdv
+            // 
+            chkIntAdv.AutoSize = true;
+            chkIntAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            chkIntAdv.Dock = System.Windows.Forms.DockStyle.Fill;
+            chkIntAdv.Location = new System.Drawing.Point(103, 93);
+            chkIntAdv.Name = "chkIntAdv";
+            chkIntAdv.Size = new System.Drawing.Size(17, 24);
+            chkIntAdv.TabIndex = 10;
+            chkIntAdv.UseVisualStyleBackColor = true;
+            chkIntAdv.CheckedChanged += numInt_ValueChanged;
+            // 
+            // chkConAdv
+            // 
+            chkConAdv.AutoSize = true;
+            chkConAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            chkConAdv.Dock = System.Windows.Forms.DockStyle.Fill;
+            chkConAdv.Location = new System.Drawing.Point(103, 63);
+            chkConAdv.Name = "chkConAdv";
+            chkConAdv.Size = new System.Drawing.Size(17, 24);
+            chkConAdv.TabIndex = 9;
+            chkConAdv.UseVisualStyleBackColor = true;
+            chkConAdv.CheckedChanged += numCon_ValueChanged;
+            // 
+            // chkDexAdv
+            // 
+            chkDexAdv.AutoSize = true;
+            chkDexAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            chkDexAdv.Dock = System.Windows.Forms.DockStyle.Fill;
+            chkDexAdv.Location = new System.Drawing.Point(103, 33);
+            chkDexAdv.Name = "chkDexAdv";
+            chkDexAdv.Size = new System.Drawing.Size(17, 24);
+            chkDexAdv.TabIndex = 8;
+            chkDexAdv.UseVisualStyleBackColor = true;
+            chkDexAdv.CheckedChanged += numDex_ValueChanged;
+            // 
+            // numStr
+            // 
+            numStr.Dock = System.Windows.Forms.DockStyle.Fill;
+            numStr.Location = new System.Drawing.Point(53, 3);
+            numStr.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numStr.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numStr.Name = "numStr";
+            numStr.Size = new System.Drawing.Size(44, 23);
+            numStr.TabIndex = 1;
+            numStr.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numStr.ValueChanged += numStr_ValueChanged;
+            // 
+            // numDex
+            // 
+            numDex.Dock = System.Windows.Forms.DockStyle.Fill;
+            numDex.Location = new System.Drawing.Point(53, 33);
+            numDex.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numDex.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numDex.Name = "numDex";
+            numDex.Size = new System.Drawing.Size(44, 23);
+            numDex.TabIndex = 2;
+            numDex.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numDex.ValueChanged += numDex_ValueChanged;
+            // 
+            // numCon
+            // 
+            numCon.Dock = System.Windows.Forms.DockStyle.Fill;
+            numCon.Location = new System.Drawing.Point(53, 63);
+            numCon.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numCon.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numCon.Name = "numCon";
+            numCon.Size = new System.Drawing.Size(44, 23);
+            numCon.TabIndex = 3;
+            numCon.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numCon.ValueChanged += numCon_ValueChanged;
+            // 
+            // numInt
+            // 
+            numInt.Dock = System.Windows.Forms.DockStyle.Fill;
+            numInt.Location = new System.Drawing.Point(53, 93);
+            numInt.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numInt.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numInt.Name = "numInt";
+            numInt.Size = new System.Drawing.Size(44, 23);
+            numInt.TabIndex = 4;
+            numInt.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numInt.ValueChanged += numInt_ValueChanged;
+            // 
+            // numWis
+            // 
+            numWis.Dock = System.Windows.Forms.DockStyle.Fill;
+            numWis.Location = new System.Drawing.Point(53, 123);
+            numWis.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numWis.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numWis.Name = "numWis";
+            numWis.Size = new System.Drawing.Size(44, 23);
+            numWis.TabIndex = 5;
+            numWis.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numWis.ValueChanged += numWis_ValueChanged;
+            // 
+            // numCha
+            // 
+            numCha.Dock = System.Windows.Forms.DockStyle.Fill;
+            numCha.Location = new System.Drawing.Point(53, 153);
+            numCha.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numCha.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numCha.Name = "numCha";
+            numCha.Size = new System.Drawing.Size(44, 23);
+            numCha.TabIndex = 6;
+            numCha.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numCha.ValueChanged += numCha_ValueChanged;
             // 
             // lblStrength
             // 
             lblStrength.AutoSize = true;
             lblStrength.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblStrength.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblStrength.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblStrength.Location = new System.Drawing.Point(3, 0);
             lblStrength.Name = "lblStrength";
-            lblStrength.Size = new System.Drawing.Size(106, 30);
+            lblStrength.Size = new System.Drawing.Size(44, 30);
             lblStrength.TabIndex = 0;
-            lblStrength.Text = "Strength";
+            lblStrength.Text = "STR";
             lblStrength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblDexterity
             // 
             lblDexterity.AutoSize = true;
             lblDexterity.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblDexterity.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblDexterity.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblDexterity.Location = new System.Drawing.Point(3, 30);
             lblDexterity.Name = "lblDexterity";
-            lblDexterity.Size = new System.Drawing.Size(106, 30);
+            lblDexterity.Size = new System.Drawing.Size(44, 30);
             lblDexterity.TabIndex = 1;
-            lblDexterity.Text = "Dexterity";
+            lblDexterity.Text = "DEX";
             lblDexterity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblConstitution
             // 
             lblConstitution.AutoSize = true;
             lblConstitution.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblConstitution.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblConstitution.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblConstitution.Location = new System.Drawing.Point(3, 60);
             lblConstitution.Name = "lblConstitution";
-            lblConstitution.Size = new System.Drawing.Size(106, 30);
+            lblConstitution.Size = new System.Drawing.Size(44, 30);
             lblConstitution.TabIndex = 2;
-            lblConstitution.Text = "Constitution";
+            lblConstitution.Text = "CON";
             lblConstitution.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblIntelligence
             // 
             lblIntelligence.AutoSize = true;
             lblIntelligence.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblIntelligence.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblIntelligence.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblIntelligence.Location = new System.Drawing.Point(3, 90);
             lblIntelligence.Name = "lblIntelligence";
-            lblIntelligence.Size = new System.Drawing.Size(106, 30);
+            lblIntelligence.Size = new System.Drawing.Size(44, 30);
             lblIntelligence.TabIndex = 5;
-            lblIntelligence.Text = "Intelligence";
+            lblIntelligence.Text = "INT";
             lblIntelligence.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblWisdom
             // 
             lblWisdom.AutoSize = true;
             lblWisdom.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblWisdom.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblWisdom.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblWisdom.Location = new System.Drawing.Point(3, 120);
             lblWisdom.Name = "lblWisdom";
-            lblWisdom.Size = new System.Drawing.Size(106, 30);
+            lblWisdom.Size = new System.Drawing.Size(44, 30);
             lblWisdom.TabIndex = 3;
-            lblWisdom.Text = "Wisdom";
+            lblWisdom.Text = "WIS";
             lblWisdom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblCharisma
             // 
             lblCharisma.AutoSize = true;
             lblCharisma.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblCharisma.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblCharisma.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblCharisma.Location = new System.Drawing.Point(3, 150);
             lblCharisma.Name = "lblCharisma";
-            lblCharisma.Size = new System.Drawing.Size(106, 30);
+            lblCharisma.Size = new System.Drawing.Size(44, 30);
             lblCharisma.TabIndex = 4;
-            lblCharisma.Text = "Charisma";
+            lblCharisma.Text = "CHA";
             lblCharisma.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblAdvantage
+            // chkStrAdv
             // 
-            lblAdvantage.AutoSize = true;
-            lblAdvantage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            lblAdvantage.Location = new System.Drawing.Point(218, 220);
-            lblAdvantage.Name = "lblAdvantage";
-            lblAdvantage.Size = new System.Drawing.Size(63, 13);
-            lblAdvantage.TabIndex = 2;
-            lblAdvantage.Text = "Advantage?";
+            chkStrAdv.AutoSize = true;
+            chkStrAdv.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            chkStrAdv.Dock = System.Windows.Forms.DockStyle.Fill;
+            chkStrAdv.Location = new System.Drawing.Point(103, 3);
+            chkStrAdv.Name = "chkStrAdv";
+            chkStrAdv.Size = new System.Drawing.Size(17, 24);
+            chkStrAdv.TabIndex = 7;
+            chkStrAdv.UseVisualStyleBackColor = true;
+            chkStrAdv.CheckedChanged += numStr_ValueChanged;
             // 
             // btnDone
             // 
@@ -1566,19 +1632,194 @@
             // panel1
             // 
             panel1.Controls.Add(btnDone);
-            panel1.Location = new System.Drawing.Point(12, 238);
+            panel1.Location = new System.Drawing.Point(12, 322);
             panel1.Name = "panel1";
             panel1.Padding = new System.Windows.Forms.Padding(85, 70, 0, 0);
-            panel1.Size = new System.Drawing.Size(270, 240);
+            panel1.Size = new System.Drawing.Size(270, 156);
             panel1.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(tableLayoutPanel1);
+            groupBox1.Location = new System.Drawing.Point(145, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(106, 199);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Saving Throws";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            tableLayoutPanel1.Controls.Add(numStrMod, 1, 0);
+            tableLayoutPanel1.Controls.Add(numDexMod, 1, 1);
+            tableLayoutPanel1.Controls.Add(numConMod, 1, 2);
+            tableLayoutPanel1.Controls.Add(numIntMod, 1, 3);
+            tableLayoutPanel1.Controls.Add(numWisMod, 1, 4);
+            tableLayoutPanel1.Controls.Add(numChaMod, 1, 5);
+            tableLayoutPanel1.Controls.Add(label2, 0, 0);
+            tableLayoutPanel1.Controls.Add(label3, 0, 1);
+            tableLayoutPanel1.Controls.Add(label4, 0, 2);
+            tableLayoutPanel1.Controls.Add(label5, 0, 3);
+            tableLayoutPanel1.Controls.Add(label6, 0, 4);
+            tableLayoutPanel1.Controls.Add(label7, 0, 5);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(100, 177);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // numStrMod
+            // 
+            numStrMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            numStrMod.Location = new System.Drawing.Point(53, 3);
+            numStrMod.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numStrMod.Minimum = new decimal(new int[] { 99, 0, 0, int.MinValue });
+            numStrMod.Name = "numStrMod";
+            numStrMod.Size = new System.Drawing.Size(44, 23);
+            numStrMod.TabIndex = 1;
+            // 
+            // numDexMod
+            // 
+            numDexMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            numDexMod.Location = new System.Drawing.Point(53, 33);
+            numDexMod.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numDexMod.Minimum = new decimal(new int[] { 99, 0, 0, int.MinValue });
+            numDexMod.Name = "numDexMod";
+            numDexMod.Size = new System.Drawing.Size(44, 23);
+            numDexMod.TabIndex = 2;
+            // 
+            // numConMod
+            // 
+            numConMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            numConMod.Location = new System.Drawing.Point(53, 63);
+            numConMod.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numConMod.Minimum = new decimal(new int[] { 99, 0, 0, int.MinValue });
+            numConMod.Name = "numConMod";
+            numConMod.Size = new System.Drawing.Size(44, 23);
+            numConMod.TabIndex = 3;
+            // 
+            // numIntMod
+            // 
+            numIntMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            numIntMod.Location = new System.Drawing.Point(53, 93);
+            numIntMod.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numIntMod.Minimum = new decimal(new int[] { 99, 0, 0, int.MinValue });
+            numIntMod.Name = "numIntMod";
+            numIntMod.Size = new System.Drawing.Size(44, 23);
+            numIntMod.TabIndex = 4;
+            // 
+            // numWisMod
+            // 
+            numWisMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            numWisMod.Location = new System.Drawing.Point(53, 123);
+            numWisMod.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numWisMod.Minimum = new decimal(new int[] { 99, 0, 0, int.MinValue });
+            numWisMod.Name = "numWisMod";
+            numWisMod.Size = new System.Drawing.Size(44, 23);
+            numWisMod.TabIndex = 5;
+            // 
+            // numChaMod
+            // 
+            numChaMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            numChaMod.Location = new System.Drawing.Point(53, 153);
+            numChaMod.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
+            numChaMod.Minimum = new decimal(new int[] { 99, 0, 0, int.MinValue });
+            numChaMod.Name = "numChaMod";
+            numChaMod.Size = new System.Drawing.Size(44, 23);
+            numChaMod.TabIndex = 6;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(3, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(44, 30);
+            label2.TabIndex = 0;
+            label2.Text = "STR";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label3.Location = new System.Drawing.Point(3, 30);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(44, 30);
+            label3.TabIndex = 1;
+            label3.Text = "DEX";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label4.Location = new System.Drawing.Point(3, 60);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(44, 30);
+            label4.TabIndex = 2;
+            label4.Text = "CON";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label5.Location = new System.Drawing.Point(3, 90);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(44, 30);
+            label5.TabIndex = 5;
+            label5.Text = "INT";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label6.Location = new System.Drawing.Point(3, 120);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(44, 30);
+            label6.TabIndex = 3;
+            label6.Text = "WIS";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label7.Location = new System.Drawing.Point(3, 150);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(44, 30);
+            label7.TabIndex = 4;
+            label7.Text = "CHA";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CharOptions
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 487);
+            Controls.Add(groupBox1);
             Controls.Add(panel1);
-            Controls.Add(lblAdvantage);
             Controls.Add(gbDC);
             Controls.Add(tblDamageTypes);
             Name = "CharOptions";
@@ -1619,6 +1860,7 @@
             gbDC.ResumeLayout(false);
             tblDC.ResumeLayout(false);
             tblDC.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numLevel).EndInit();
             ((System.ComponentModel.ISupportInitialize)numStr).EndInit();
             ((System.ComponentModel.ISupportInitialize)numDex).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCon).EndInit();
@@ -1626,8 +1868,16 @@
             ((System.ComponentModel.ISupportInitialize)numWis).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCha).EndInit();
             panel1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numStrMod).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numDexMod).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numConMod).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numIntMod).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numWisMod).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numChaMod).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -1725,13 +1975,6 @@
         private System.Windows.Forms.Label lblIntelligence;
         private System.Windows.Forms.Label lblWisdom;
         private System.Windows.Forms.Label lblCharisma;
-        private System.Windows.Forms.CheckBox chkChaAdv;
-        private System.Windows.Forms.CheckBox chkWisAdv;
-        private System.Windows.Forms.CheckBox chkIntAdv;
-        private System.Windows.Forms.CheckBox chkConAdv;
-        private System.Windows.Forms.CheckBox chkDexAdv;
-        private System.Windows.Forms.CheckBox chkStrAdv;
-        private System.Windows.Forms.Label lblAdvantage;
         private System.Windows.Forms.NumericUpDown numCha;
         private System.Windows.Forms.NumericUpDown numWis;
         private System.Windows.Forms.NumericUpDown numInt;
@@ -1740,5 +1983,27 @@
         private System.Windows.Forms.NumericUpDown numStr;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NumericUpDown numLevel;
+        private System.Windows.Forms.Label lblLevel;
+        private System.Windows.Forms.CheckBox chkChaAdv;
+        private System.Windows.Forms.CheckBox chkWisAdv;
+        private System.Windows.Forms.CheckBox chkIntAdv;
+        private System.Windows.Forms.CheckBox chkConAdv;
+        private System.Windows.Forms.CheckBox chkDexAdv;
+        private System.Windows.Forms.CheckBox chkStrAdv;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.NumericUpDown numStrMod;
+        private System.Windows.Forms.NumericUpDown numDexMod;
+        private System.Windows.Forms.NumericUpDown numConMod;
+        private System.Windows.Forms.NumericUpDown numIntMod;
+        private System.Windows.Forms.NumericUpDown numWisMod;
+        private System.Windows.Forms.NumericUpDown numChaMod;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

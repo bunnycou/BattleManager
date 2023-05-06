@@ -1,5 +1,6 @@
 ﻿using BattleManager.Forms;
 using System;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace BattleManager
@@ -11,8 +12,17 @@ namespace BattleManager
         {
             InitializeComponent();
 
-            Text = $"Character {num}";
             txtName.Text = $"Char {num}";
+        }
+
+        public addChar(int num, Character c)
+        {
+            InitializeComponent();
+
+            txtName.Text = $"{c.name} {num}";
+            numAC.Value = c.AC;
+            numInit.Value = c.init;
+            character = c;
         }
 
         private void onEnter(object sender, KeyEventArgs e)
@@ -41,13 +51,27 @@ namespace BattleManager
         {
             CharOptions charOptions = new(txtName.Text, character);
             charOptions.ShowDialog();
-            character.savingThrows = charOptions.character.savingThrows;
+            character.stats = charOptions.character.stats;
             character.resistances = charOptions.character.resistances;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             Text = txtName.Text;
+        }
+
+        private void btnDuplicate_Click(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= numDuplicate.Value; i++)
+            {
+                addChar win = new(i, character);
+                win.ShowDialog();
+            }
+        }
+
+        private void numDuplicate_ValueChanged(object sender, EventArgs e)
+        {
+            btnDuplicate.Text = numDuplicate.Value > 1 ? "Make Duplicates" : "Make Duplicate";
         }
     }
 }

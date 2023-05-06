@@ -77,42 +77,22 @@ namespace BattleManager
             };
         }
 
-        public Character()
-        {
-            // Empty constructor
-            name = "blank";
-            init = 10;
-            health = 10;
-            AC = 10;
-            savingThrows = defaultSaves();
-            resistances = defaultRes();
-        }
-
-        public Character(string name, int init, int health, int AC) // Construct with init for permanent use
+        public Character(string name = "blank", int init = 10, int health = 20, int AC = 10, Dictionary<Stat, int[]> stats = null, Dictionary<DmgType, ResType> resistances = null) // Construct with init for permanent use
         {
             this.name = name;
             this.init = init;
             this.health = health;
             this.AC = AC;
-            savingThrows = defaultSaves();
-            resistances = defaultRes();
+            this.stats = stats ?? defaultSaves();
+            this.resistances = resistances ?? defaultRes();
         }
 
-        public Character(string name, int init, int health, int AC, Dictionary<Stat, int[]> saves, Dictionary<DmgType, ResType> res) // Construct full character
-        {
-            this.name = name;
-            this.init = init;
-            this.health = health;
-            this.AC = AC;
-            this.savingThrows = saves;
-            this.resistances = res;
-        }
-
-        public Dictionary<Stat, int[]> savingThrows { get; set; }
+        public Dictionary<Stat, int[]> stats { get; set; }
         public Dictionary<DmgType, ResType> resistances { get; set; }
         public string name { get; set; }
         public int init { get; set; }
         public int health { get; set; }
         public int AC { get; set; }
+        public int level { get; set; }
     }
 }

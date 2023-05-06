@@ -35,6 +35,46 @@ namespace BattleManager
             };
         }
 
+        public static int getProfMod(int level)
+        {
+            return level switch
+            {
+                int i when i >= 1 && i < 5 => 2,
+                int i when i >= 5 && i < 9 => 3,
+                int i when i >= 9 && i < 13 => 4,
+                int i when i >= 13 && i < 17 => 5,
+                int i when i >= 17 => 6
+            };
+        }
+
+        public static int getStatMod(int stat)
+        {
+            return stat switch
+            {
+                int i when i == 1 => -5,
+                int i when i >= 2 && i < 4 => -4,
+                int i when i >= 4 && i < 6 => -3,
+                int i when i >= 6 && i < 8 => -2,
+                int i when i >= 8 && i < 10 => -1,
+                int i when i >= 10 && i < 12 => 0,
+                int i when i >= 12 && i < 14 => 1,
+                int i when i >= 14 && i < 16 => 2,
+                int i when i >= 16 && i < 18 => 3,
+                int i when i >= 18 && i < 20 => 4,
+                int i when i >= 20 && i < 22 => 5,
+                int i when i >= 22 && i < 24 => 6,
+                int i when i >= 24 && i < 26 => 7,
+                int i when i >= 26 && i < 28 => 8,
+                int i when i >= 28 && i < 30 => 9,
+                int i when i >= 30 => 10,
+            };
+        }
+
+        public static int getMod(int stat, int level, bool prof)
+        {
+            return prof ? getStatMod(stat) + getProfMod(level) : getStatMod(stat);
+        }
+
         public static void writePartyFile(string name, Dictionary<string, Character> obj)
         {
             string path = $"{parties}/{name}.json";

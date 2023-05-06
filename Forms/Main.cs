@@ -41,20 +41,20 @@ namespace BattleManager
             lblHealth.Text = c.health.ToString();
             lblAC.Text = c.AC.ToString();
             lblInit.Text = c.init.ToString();
-            //set dc
-            lblStrVal.Text = c.savingThrows[Character.Stat.Str][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Str][0]}" : c.savingThrows[Character.Stat.Str][0].ToString();
-            lblDexVal.Text = c.savingThrows[Character.Stat.Dex][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Dex][0]}" : c.savingThrows[Character.Stat.Dex][0].ToString();
-            lblConVal.Text = c.savingThrows[Character.Stat.Con][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Con][0]}" : c.savingThrows[Character.Stat.Con][0].ToString();
-            lblIntVal.Text = c.savingThrows[Character.Stat.Int][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Int][0]}" : c.savingThrows[Character.Stat.Int][0].ToString();
-            lblWisVal.Text = c.savingThrows[Character.Stat.Wis][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Wis][0]}" : c.savingThrows[Character.Stat.Wis][0].ToString();
-            lblChaVal.Text = c.savingThrows[Character.Stat.Cha][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Cha][0]}" : c.savingThrows[Character.Stat.Cha][0].ToString();
-            // dc adv
-            cbStrAdv.Checked = c.savingThrows[Character.Stat.Str][1] == 1 ? true : false;
-            cbDexAdv.Checked = c.savingThrows[Character.Stat.Dex][1] == 1 ? true : false;
-            cbConAdv.Checked = c.savingThrows[Character.Stat.Con][1] == 1 ? true : false;
-            cbIntAdv.Checked = c.savingThrows[Character.Stat.Int][1] == 1 ? true : false;
-            cbWisAdv.Checked = c.savingThrows[Character.Stat.Wis][1] == 1 ? true : false;
-            cbChaAdv.Checked = c.savingThrows[Character.Stat.Cha][1] == 1 ? true : false;
+            //set Stats
+            lblStrVal.Text = c.stats[Character.Stat.Str][0] >= 0 ? $"+{c.stats[Character.Stat.Str][0]}" : c.stats[Character.Stat.Str][0].ToString();
+            lblDexVal.Text = c.stats[Character.Stat.Dex][0] >= 0 ? $"+{c.stats[Character.Stat.Dex][0]}" : c.stats[Character.Stat.Dex][0].ToString();
+            lblConVal.Text = c.stats[Character.Stat.Con][0] >= 0 ? $"+{c.stats[Character.Stat.Con][0]}" : c.stats[Character.Stat.Con][0].ToString();
+            lblIntVal.Text = c.stats[Character.Stat.Int][0] >= 0 ? $"+{c.stats[Character.Stat.Int][0]}" : c.stats[Character.Stat.Int][0].ToString();
+            lblWisVal.Text = c.stats[Character.Stat.Wis][0] >= 0 ? $"+{c.stats[Character.Stat.Wis][0]}" : c.stats[Character.Stat.Wis][0].ToString();
+            lblChaVal.Text = c.stats[Character.Stat.Cha][0] >= 0 ? $"+{c.stats[Character.Stat.Cha][0]}" : c.stats[Character.Stat.Cha][0].ToString();
+            // dc adv   
+            cbStrAdv.Checked = c.stats[Character.Stat.Str][1] == 1 ? true : false;
+            cbDexAdv.Checked = c.stats[Character.Stat.Dex][1] == 1 ? true : false;
+            cbConAdv.Checked = c.stats[Character.Stat.Con][1] == 1 ? true : false;
+            cbIntAdv.Checked = c.stats[Character.Stat.Int][1] == 1 ? true : false;
+            cbWisAdv.Checked = c.stats[Character.Stat.Wis][1] == 1 ? true : false;
+            cbChaAdv.Checked = c.stats[Character.Stat.Cha][1] == 1 ? true : false;
             //set res
             List<Character.DmgType> resistant = new();
             List<Character.DmgType> vulnerable = new();
@@ -157,8 +157,8 @@ namespace BattleManager
             int downIndex = selIndex + 1;
             int init;
 
-            if (upIndex < 2) init = getCharFromInitList(downIndex).init+1;
-            else if (downIndex > lstInitiative.Items.Count - 1) init = getCharFromInitList(upIndex).init-1;
+            if (upIndex < 2) init = getCharFromInitList(downIndex).init + 1;
+            else if (downIndex > lstInitiative.Items.Count - 1) init = getCharFromInitList(upIndex).init - 1;
             else
             {
                 int upInit = getCharFromInitList(upIndex).init;
@@ -369,7 +369,7 @@ namespace BattleManager
         {
             for (int i = 1; i <= 10; i++)
             {
-                Character character = new($"char{i}", 10 + i, 20 + i, 10+i);
+                Character character = new($"char{i}", 10 + i, 20 + i, 10 + i);
                 addCharToDict(character);
             }
             loadInitiative();
@@ -425,6 +425,14 @@ namespace BattleManager
                 members.Add(win.character.name, win.character);
             }
             Utility.writePartyFile(cbParty.Text, members);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (!isValidSel()) return;
+            Character c = getCharFromInitList(selIndex);
+            charDict.Remove(c.name);
+            addChar win = new(0, c);
         }
     }
 }

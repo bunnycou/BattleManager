@@ -38,9 +38,12 @@
             numInit = new System.Windows.Forms.NumericUpDown();
             lblInit = new System.Windows.Forms.Label();
             btnOptions = new System.Windows.Forms.Button();
+            numDuplicate = new System.Windows.Forms.NumericUpDown();
+            btnDuplicate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)numHealth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numAC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numInit).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numDuplicate).BeginInit();
             SuspendLayout();
             // 
             // lblName
@@ -147,12 +150,33 @@
             btnOptions.UseVisualStyleBackColor = true;
             btnOptions.Click += btnOptions_Click;
             // 
+            // numDuplicate
+            // 
+            numDuplicate.Location = new System.Drawing.Point(49, 194);
+            numDuplicate.Name = "numDuplicate";
+            numDuplicate.Size = new System.Drawing.Size(75, 23);
+            numDuplicate.TabIndex = 7;
+            numDuplicate.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numDuplicate.ValueChanged += numDuplicate_ValueChanged;
+            // 
+            // btnDuplicate
+            // 
+            btnDuplicate.Location = new System.Drawing.Point(130, 194);
+            btnDuplicate.Name = "btnDuplicate";
+            btnDuplicate.Size = new System.Drawing.Size(104, 23);
+            btnDuplicate.TabIndex = 8;
+            btnDuplicate.Text = "Make Duplicate";
+            btnDuplicate.UseVisualStyleBackColor = true;
+            btnDuplicate.Click += btnDuplicate_Click;
+            // 
             // addChar
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(246, 193);
+            ClientSize = new System.Drawing.Size(246, 229);
             ControlBox = false;
+            Controls.Add(btnDuplicate);
+            Controls.Add(numDuplicate);
             Controls.Add(btnOptions);
             Controls.Add(numInit);
             Controls.Add(lblInit);
@@ -172,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)numHealth).EndInit();
             ((System.ComponentModel.ISupportInitialize)numAC).EndInit();
             ((System.ComponentModel.ISupportInitialize)numInit).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numDuplicate).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -187,5 +212,7 @@
         public System.Windows.Forms.Button btnDone;
         public System.Windows.Forms.Label lblInit;
         public System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.NumericUpDown numDuplicate;
+        private System.Windows.Forms.Button btnDuplicate;
     }
 }

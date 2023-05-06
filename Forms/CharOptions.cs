@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,11 +39,11 @@ namespace BattleManager.Forms
         private void btnDone_Click(object sender, EventArgs e)
         {
             character.resistances = getResDict();
-            character.savingThrows = getSaveDict();
+            character.stats = getStatDict();
             Close();
         }
 
-        private Dictionary<Stat, int[]> getSaveDict()
+        private Dictionary<Stat, int[]> getStatDict()
         {
             return new Dictionary<Stat, int[]>()
             {
@@ -87,6 +88,46 @@ namespace BattleManager.Forms
                 { DmgType.Slashing, rdbSlashingR.Checked ? ResType.Resistant : rdbSlashingV.Checked ? ResType.Vulnerable : rdbSlashingI.Checked ? ResType.Immune : ResType.None },
             };
 
+        }
+
+        private void numStr_ValueChanged(object sender, EventArgs e)
+        {
+            numStrMod.Value = Utility.getMod((int)numStr.Value, (int)numLevel.Value, chkStrAdv.Checked);
+        }
+
+        private void numDex_ValueChanged(object sender, EventArgs e)
+        {
+            numDexMod.Value = Utility.getMod((int)numDex.Value, (int)numLevel.Value, chkDexAdv.Checked);
+        }
+
+        private void numCon_ValueChanged(object sender, EventArgs e)
+        {
+            numConMod.Value = Utility.getMod((int)numCon.Value, (int)numLevel.Value, chkConAdv.Checked);
+        }
+
+        private void numInt_ValueChanged(object sender, EventArgs e)
+        {
+            numIntMod.Value = Utility.getMod((int)numInt.Value, (int)numLevel.Value, chkIntAdv.Checked);
+        }
+
+        private void numWis_ValueChanged(object sender, EventArgs e)
+        {
+            numWisMod.Value = Utility.getMod((int)numWis.Value, (int)numLevel.Value, chkWisAdv.Checked);
+        }
+
+        private void numCha_ValueChanged(object sender, EventArgs e)
+        {
+            numChaMod.Value = Utility.getMod((int)numCha.Value, (int)numLevel.Value, chkChaAdv.Checked);
+        }
+
+        private void numLevel_ValueChanged(object sender, EventArgs e)
+        {
+            numStr_ValueChanged(sender, e);
+            numDex_ValueChanged(sender, e);
+            numCon_ValueChanged(sender, e);
+            numInt_ValueChanged(sender, e);
+            numWis_ValueChanged(sender, e);
+            numCha_ValueChanged(sender, e);
         }
     }
 }
