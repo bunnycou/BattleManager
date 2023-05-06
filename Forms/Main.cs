@@ -42,6 +42,7 @@ namespace BattleManager
             lblAC.Text = c.AC.ToString();
             lblInit.Text = c.init.ToString();
             //set Stats
+            // update todo
             lblStrVal.Text = c.stats[Character.Stat.Str][0] >= 0 ? $"+{c.stats[Character.Stat.Str][0]}" : c.stats[Character.Stat.Str][0].ToString();
             lblDexVal.Text = c.stats[Character.Stat.Dex][0] >= 0 ? $"+{c.stats[Character.Stat.Dex][0]}" : c.stats[Character.Stat.Dex][0].ToString();
             lblConVal.Text = c.stats[Character.Stat.Con][0] >= 0 ? $"+{c.stats[Character.Stat.Con][0]}" : c.stats[Character.Stat.Con][0].ToString();
@@ -49,12 +50,12 @@ namespace BattleManager
             lblWisVal.Text = c.stats[Character.Stat.Wis][0] >= 0 ? $"+{c.stats[Character.Stat.Wis][0]}" : c.stats[Character.Stat.Wis][0].ToString();
             lblChaVal.Text = c.stats[Character.Stat.Cha][0] >= 0 ? $"+{c.stats[Character.Stat.Cha][0]}" : c.stats[Character.Stat.Cha][0].ToString();
             // dc adv   
-            cbStrAdv.Checked = c.stats[Character.Stat.Str][1] == 1 ? true : false;
-            cbDexAdv.Checked = c.stats[Character.Stat.Dex][1] == 1 ? true : false;
-            cbConAdv.Checked = c.stats[Character.Stat.Con][1] == 1 ? true : false;
-            cbIntAdv.Checked = c.stats[Character.Stat.Int][1] == 1 ? true : false;
-            cbWisAdv.Checked = c.stats[Character.Stat.Wis][1] == 1 ? true : false;
-            cbChaAdv.Checked = c.stats[Character.Stat.Cha][1] == 1 ? true : false;
+            cbStrAdv.Checked = c.stats[Character.Stat.Str][2] == 1 ? true : false;
+            cbDexAdv.Checked = c.stats[Character.Stat.Dex][2] == 1 ? true : false;
+            cbConAdv.Checked = c.stats[Character.Stat.Con][2] == 1 ? true : false;
+            cbIntAdv.Checked = c.stats[Character.Stat.Int][2] == 1 ? true : false;
+            cbWisAdv.Checked = c.stats[Character.Stat.Wis][2] == 1 ? true : false;
+            cbChaAdv.Checked = c.stats[Character.Stat.Cha][2] == 1 ? true : false;
             //set res
             List<Character.DmgType> resistant = new();
             List<Character.DmgType> vulnerable = new();
@@ -369,7 +370,7 @@ namespace BattleManager
         {
             for (int i = 1; i <= 10; i++)
             {
-                Character character = new($"char{i}", 10 + i, 20 + i, 10 + i);
+                Character character = new(name:$"char{i}", AC:10 + i, health:20 + i, init:10 + i);
                 addCharToDict(character);
             }
             loadInitiative();
@@ -399,13 +400,9 @@ namespace BattleManager
             if (Utility.getParty(cbParty.Text) == null) return;
             foreach (Character c in Utility.getParty(cbParty.Text).Values)
             {
-                addChar win = new(0);
-                win.txtName.Text = c.name;
-                win.numAC.Value = c.AC;
-                win.numHealth.Value = c.health;
-                win.character = c;
+                addChar win = new(c);
                 win.ShowDialog();
-                charDict.Add(c.name, c);
+                addCharToDict(win.character);
             }
             loadInitiative();
         }
@@ -416,11 +413,7 @@ namespace BattleManager
             if (Utility.getParty(cbParty.Text) == null) return;
             foreach (Character c in Utility.getParty(cbParty.Text).Values)
             {
-                addChar win = new(0);
-                win.txtName.Text = c.name;
-                win.numAC.Value = c.AC;
-                win.numHealth.Value = c.health;
-                win.character = c;
+                addChar win = new(c);
                 win.ShowDialog();
                 members.Add(win.character.name, win.character);
             }
@@ -432,7 +425,10 @@ namespace BattleManager
             if (!isValidSel()) return;
             Character c = getCharFromInitList(selIndex);
             charDict.Remove(c.name);
-            addChar win = new(0, c);
+            addChar win = new(c);
+            win.ShowDialog();
+            addCharToDict(win.character);
+
         }
 
         private void btnMore_Click(object sender, EventArgs e)

@@ -25,7 +25,117 @@ namespace BattleManager.Forms
 
         private void CharOptions_Load(object sender, EventArgs e)
         {
+            numStr.Value = character.stats[Stat.Str][0];
+            numDex.Value = character.stats[Stat.Dex][0];
+            numCon.Value = character.stats[Stat.Con][0];
+            numInt.Value = character.stats[Stat.Int][0];
+            numWis.Value = character.stats[Stat.Wis][0];
+            numCha.Value = character.stats[Stat.Cha][0];
+            chkStrAdv.Checked = character.stats[Stat.Str][2] == 1;
+            chkDexAdv.Checked = character.stats[Stat.Dex][2] == 1;
+            chkConAdv.Checked = character.stats[Stat.Con][2] == 1;
+            chkIntAdv.Checked = character.stats[Stat.Int][2] == 1;
+            chkWisAdv.Checked = character.stats[Stat.Wis][2] == 1;
+            chkChaAdv.Checked = character.stats[Stat.Cha][2] == 1;
+            numLevel.Value = character.level;
+            numStrMod.Value = character.stats[Stat.Str][1];
+            numDexMod.Value = character.stats[Stat.Dex][1];
+            numConMod.Value = character.stats[Stat.Con][1];
+            numIntMod.Value = character.stats[Stat.Int][1];
+            numWisMod.Value = character.stats[Stat.Wis][1];
+            numChaMod.Value = character.stats[Stat.Cha][1];
 
+            switch (character.resistances[DmgType.Acid])
+            {
+                case ResType.Resistant: rdbAcidR.Checked = true; break;
+                case ResType.Vulnerable: rdbAcidV.Checked = true; break;
+                case ResType.Immune: rdbAcidI.Checked = true; break;
+                case ResType.None: rdbAcidN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Cold])
+            {
+                case ResType.Resistant: rdbColdR.Checked = true; break;
+                case ResType.Vulnerable: rdbColdV.Checked = true; break;
+                case ResType.Immune: rdbColdI.Checked = true; break;
+                case ResType.None: rdbColdN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Fire])
+            {
+                case ResType.Resistant: rdbFireR.Checked = true; break;
+                case ResType.Vulnerable: rdbFireV.Checked = true; break;
+                case ResType.Immune: rdbFireI.Checked = true; break;
+                case ResType.None: rdbFireN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Force])
+            {
+                case ResType.Resistant: rdbForceR.Checked = true; break;
+                case ResType.Vulnerable: rdbForceV.Checked = true; break;
+                case ResType.Immune: rdbForceI.Checked = true; break;
+                case ResType.None: rdbForceN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Lightning])
+            {
+                case ResType.Resistant: rdbLightningR.Checked = true; break;
+                case ResType.Vulnerable: rdbLightningV.Checked = true; break;
+                case ResType.Immune: rdbLightningI.Checked = true; break;
+                case ResType.None: rdbLightningN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Necrotic])
+            {
+                case ResType.Resistant: rdbNecroticR.Checked = true; break;
+                case ResType.Vulnerable: rdbNecroticV.Checked = true; break;
+                case ResType.Immune: rdbNecroticI.Checked = true; break;
+                case ResType.None: rdbNecroticN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Poison])
+            {
+                case ResType.Resistant: rdbPoisonR.Checked = true; break;
+                case ResType.Vulnerable: rdbPoisonV.Checked = true; break;
+                case ResType.Immune: rdbPoisonI.Checked = true; break;
+                case ResType.None: rdbPoisonN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Psychic])
+            {
+                case ResType.Resistant: rdbPsychicR.Checked = true; break;
+                case ResType.Vulnerable: rdbPsychicV.Checked = true; break;
+                case ResType.Immune: rdbPsychicI.Checked = true; break;
+                case ResType.None: rdbPsychicN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Radiant])
+            {
+                case ResType.Resistant: rdbRadiantR.Checked = true; break;
+                case ResType.Vulnerable: rdbRadiantV.Checked = true; break;
+                case ResType.Immune: rdbRadiantI.Checked = true; break;
+                case ResType.None: rdbRadiantN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Thunder])
+            {
+                case ResType.Resistant: rdbThunderR.Checked = true; break;
+                case ResType.Vulnerable: rdbThunderV.Checked = true; break;
+                case ResType.Immune: rdbThunderI.Checked = true; break;
+                case ResType.None: rdbThunderN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Bludgeoning])
+            {
+                case ResType.Resistant: rdbBludgeoningR.Checked = true; break;
+                case ResType.Vulnerable: rdbBludgeoningV.Checked = true; break;
+                case ResType.Immune: rdbBludgeoningI.Checked = true; break;
+                case ResType.None: rdbBludgeoningN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Piercing])
+            {
+                case ResType.Resistant: rdbPiercingR.Checked = true; break;
+                case ResType.Vulnerable: rdbPiercingV.Checked = true; break;
+                case ResType.Immune: rdbPiercingI.Checked = true; break;
+                case ResType.None: rdbPiercingN.Checked = true; break;
+            }
+            switch (character.resistances[DmgType.Slashing])
+            {
+                case ResType.Resistant: rdbSlashingR.Checked = true; break;
+                case ResType.Vulnerable: rdbSlashingV.Checked = true; break;
+                case ResType.Immune: rdbSlashingI.Checked = true; break;
+                case ResType.None: rdbSlashingN.Checked = true; break;
+            }
         }
 
         private void CharOptions_KeyDown(object sender, KeyEventArgs e)

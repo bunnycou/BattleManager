@@ -25,6 +25,16 @@ namespace BattleManager
             character = c;
         }
 
+        public addChar(Character c)
+        {
+            InitializeComponent();
+
+            txtName.Text = c.name;
+            numAC.Value = c.AC;
+            numInit.Value = c.init;
+            character = c;
+        }
+
         private void onEnter(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)

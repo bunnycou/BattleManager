@@ -77,12 +77,13 @@ namespace BattleManager
             };
         }
 
-        public Character(string name = "blank", int init = 10, int health = 20, int AC = 10, Dictionary<Stat, int[]> stats = null, Dictionary<DmgType, ResType> resistances = null) // Construct with init for permanent use
+        public Character(string name = "blank", int init = 10, int health = 20, int AC = 10, int level = 1, Dictionary<Stat, int[]> stats = null, Dictionary<DmgType, ResType> resistances = null) // Construct with init for permanent use
         {
             this.name = name;
             this.init = init;
             this.health = health;
             this.AC = AC;
+            this.level = level;
             this.stats = stats ?? defaultSaves();
             this.resistances = resistances ?? defaultRes();
         }
