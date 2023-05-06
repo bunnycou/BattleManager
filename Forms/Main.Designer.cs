@@ -47,6 +47,7 @@
             btnEditParty = new System.Windows.Forms.Button();
             cbParty = new System.Windows.Forms.ComboBox();
             gpStatBlocks = new System.Windows.Forms.GroupBox();
+            label1 = new System.Windows.Forms.Label();
             btnEditStatBlock = new System.Windows.Forms.Button();
             cbStatBlock = new System.Windows.Forms.ComboBox();
             btnDeleteStatBlock = new System.Windows.Forms.Button();
@@ -85,7 +86,6 @@
             lblHealth = new System.Windows.Forms.Label();
             lblAC = new System.Windows.Forms.Label();
             lblInit = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
             pnlMain.SuspendLayout();
             gpParty.SuspendLayout();
@@ -313,6 +313,15 @@
             gpStatBlocks.TabStop = false;
             gpStatBlocks.Text = "Stat Blocks";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(96, 141);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(99, 15);
+            label1.TabIndex = 28;
+            label1.Text = "not implemented";
+            // 
             // btnEditStatBlock
             // 
             btnEditStatBlock.Location = new System.Drawing.Point(110, 19);
@@ -384,12 +393,11 @@
             // 
             // lblImmunities
             // 
-            lblImmunities.AutoSize = true;
             lblImmunities.Dock = System.Windows.Forms.DockStyle.Fill;
             lblImmunities.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblImmunities.Location = new System.Drawing.Point(3, 19);
             lblImmunities.Name = "lblImmunities";
-            lblImmunities.Size = new System.Drawing.Size(38, 17);
+            lblImmunities.Size = new System.Drawing.Size(114, 78);
             lblImmunities.TabIndex = 1;
             lblImmunities.Text = "None";
             // 
@@ -406,12 +414,11 @@
             // 
             // lblVulnerabilities
             // 
-            lblVulnerabilities.AutoSize = true;
             lblVulnerabilities.Dock = System.Windows.Forms.DockStyle.Fill;
             lblVulnerabilities.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblVulnerabilities.Location = new System.Drawing.Point(3, 19);
             lblVulnerabilities.Name = "lblVulnerabilities";
-            lblVulnerabilities.Size = new System.Drawing.Size(38, 17);
+            lblVulnerabilities.Size = new System.Drawing.Size(119, 78);
             lblVulnerabilities.TabIndex = 1;
             lblVulnerabilities.Text = "None";
             // 
@@ -428,12 +435,11 @@
             // 
             // lblResistances
             // 
-            lblResistances.AutoSize = true;
             lblResistances.Dock = System.Windows.Forms.DockStyle.Fill;
             lblResistances.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             lblResistances.Location = new System.Drawing.Point(3, 19);
             lblResistances.Name = "lblResistances";
-            lblResistances.Size = new System.Drawing.Size(38, 17);
+            lblResistances.Size = new System.Drawing.Size(119, 78);
             lblResistances.TabIndex = 0;
             lblResistances.Text = "None";
             // 
@@ -782,15 +788,6 @@
             lblInit.Text = "0";
             lblInit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(96, 141);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(99, 15);
-            label1.TabIndex = 28;
-            label1.Text = "not implemented";
-            // 
             // Main
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -820,11 +817,8 @@
             gpStatBlocks.PerformLayout();
             gpCharacter.ResumeLayout(false);
             gpImmunities.ResumeLayout(false);
-            gpImmunities.PerformLayout();
             gpVulnerabilities.ResumeLayout(false);
-            gpVulnerabilities.PerformLayout();
             gpResistances.ResumeLayout(false);
-            gpResistances.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);

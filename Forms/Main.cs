@@ -55,7 +55,22 @@ namespace BattleManager
             cbWisAdv.Checked = c.savingThrows[Character.Stat.Wis][1] == 1 ? true : false;
             cbChaAdv.Checked = c.savingThrows[Character.Stat.Cha][1] == 1 ? true : false;
             //set res
+            List<Character.DmgType> resistant = new();
+            List<Character.DmgType> vulnerable = new();
+            List<Character.DmgType> immune = new();
 
+            foreach (Character.DmgType type in c.resistances.Keys)
+            {
+                switch (c.resistances[type])
+                {
+                    case Character.ResType.Resistant: resistant.Add(type); break;
+                    case Character.ResType.Vulnerable: vulnerable.Add(type); break;
+                    case Character.ResType.Immune: immune.Add(type); break;
+                }
+            }
+            lblResistances.Text = string.Join(", ", resistant);
+            lblVulnerabilities.Text = string.Join(", ", vulnerable);
+            lblImmunities.Text = string.Join(", ", immune);
         }
 
         private void undoLog()
@@ -267,7 +282,7 @@ namespace BattleManager
             object data = e.Data.GetData(typeof(String));
             lstInitiative.Items.Remove(data);
             lstInitiative.Items.Insert(index, data);
-            updateInitiative(getCharFromInitList(lstInitiative.Items.IndexOf(data)));
+            //updateInitiative(getCharFromInitList(lstInitiative.Items.IndexOf(data)));
         }
         // end drag and drop reorder
 
