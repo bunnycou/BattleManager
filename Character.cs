@@ -79,13 +79,34 @@ namespace BattleManager
 
         public Character Clone()
         {
-            return new Character(this.name, this.init, this.health, this.AC, this.level, this.stats, this.resistances);
+            return new Character
+                (
+                name: this.name, 
+                init: this.init, 
+                initOrder: this.initOrder, 
+                health: this.health, 
+                AC: this.AC, 
+                level: this.level, 
+                stats: this.stats, 
+                resistances: this.resistances
+                );
         }
 
-        public Character(string name = "blank", int init = 10, int health = 20, int AC = 10, int level = 1, Dictionary<Stat, int[]> stats = null, Dictionary<DmgType, ResType> resistances = null) // Construct with init for permanent use
+        public Character
+            (
+            string name = "blank", 
+            int init = 10, 
+            int initOrder = -1, 
+            int health = 20, 
+            int AC = 10, 
+            int level = 1, 
+            Dictionary<Stat, int[]> stats = null, 
+            Dictionary<DmgType, ResType> resistances = null
+            )
         {
             this.name = name;
             this.init = init;
+            this.initOrder = initOrder;
             this.health = health;
             this.AC = AC;
             this.level = level;
@@ -101,5 +122,6 @@ namespace BattleManager
         public int health { get; set; }
         public int AC { get; set; }
         public int level { get; set; }
+        public int initOrder { get; set; }
     }
 }

@@ -115,7 +115,7 @@ namespace BattleManager
             if (i == 0) return;
             Character character = charDict[getNameFromInitList(index)];
             character.health += i;
-            loadInitiative();
+            loadInitiativeReorder();
             if (i > -1)
             { //healed
                 lblDebug.Text = $"Healed {getNameFromInitList(index)} for {i}";
@@ -152,31 +152,34 @@ namespace BattleManager
             lstLog.Items.Insert(0, logMsg);
         }
 
-        private void loadInitiative()
+        private void loadInitiative() // new character is added, sort list by original initiative, then update everyones initiative order
         {
             clearInit();
             foreach (Character c in charDict.Values.OrderByDescending(c => c.init))
             {
                 lstInitiative.Items.Add(charToString(c));
             }
+            updateInitiative();
         }
 
-        private void updateInitiative(Character c)
+        private void loadInitiativeReorder() // sort list by hidden initiative order number
         {
-            int upIndex = selIndex - 1;
-            int downIndex = selIndex + 1;
-            int init;
-
-            if (upIndex < 2) init = getCharFromInitList(downIndex).init + 1;
-            else if (downIndex > lstInitiative.Items.Count - 1) init = getCharFromInitList(upIndex).init - 1;
-            else
+            clearInit();
+            foreach (Character c in charDict.Values.OrderBy(c => c.initOrder))
             {
-                int upInit = getCharFromInitList(upIndex).init;
-                int downInit = getCharFromInitList(downIndex).init;
-                if (upInit == downInit) init = upInit;
-                else init = upInit - 1;
+                lstInitiative.Items.Add(charToString(c));
             }
-            c.init = init;
+        }
+
+        private void updateInitiative()
+        {
+            for (int i = 2; i < lstInitiative.Items.Count; i++)
+            {
+                Character temp = getCharFromInitList(i);
+                temp.initOrder = i;
+                charDict.Remove(temp.name);
+                charDict.Add(temp.name, temp);
+            }
         }
 
         private string charToString(Character c)
@@ -311,7 +314,7 @@ namespace BattleManager
             object data = e.Data.GetData(typeof(String));
             lstInitiative.Items.Remove(data);
             lstInitiative.Items.Insert(index, data);
-            updateInitiative(getCharFromInitList(lstInitiative.Items.IndexOf(data)));
+            updateInitiative();
             loadCharacterDisplay();
         }
         // end drag and drop reorder
@@ -331,7 +334,8 @@ namespace BattleManager
                     {
                         addCharToDict(dupe);
                     }
-                } else addCharToDict(win.character);
+                }
+                else addCharToDict(win.character);
             }
             // clear initiative and redraw it for each person in the charDict
             loadInitiative();
@@ -379,6 +383,7 @@ namespace BattleManager
         {
             if (!isValidSel()) return;
             lstInitiative.Items.RemoveAt(selIndex);
+            charDict.Remove(getCharFromInitList(selIndex).name);
         }
 
         private void btnDebugChars_Click(object sender, EventArgs e)
@@ -443,12 +448,18 @@ namespace BattleManager
             addChar win = new(c);
             win.ShowDialog();
             addCharToDict(win.character);
-
+            loadInitiativeReorder();
+            loadCharacterDisplay();
         }
 
         private void btnMore_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not Implemented");
+        }
+
+        private void numInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
         }
     }
 }

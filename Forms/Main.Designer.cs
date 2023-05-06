@@ -138,6 +138,7 @@
             numInput.Name = "numInput";
             numInput.Size = new System.Drawing.Size(93, 23);
             numInput.TabIndex = 9;
+            numInput.KeyDown += numInput_KeyDown;
             // 
             // lblDebug
             // 
