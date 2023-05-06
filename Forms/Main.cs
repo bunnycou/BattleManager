@@ -434,5 +434,10 @@ namespace BattleManager
             charDict.Remove(c.name);
             addChar win = new(0, c);
         }
+
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Implemented");
+        }
     }
 }

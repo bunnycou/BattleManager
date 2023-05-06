@@ -43,7 +43,8 @@ namespace BattleManager
                 int i when i >= 5 && i < 9 => 3,
                 int i when i >= 9 && i < 13 => 4,
                 int i when i >= 13 && i < 17 => 5,
-                int i when i >= 17 => 6
+                int i when i >= 17 => 6,
+                _ => 0
             };
         }
 
@@ -67,6 +68,7 @@ namespace BattleManager
                 int i when i >= 26 && i < 28 => 8,
                 int i when i >= 28 && i < 30 => 9,
                 int i when i >= 30 => 10,
+                _=> 0
             };
         }
 

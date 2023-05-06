@@ -47,12 +47,12 @@ namespace BattleManager.Forms
         {
             return new Dictionary<Stat, int[]>()
             {
-                { Stat.Str, new int[] { (int)numStr.Value, chkStrAdv.Checked ? 1 : 0 } },
-                { Stat.Dex, new int[] { (int)numDex.Value, chkDexAdv.Checked ? 1 : 0 } },
-                { Stat.Con, new int[] { (int)numCon.Value, chkConAdv.Checked ? 1 : 0 } },
-                { Stat.Int, new int[] { (int)numInt.Value, chkIntAdv.Checked ? 1 : 0 } },
-                { Stat.Wis, new int[] { (int)numWis.Value, chkWisAdv.Checked ? 1 : 0 } },
-                { Stat.Cha, new int[] { (int)numCha.Value, chkChaAdv.Checked ? 1 : 0 } }
+                { Stat.Str, new int[] { (int)numStr.Value, (int)numStrMod.Value, chkStrAdv.Checked ? 1 : 0 } },
+                { Stat.Dex, new int[] { (int)numDex.Value, (int)numDexMod.Value, chkDexAdv.Checked ? 1 : 0 } },
+                { Stat.Con, new int[] { (int)numCon.Value, (int)numConMod.Value, chkConAdv.Checked ? 1 : 0 } },
+                { Stat.Int, new int[] { (int)numInt.Value, (int)numIntMod.Value, chkIntAdv.Checked ? 1 : 0 } },
+                { Stat.Wis, new int[] { (int)numWis.Value, (int)numWisMod.Value, chkWisAdv.Checked ? 1 : 0 } },
+                { Stat.Cha, new int[] { (int)numCha.Value, (int)numChaMod.Value, chkChaAdv.Checked ? 1 : 0 } }
             };
         }
 

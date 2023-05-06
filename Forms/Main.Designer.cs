@@ -40,6 +40,7 @@
             btnUndo = new System.Windows.Forms.Button();
             btnDelete = new System.Windows.Forms.Button();
             pnlMain = new System.Windows.Forms.Panel();
+            btnEdit = new System.Windows.Forms.Button();
             btnCreateParty = new System.Windows.Forms.Button();
             btnAddParty = new System.Windows.Forms.Button();
             btnDeleteParty = new System.Windows.Forms.Button();
@@ -90,7 +91,6 @@
             lblHealth = new System.Windows.Forms.Label();
             lblAC = new System.Windows.Forms.Label();
             lblInit = new System.Windows.Forms.Label();
-            btnEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
             pnlMain.SuspendLayout();
             gpParty.SuspendLayout();
@@ -241,6 +241,17 @@
             pnlMain.Name = "pnlMain";
             pnlMain.Size = new System.Drawing.Size(309, 172);
             pnlMain.TabIndex = 23;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Location = new System.Drawing.Point(206, 89);
+            btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new System.Drawing.Size(93, 27);
+            btnEdit.TabIndex = 23;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnCreateParty
             // 
@@ -406,6 +417,7 @@
             btnMore.TabIndex = 5;
             btnMore.Text = "More Info";
             btnMore.UseVisualStyleBackColor = true;
+            btnMore.Click += btnMore_Click;
             // 
             // gpImmunities
             // 
@@ -841,17 +853,6 @@
             lblInit.TabIndex = 5;
             lblInit.Text = "0";
             lblInit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Location = new System.Drawing.Point(206, 89);
-            btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new System.Drawing.Size(93, 27);
-            btnEdit.TabIndex = 23;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
             // 
             // Main
             // 

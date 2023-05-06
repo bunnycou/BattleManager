@@ -46,14 +46,14 @@ namespace BattleManager
 
         private Dictionary<Stat, int[]> defaultSaves()
         {
-            return new Dictionary<Stat, int[]>()
+            return new Dictionary<Stat, int[]>() // [stat, mod, prof]
             {
-                { Stat.Str, new int[] { 0, 0} },
-                { Stat.Dex, new int[] { 0, 0} },
-                { Stat.Con, new int[] { 0, 0} },
-                { Stat.Wis, new int[] { 0, 0} },
-                { Stat.Cha, new int[] { 0, 0} },
-                { Stat.Int, new int[] { 0, 0} }
+                { Stat.Str, new int[] { 10, 0, 0} },
+                { Stat.Dex, new int[] { 10, 0, 0} },
+                { Stat.Con, new int[] { 10, 0, 0} },
+                { Stat.Wis, new int[] { 10, 0, 0} },
+                { Stat.Cha, new int[] { 10, 0, 0} },
+                { Stat.Int, new int[] { 10, 0, 0} }
             };
         }
 
@@ -87,6 +87,7 @@ namespace BattleManager
             this.resistances = resistances ?? defaultRes();
         }
 
+        public Dictionary<string, string> actions { get; set; }
         public Dictionary<Stat, int[]> stats { get; set; }
         public Dictionary<DmgType, ResType> resistances { get; set; }
         public string name { get; set; }
