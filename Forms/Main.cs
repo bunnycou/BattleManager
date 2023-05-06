@@ -6,6 +6,7 @@ using System.Linq;
 using BattleManager.Forms;
 using System.IO;
 using System.Reflection;
+using System.ComponentModel;
 
 namespace BattleManager
 {
@@ -41,12 +42,12 @@ namespace BattleManager
             lblAC.Text = c.AC.ToString();
             lblInit.Text = c.init.ToString();
             //set dc
-            lblStrVal.Text = c.savingThrows[Character.Stat.Str][0] > 0 ? $"+{c.savingThrows[Character.Stat.Str][0]}" : c.savingThrows[Character.Stat.Str][0].ToString();
-            lblDexVal.Text = c.savingThrows[Character.Stat.Dex][0] > 0 ? $"+{c.savingThrows[Character.Stat.Dex][0]}" : c.savingThrows[Character.Stat.Dex][0].ToString();
-            lblConVal.Text = c.savingThrows[Character.Stat.Con][0] > 0 ? $"+{c.savingThrows[Character.Stat.Con][0]}" : c.savingThrows[Character.Stat.Con][0].ToString();
-            lblIntVal.Text = c.savingThrows[Character.Stat.Int][0] > 0 ? $"+{c.savingThrows[Character.Stat.Int][0]}" : c.savingThrows[Character.Stat.Int][0].ToString();
-            lblWisVal.Text = c.savingThrows[Character.Stat.Wis][0] > 0 ? $"+{c.savingThrows[Character.Stat.Wis][0]}" : c.savingThrows[Character.Stat.Wis][0].ToString();
-            lblChaVal.Text = c.savingThrows[Character.Stat.Cha][0] > 0 ? $"+{c.savingThrows[Character.Stat.Cha][0]}" : c.savingThrows[Character.Stat.Cha][0].ToString();
+            lblStrVal.Text = c.savingThrows[Character.Stat.Str][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Str][0]}" : c.savingThrows[Character.Stat.Str][0].ToString();
+            lblDexVal.Text = c.savingThrows[Character.Stat.Dex][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Dex][0]}" : c.savingThrows[Character.Stat.Dex][0].ToString();
+            lblConVal.Text = c.savingThrows[Character.Stat.Con][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Con][0]}" : c.savingThrows[Character.Stat.Con][0].ToString();
+            lblIntVal.Text = c.savingThrows[Character.Stat.Int][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Int][0]}" : c.savingThrows[Character.Stat.Int][0].ToString();
+            lblWisVal.Text = c.savingThrows[Character.Stat.Wis][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Wis][0]}" : c.savingThrows[Character.Stat.Wis][0].ToString();
+            lblChaVal.Text = c.savingThrows[Character.Stat.Cha][0] >= 0 ? $"+{c.savingThrows[Character.Stat.Cha][0]}" : c.savingThrows[Character.Stat.Cha][0].ToString();
             // dc adv
             cbStrAdv.Checked = c.savingThrows[Character.Stat.Str][1] == 1 ? true : false;
             cbDexAdv.Checked = c.savingThrows[Character.Stat.Dex][1] == 1 ? true : false;
@@ -71,6 +72,9 @@ namespace BattleManager
             lblResistances.Text = string.Join(", ", resistant);
             lblVulnerabilities.Text = string.Join(", ", vulnerable);
             lblImmunities.Text = string.Join(", ", immune);
+            if (lblResistances.Text == "") lblResistances.Text = "None";
+            if (lblVulnerabilities.Text == "") lblVulnerabilities.Text = "None";
+            if (lblImmunities.Text == "") lblImmunities.Text = "None";
         }
 
         private void undoLog()
@@ -98,6 +102,7 @@ namespace BattleManager
 
         private void modHealth(int i, int index)
         {
+            if (i == 0) return;
             Character character = charDict[getNameFromInitList(index)];
             character.health += i;
             loadInitiative();
@@ -140,7 +145,7 @@ namespace BattleManager
         private void loadInitiative()
         {
             clearInit();
-            foreach (Character c in charDict.Values.OrderBy(c => c.init))
+            foreach (Character c in charDict.Values.OrderByDescending(c => c.init))
             {
                 lstInitiative.Items.Add(charToString(c));
             }
@@ -148,7 +153,20 @@ namespace BattleManager
 
         private void updateInitiative(Character c)
         {
-            charDict[c.name].init = getCharFromInitList(lstInitiative.Items.IndexOf(charToString(c)) - 1).init - 1;
+            int upIndex = selIndex - 1;
+            int downIndex = selIndex + 1;
+            int init;
+
+            if (upIndex < 2) init = getCharFromInitList(downIndex).init+1;
+            else if (downIndex > lstInitiative.Items.Count - 1) init = getCharFromInitList(upIndex).init-1;
+            else
+            {
+                int upInit = getCharFromInitList(upIndex).init;
+                int downInit = getCharFromInitList(downIndex).init;
+                if (upInit == downInit) init = upInit;
+                else init = upInit - 1;
+            }
+            c.init = init;
         }
 
         private string charToString(Character c)
@@ -279,10 +297,12 @@ namespace BattleManager
             int index = lstInitiative.IndexFromPoint(point);
             if (index == -1) index = lstInitiative.Items.Count - 1;
             if (index < 2) index = 2;
+            selIndex = index;
             object data = e.Data.GetData(typeof(String));
             lstInitiative.Items.Remove(data);
             lstInitiative.Items.Insert(index, data);
-            //updateInitiative(getCharFromInitList(lstInitiative.Items.IndexOf(data)));
+            updateInitiative(getCharFromInitList(lstInitiative.Items.IndexOf(data)));
+            loadCharacterDisplay();
         }
         // end drag and drop reorder
 
@@ -298,7 +318,6 @@ namespace BattleManager
                 addCharToDict(win.character);
             }
             // clear initiative and redraw it for each person in the charDict
-            clearInit();
             loadInitiative();
         }
 
@@ -306,18 +325,18 @@ namespace BattleManager
         {
             if (!isValidSel()) return;
             int num = (int)numInput.Value;
+            if (num == 0) return;
             modHealth(num, selIndex);
             appendLog(num, selIndex);
-            lblDebug.Text = $"Healed {getNameFromInitList(selIndex)} for {num}";
         }
 
         private void btnDamage_Click(object sender, EventArgs e)
         {
             if (!isValidSel()) return;
             int num = (int)numInput.Value * -1;
+            if (num == 0) return;
             modHealth(num, selIndex);
             appendLog(num, selIndex);
-            lblDebug.Text = $"Damaged {getNameFromInitList(selIndex)} for {num * -1}";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -348,9 +367,9 @@ namespace BattleManager
 
         private void btnDebugChars_Click(object sender, EventArgs e)
         {
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 10; i++)
             {
-                Character character = new($"char{i}", 20 + i, 10 + i);
+                Character character = new($"char{i}", 10 + i, 20 + i, 10+i);
                 addCharToDict(character);
             }
             loadInitiative();

@@ -163,7 +163,7 @@
             btnDebugChars.Name = "btnDebugChars";
             btnDebugChars.Size = new System.Drawing.Size(93, 48);
             btnDebugChars.TabIndex = 17;
-            btnDebugChars.Text = "Add 3 Test Characters";
+            btnDebugChars.Text = "Add Test Characters";
             btnDebugChars.UseVisualStyleBackColor = true;
             btnDebugChars.Click += btnDebugChars_Click;
             // 

@@ -77,7 +77,7 @@ There has been a lot of sub updates for 0.1. The goal of 0.1 is to achieve a ver
 - [x] Add Party Set to tracker
 - [x] Saving Throw Modifiers
 - [x] Damage Resistances
-- [ ] Display Info
+- [x] Display Info
 
 ### Version 0.3 - Foe's
 - [ ] Custom Stat Blocks
