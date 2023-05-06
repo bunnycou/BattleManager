@@ -39,7 +39,7 @@
             lblInit = new System.Windows.Forms.Label();
             btnOptions = new System.Windows.Forms.Button();
             numDuplicate = new System.Windows.Forms.NumericUpDown();
-            btnDuplicate = new System.Windows.Forms.Button();
+            chkDuplicate = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)numHealth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numAC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numInit).BeginInit();
@@ -152,22 +152,25 @@
             // 
             // numDuplicate
             // 
-            numDuplicate.Location = new System.Drawing.Point(49, 194);
+            numDuplicate.Enabled = false;
+            numDuplicate.Location = new System.Drawing.Point(150, 193);
+            numDuplicate.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
             numDuplicate.Name = "numDuplicate";
             numDuplicate.Size = new System.Drawing.Size(75, 23);
             numDuplicate.TabIndex = 7;
-            numDuplicate.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numDuplicate.ValueChanged += numDuplicate_ValueChanged;
+            numDuplicate.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
-            // btnDuplicate
+            // chkDuplicate
             // 
-            btnDuplicate.Location = new System.Drawing.Point(130, 194);
-            btnDuplicate.Name = "btnDuplicate";
-            btnDuplicate.Size = new System.Drawing.Size(104, 23);
-            btnDuplicate.TabIndex = 8;
-            btnDuplicate.Text = "Make Duplicate";
-            btnDuplicate.UseVisualStyleBackColor = true;
-            btnDuplicate.Click += btnDuplicate_Click;
+            chkDuplicate.AutoSize = true;
+            chkDuplicate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            chkDuplicate.Location = new System.Drawing.Point(14, 194);
+            chkDuplicate.Name = "chkDuplicate";
+            chkDuplicate.Size = new System.Drawing.Size(118, 19);
+            chkDuplicate.TabIndex = 8;
+            chkDuplicate.Text = "Make Duplicates?";
+            chkDuplicate.UseVisualStyleBackColor = true;
+            chkDuplicate.CheckedChanged += chkDuplicate_CheckedChanged;
             // 
             // addChar
             // 
@@ -175,7 +178,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(246, 229);
             ControlBox = false;
-            Controls.Add(btnDuplicate);
+            Controls.Add(chkDuplicate);
             Controls.Add(numDuplicate);
             Controls.Add(btnOptions);
             Controls.Add(numInit);
@@ -213,6 +216,6 @@
         public System.Windows.Forms.Label lblInit;
         public System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.NumericUpDown numDuplicate;
-        private System.Windows.Forms.Button btnDuplicate;
+        private System.Windows.Forms.CheckBox chkDuplicate;
     }
 }

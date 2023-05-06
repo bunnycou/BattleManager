@@ -77,6 +77,11 @@ namespace BattleManager
             };
         }
 
+        public Character Clone()
+        {
+            return new Character(this.name, this.init, this.health, this.AC, this.level, this.stats, this.resistances);
+        }
+
         public Character(string name = "blank", int init = 10, int health = 20, int AC = 10, int level = 1, Dictionary<Stat, int[]> stats = null, Dictionary<DmgType, ResType> resistances = null) // Construct with init for permanent use
         {
             this.name = name;

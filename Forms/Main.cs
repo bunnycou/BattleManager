@@ -32,6 +32,14 @@ namespace BattleManager
             loadCharacterDisplay();
         }
 
+        private string getStatString(Character c, Character.Stat stat)
+        {
+            string result = c.stats[stat][0].ToString() + " (";
+            if (c.stats[stat][1] > -1) result += "+" + c.stats[stat][1] + ")";
+            else result += c.stats[stat][1] + ")";
+            return result;
+        }
+
         private void loadCharacterDisplay()
         {
             // get char
@@ -41,14 +49,15 @@ namespace BattleManager
             lblHealth.Text = c.health.ToString();
             lblAC.Text = c.AC.ToString();
             lblInit.Text = c.init.ToString();
+            lblLevel.Text = c.level.ToString();
             //set Stats
             // update todo
-            lblStrVal.Text = c.stats[Character.Stat.Str][0] >= 0 ? $"+{c.stats[Character.Stat.Str][0]}" : c.stats[Character.Stat.Str][0].ToString();
-            lblDexVal.Text = c.stats[Character.Stat.Dex][0] >= 0 ? $"+{c.stats[Character.Stat.Dex][0]}" : c.stats[Character.Stat.Dex][0].ToString();
-            lblConVal.Text = c.stats[Character.Stat.Con][0] >= 0 ? $"+{c.stats[Character.Stat.Con][0]}" : c.stats[Character.Stat.Con][0].ToString();
-            lblIntVal.Text = c.stats[Character.Stat.Int][0] >= 0 ? $"+{c.stats[Character.Stat.Int][0]}" : c.stats[Character.Stat.Int][0].ToString();
-            lblWisVal.Text = c.stats[Character.Stat.Wis][0] >= 0 ? $"+{c.stats[Character.Stat.Wis][0]}" : c.stats[Character.Stat.Wis][0].ToString();
-            lblChaVal.Text = c.stats[Character.Stat.Cha][0] >= 0 ? $"+{c.stats[Character.Stat.Cha][0]}" : c.stats[Character.Stat.Cha][0].ToString();
+            lblStrVal.Text = getStatString(c, Character.Stat.Str);
+            lblDexVal.Text = getStatString(c, Character.Stat.Dex);
+            lblConVal.Text = getStatString(c, Character.Stat.Con);
+            lblIntVal.Text = getStatString(c, Character.Stat.Int);
+            lblWisVal.Text = getStatString(c, Character.Stat.Wis);
+            lblChaVal.Text = getStatString(c, Character.Stat.Cha);
             // dc adv   
             cbStrAdv.Checked = c.stats[Character.Stat.Str][2] == 1 ? true : false;
             cbDexAdv.Checked = c.stats[Character.Stat.Dex][2] == 1 ? true : false;
@@ -316,7 +325,13 @@ namespace BattleManager
             {
                 addChar win = new(i);
                 win.ShowDialog();
-                addCharToDict(win.character);
+                if (win.duplicate)
+                {
+                    foreach (Character dupe in win.duplicates)
+                    {
+                        addCharToDict(dupe);
+                    }
+                } else addCharToDict(win.character);
             }
             // clear initiative and redraw it for each person in the charDict
             loadInitiative();
@@ -368,9 +383,9 @@ namespace BattleManager
 
         private void btnDebugChars_Click(object sender, EventArgs e)
         {
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 3; i++)
             {
-                Character character = new(name:$"char{i}", AC:10 + i, health:20 + i, init:10 + i);
+                Character character = new(name: $"char{i}", AC: 10 + i, health: 20 + i);
                 addCharToDict(character);
             }
             loadInitiative();

@@ -1,5 +1,7 @@
 ﻿using BattleManager.Forms;
 using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Transactions;
 using System.Windows.Forms;
 
@@ -8,6 +10,8 @@ namespace BattleManager
     public partial class addChar : Form
     {
         public Character character = new();
+        public List<Character> duplicates = new();
+        public bool duplicate = false;
         public addChar(int num)
         {
             InitializeComponent();
@@ -20,6 +24,7 @@ namespace BattleManager
             InitializeComponent();
 
             txtName.Text = $"{c.name} {num}";
+            numHealth.Value = c.health;
             numAC.Value = c.AC;
             numInit.Value = c.init;
             character = c;
@@ -30,6 +35,7 @@ namespace BattleManager
             InitializeComponent();
 
             txtName.Text = c.name;
+            numHealth.Value = c.health;
             numAC.Value = c.AC;
             numInit.Value = c.init;
             character = c;
@@ -49,6 +55,15 @@ namespace BattleManager
             character.health = (int)numHealth.Value;
             character.AC = (int)numAC.Value;
             character.init = (int)numInit.Value;
+            if (duplicate)
+            {
+                for (int i = 1; i <= numDuplicate.Value; i++)
+                {
+                    Character dupeChar = character.Clone();
+                    if (dupeChar.name.Length > 21) dupeChar.name = dupeChar.name[..^3] + "... " + i; else dupeChar.name = dupeChar.name + " " + i;
+                    duplicates.Add(dupeChar);
+                }
+            }
             Close();
         }
 
@@ -70,18 +85,10 @@ namespace BattleManager
             Text = txtName.Text;
         }
 
-        private void btnDuplicate_Click(object sender, EventArgs e)
+        private void chkDuplicate_CheckedChanged(object sender, EventArgs e)
         {
-            for (int i = 1; i <= numDuplicate.Value; i++)
-            {
-                addChar win = new(i, character);
-                win.ShowDialog();
-            }
-        }
-
-        private void numDuplicate_ValueChanged(object sender, EventArgs e)
-        {
-            btnDuplicate.Text = numDuplicate.Value > 1 ? "Make Duplicates" : "Make Duplicate";
+            numDuplicate.Enabled = chkDuplicate.Checked;
+            duplicate = chkDuplicate.Checked;
         }
     }
 }

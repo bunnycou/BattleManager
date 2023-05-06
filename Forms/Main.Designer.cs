@@ -84,7 +84,7 @@
             cbStrAdv = new System.Windows.Forms.CheckBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
+            lblLevel = new System.Windows.Forms.Label();
             lblHealthText = new System.Windows.Forms.Label();
             lblACText = new System.Windows.Forms.Label();
             lblInitiativeText = new System.Windows.Forms.Label();
@@ -741,7 +741,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.1428566F));
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.8571434F));
             tableLayoutPanel1.Controls.Add(label2, 0, 3);
-            tableLayoutPanel1.Controls.Add(label3, 0, 3);
+            tableLayoutPanel1.Controls.Add(lblLevel, 0, 3);
             tableLayoutPanel1.Controls.Add(lblHealthText, 0, 0);
             tableLayoutPanel1.Controls.Add(lblACText, 0, 1);
             tableLayoutPanel1.Controls.Add(lblInitiativeText, 0, 2);
@@ -770,17 +770,17 @@
             label2.Text = "Level";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label3
+            // lblLevel
             // 
-            label3.AutoSize = true;
-            label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label3.Location = new System.Drawing.Point(79, 72);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(51, 24);
-            label3.TabIndex = 7;
-            label3.Text = "0";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblLevel.AutoSize = true;
+            lblLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblLevel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblLevel.Location = new System.Drawing.Point(79, 72);
+            lblLevel.Name = "lblLevel";
+            lblLevel.Size = new System.Drawing.Size(51, 24);
+            lblLevel.TabIndex = 7;
+            lblLevel.Text = "0";
+            lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblHealthText
             // 
@@ -955,7 +955,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMore;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEdit;
     }
