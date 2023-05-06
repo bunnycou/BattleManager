@@ -42,7 +42,7 @@ Existing initiative trackers never feel good to use. They always feel less effic
   - Input numbers into input box
 
 ## Version Roadmap
-### Version 0.1 - Battle Manager w/ Shortcuts
+### Version 0.1.0 - Battle Manager w/ Shortcuts
 - [x] Initiative Order
 - [x] Health Tracking
 - [x] AC Display
@@ -71,7 +71,7 @@ Existing initiative trackers never feel good to use. They always feel less effic
 
 There has been a lot of sub updates for 0.1. The goal of 0.1 is to achieve a version that is fully usable (although 'undo' may be in excess to the following idea) but not fully featured. Hopefully this will be the last amendment to version 0.1 so that I can work on more convenient features and less tweaks to the base system. 
 
-### Version 0.2 - Friends and Info
+### Version 0.2.0 - Friends and Info
 - [x] Create Party Set
 - [x] ~~Export/Import Party Set~~ _This is implemented through sharing json files_
 - [x] Add Party Set to tracker
@@ -79,10 +79,10 @@ There has been a lot of sub updates for 0.1. The goal of 0.1 is to achieve a ver
 - [x] Damage Resistances
 - [x] Display Info
 
-### Version 0.3 - Foe's
+### Version 0.3.0 - Foe's
 - [ ] Custom Stat Blocks
 - [ ] Existing Stat Blocks
 
-### Version 1.0
+### Version 1.0.0
 - [ ] Everything above
 - [ ] App Icon and cleaned up UI
