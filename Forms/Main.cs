@@ -199,6 +199,7 @@ namespace BattleManager
             else health = c.health.ToString();
 
             if (c.AC > 99) ac = "99";
+            if (c.AC < 10) ac += " ";
 
             return $"| {name} | {health} | {ac} |";
         }
