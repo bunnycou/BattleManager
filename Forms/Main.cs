@@ -82,6 +82,7 @@ namespace BattleManager
             int amount = log[0, 0];
             int selection = log[0, 1];
             ModHealth(amount * -1, selection);
+            if (amount == 0) return;
             if (amount > -1)
             {
                 lblDebug.Text = $"Undid {amount} healing to {GetNameFromInitList(selection)}";
@@ -173,9 +174,7 @@ namespace BattleManager
 
         private string GetNameFromInitList(int selection)
         {
-            if (selection < 2) selection = 2;
-            else if (selection > lstInitiative.Items.Count - 1) selection = lstInitiative.Items.Count - 1;
-            return lstInitiative.Items[selection].ToString().Split("|")[1].Trim();
+            return !IsValidSel() ? null : lstInitiative.Items[selection].ToString().Split("|")[1].Trim();
         }
 
         private Character GetCharFromInitList(int selection)
@@ -228,7 +227,7 @@ namespace BattleManager
             {
                 switch (e.Modifiers)
                 {
-                    case Keys.Control: selIndex = selIndex = (int)numInput.Value + 1; numInput.Value = 0; SelectInit(); break;
+                    case Keys.Control: selIndex = (int)numInput.Value + 1; numInput.Value = 0; SelectInit(); break;
                     case Keys.Shift: BtnHeal_Click(sender, e); break;
                     case Keys.Alt: BtnDamage_Click(sender, e); e.SuppressKeyPress = true; break;
                 }
@@ -352,6 +351,14 @@ namespace BattleManager
             if (!IsValidSel()) return;
             charDict.Remove(GetCharFromInitList(selIndex).Name);
             lstInitiative.Items.RemoveAt(selIndex);
+            for (int i = 0; i < log.GetLength(0); i++)
+            {
+                if (log[i, 1] == selIndex)
+                {
+                    log[i, 0] = 0;
+                    log[i, 1] = 0;
+                }
+            }
         }
 
         private void BtnDebugChars_Click(object sender, EventArgs e)
@@ -427,7 +434,7 @@ namespace BattleManager
 
         private void NumInput_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Utility.KeyToNum(e) != -1) 
+            if (Utility.KeyToNum(e) != -1)
             {
                 e.SuppressKeyPress = true;
             }

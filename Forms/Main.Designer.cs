@@ -110,10 +110,10 @@
             lstInitiative.FormattingEnabled = true;
             lstInitiative.ImeMode = System.Windows.Forms.ImeMode.On;
             lstInitiative.ItemHeight = 21;
-            lstInitiative.Location = new System.Drawing.Point(13, 14);
+            lstInitiative.Location = new System.Drawing.Point(13, 12);
             lstInitiative.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             lstInitiative.Name = "lstInitiative";
-            lstInitiative.Size = new System.Drawing.Size(370, 655);
+            lstInitiative.Size = new System.Drawing.Size(359, 655);
             lstInitiative.TabIndex = 2;
             lstInitiative.DragDrop += LstInitiative_DragDrop;
             lstInitiative.DragOver += LstInitiative_DragOver;
@@ -144,7 +144,7 @@
             // 
             lblDebug.AutoSize = true;
             lblDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblDebug.Location = new System.Drawing.Point(756, 396);
+            lblDebug.Location = new System.Drawing.Point(746, 486);
             lblDebug.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblDebug.Name = "lblDebug";
             lblDebug.Size = new System.Drawing.Size(277, 25);
@@ -153,7 +153,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new System.Drawing.Point(206, 23);
+            btnClear.Location = new System.Drawing.Point(206, 7);
             btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnClear.Name = "btnClear";
             btnClear.Size = new System.Drawing.Size(93, 27);
@@ -164,7 +164,7 @@
             // 
             // btnDebugChars
             // 
-            btnDebugChars.Location = new System.Drawing.Point(567, 621);
+            btnDebugChars.Location = new System.Drawing.Point(746, 618);
             btnDebugChars.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnDebugChars.Name = "btnDebugChars";
             btnDebugChars.Size = new System.Drawing.Size(93, 48);
@@ -178,10 +178,10 @@
             lstLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lstLog.FormattingEnabled = true;
             lstLog.ItemHeight = 16;
-            lstLog.Location = new System.Drawing.Point(756, 425);
+            lstLog.Location = new System.Drawing.Point(379, 486);
             lstLog.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             lstLog.Name = "lstLog";
-            lstLog.Size = new System.Drawing.Size(500, 244);
+            lstLog.Size = new System.Drawing.Size(359, 180);
             lstLog.TabIndex = 18;
             // 
             // btnHeal
@@ -208,18 +208,18 @@
             // 
             // btnUndo
             // 
-            btnUndo.Location = new System.Drawing.Point(105, 132);
+            btnUndo.Location = new System.Drawing.Point(104, 123);
             btnUndo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnUndo.Name = "btnUndo";
-            btnUndo.Size = new System.Drawing.Size(93, 27);
+            btnUndo.Size = new System.Drawing.Size(93, 46);
             btnUndo.TabIndex = 21;
-            btnUndo.Text = "Undo";
+            btnUndo.Text = "Undo Heal/Dmg";
             btnUndo.UseVisualStyleBackColor = true;
             btnUndo.Click += BtnUndo_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Location = new System.Drawing.Point(206, 56);
+            btnDelete.Location = new System.Drawing.Point(206, 40);
             btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new System.Drawing.Size(93, 27);
@@ -238,14 +238,14 @@
             pnlMain.Controls.Add(btnClear);
             pnlMain.Controls.Add(btnDamage);
             pnlMain.Controls.Add(btnHeal);
-            pnlMain.Location = new System.Drawing.Point(390, 15);
+            pnlMain.Location = new System.Drawing.Point(379, 12);
             pnlMain.Name = "pnlMain";
             pnlMain.Size = new System.Drawing.Size(309, 172);
             pnlMain.TabIndex = 23;
             // 
             // btnEdit
             // 
-            btnEdit.Location = new System.Drawing.Point(206, 89);
+            btnEdit.Location = new System.Drawing.Point(206, 73);
             btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new System.Drawing.Size(93, 27);
@@ -393,9 +393,9 @@
             gpCharacter.Controls.Add(gpResistances);
             gpCharacter.Controls.Add(tableLayoutPanel3);
             gpCharacter.Controls.Add(tableLayoutPanel1);
-            gpCharacter.Location = new System.Drawing.Point(390, 193);
+            gpCharacter.Location = new System.Drawing.Point(379, 193);
             gpCharacter.Name = "gpCharacter";
-            gpCharacter.Size = new System.Drawing.Size(359, 312);
+            gpCharacter.Size = new System.Drawing.Size(359, 287);
             gpCharacter.TabIndex = 27;
             gpCharacter.TabStop = false;
             gpCharacter.Text = "Character";
@@ -412,9 +412,9 @@
             // 
             // btnMore
             // 
-            btnMore.Location = new System.Drawing.Point(6, 283);
+            btnMore.Location = new System.Drawing.Point(145, 22);
             btnMore.Name = "btnMore";
-            btnMore.Size = new System.Drawing.Size(75, 23);
+            btnMore.Size = new System.Drawing.Size(52, 43);
             btnMore.TabIndex = 5;
             btnMore.Text = "More Info";
             btnMore.UseVisualStyleBackColor = true;
