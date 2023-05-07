@@ -459,7 +459,10 @@ namespace BattleManager
 
         private void numInput_KeyDown(object sender, KeyEventArgs e)
         {
-            e.SuppressKeyPress = true;
+            if (Utility.keyToNum(e) != -1) 
+            {
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }
