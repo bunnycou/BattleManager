@@ -4,9 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 using BattleManager.Forms;
-using System.IO;
-using System.Reflection;
-using System.ComponentModel;
 
 namespace BattleManager
 {
@@ -18,61 +15,53 @@ namespace BattleManager
         }
 
         private int selIndex = 2;
-        private int[,] log = new int[100, 2];
-        private Dictionary<string, Character> charDict = new(); // string will be 20 char ID, Character will contain the character data // Dictionaries are not sorted!
+        private readonly int[,] log = new int[100, 2];
+        private readonly Dictionary<string, Character> charDict = new(); // string will be 20 char ID, Character will contain the character data // Dictionaries are not sorted!
 
         // custom functions
-        private void select()
+        private void SelectInit()
         {
-            if (!isValidSel()) return;
+            if (!IsValidSel()) return;
             if (selIndex >= lstInitiative.Items.Count) selIndex = lstInitiative.Items.Count - 1;
             if (selIndex < 2) selIndex = 2;
-            lblDebug.Text = $"Selected {getNameFromInitList(selIndex)}";
+            lblDebug.Text = $"Selected {GetNameFromInitList(selIndex)}";
             numInput.Value = 0;
-            loadCharacterDisplay();
+            LoadCharacterDisplay();
         }
 
-        private string getStatString(Character c, Character.Stat stat)
-        {
-            string result = c.stats[stat][0].ToString() + " (";
-            if (c.stats[stat][1] > -1) result += "+" + c.stats[stat][1] + ")";
-            else result += c.stats[stat][1] + ")";
-            return result;
-        }
-
-        private void loadCharacterDisplay()
+        private void LoadCharacterDisplay()
         {
             // get char
-            Character c = getCharFromInitList(selIndex);
+            Character c = GetCharFromInitList(selIndex);
             // set base
-            gpCharacter.Text = c.name;
-            lblHealth.Text = c.health.ToString();
+            gpCharacter.Text = c.Name;
+            lblHealth.Text = c.Health.ToString();
             lblAC.Text = c.AC.ToString();
-            lblInit.Text = c.init.ToString();
-            lblLevel.Text = c.level.ToString();
+            lblInit.Text = c.Init.ToString();
+            lblLevel.Text = c.Level.ToString();
             //set Stats
             // update todo
-            lblStrVal.Text = getStatString(c, Character.Stat.Str);
-            lblDexVal.Text = getStatString(c, Character.Stat.Dex);
-            lblConVal.Text = getStatString(c, Character.Stat.Con);
-            lblIntVal.Text = getStatString(c, Character.Stat.Int);
-            lblWisVal.Text = getStatString(c, Character.Stat.Wis);
-            lblChaVal.Text = getStatString(c, Character.Stat.Cha);
+            lblStrVal.Text = Utility.GetStatString(c, Character.Stat.Str);
+            lblDexVal.Text = Utility.GetStatString(c, Character.Stat.Dex);
+            lblConVal.Text = Utility.GetStatString(c, Character.Stat.Con);
+            lblIntVal.Text = Utility.GetStatString(c, Character.Stat.Int);
+            lblWisVal.Text = Utility.GetStatString(c, Character.Stat.Wis);
+            lblChaVal.Text = Utility.GetStatString(c, Character.Stat.Cha);
             // dc adv   
-            cbStrAdv.Checked = c.stats[Character.Stat.Str][2] == 1 ? true : false;
-            cbDexAdv.Checked = c.stats[Character.Stat.Dex][2] == 1 ? true : false;
-            cbConAdv.Checked = c.stats[Character.Stat.Con][2] == 1 ? true : false;
-            cbIntAdv.Checked = c.stats[Character.Stat.Int][2] == 1 ? true : false;
-            cbWisAdv.Checked = c.stats[Character.Stat.Wis][2] == 1 ? true : false;
-            cbChaAdv.Checked = c.stats[Character.Stat.Cha][2] == 1 ? true : false;
+            cbStrAdv.Checked = c.Stats[Character.Stat.Str][2] == 1;
+            cbDexAdv.Checked = c.Stats[Character.Stat.Dex][2] == 1;
+            cbConAdv.Checked = c.Stats[Character.Stat.Con][2] == 1;
+            cbIntAdv.Checked = c.Stats[Character.Stat.Int][2] == 1;
+            cbWisAdv.Checked = c.Stats[Character.Stat.Wis][2] == 1;
+            cbChaAdv.Checked = c.Stats[Character.Stat.Cha][2] == 1;
             //set res
             List<Character.DmgType> resistant = new();
             List<Character.DmgType> vulnerable = new();
             List<Character.DmgType> immune = new();
 
-            foreach (Character.DmgType type in c.resistances.Keys)
+            foreach (Character.DmgType type in c.Resistances.Keys)
             {
-                switch (c.resistances[type])
+                switch (c.Resistances[type])
                 {
                     case Character.ResType.Resistant: resistant.Add(type); break;
                     case Character.ResType.Vulnerable: vulnerable.Add(type); break;
@@ -87,19 +76,19 @@ namespace BattleManager
             if (lblImmunities.Text == "") lblImmunities.Text = "None";
         }
 
-        private void undoLog()
+        private void UndoLog()
         {
             if (lstLog.Items.Count == 0) return;
             int amount = log[0, 0];
             int selection = log[0, 1];
-            modHealth(amount * -1, selection);
+            ModHealth(amount * -1, selection);
             if (amount > -1)
             {
-                lblDebug.Text = $"Undid {amount} healing to {getNameFromInitList(selection)}";
+                lblDebug.Text = $"Undid {amount} healing to {GetNameFromInitList(selection)}";
             }
             else
             {
-                lblDebug.Text = $"Undid {amount * -1} damage to {getNameFromInitList(selection)}";
+                lblDebug.Text = $"Undid {amount * -1} damage to {GetNameFromInitList(selection)}";
             }
             // handle reverting the log array and log list
             lstLog.Items.RemoveAt(0);
@@ -110,24 +99,24 @@ namespace BattleManager
             }
         }
 
-        private void modHealth(int i, int index)
+        private void ModHealth(int i, int index)
         {
             if (i == 0) return;
-            Character character = charDict[getNameFromInitList(index)];
-            character.health += i;
-            loadInitiativeReorder();
+            Character character = charDict[GetNameFromInitList(index)];
+            character.Health += i;
+            LoadInitiativeReorder();
             if (i > -1)
             { //healed
-                lblDebug.Text = $"Healed {getNameFromInitList(index)} for {i}";
+                lblDebug.Text = $"Healed {GetNameFromInitList(index)} for {i}";
             }
             else // damaged
             {
-                lblDebug.Text = $"Damaged {getNameFromInitList(index)} for {i * -1}";
+                lblDebug.Text = $"Damaged {GetNameFromInitList(index)} for {i * -1}";
             }
-            loadCharacterDisplay();
+            LoadCharacterDisplay();
         }
 
-        private void appendLog(int amount, int selection)
+        private void AppendLog(int amount, int selection)
         {
             // modify log array
             for (int i = log.GetLength(0) - 1; i > 0; i--)
@@ -139,7 +128,7 @@ namespace BattleManager
             log[0, 1] = selection;
 
             // modify log box
-            string charName = getNameFromInitList(selection);
+            string charName = GetNameFromInitList(selection);
             string logMsg;
             if (amount > -1)
             {
@@ -152,118 +141,103 @@ namespace BattleManager
             lstLog.Items.Insert(0, logMsg);
         }
 
-        private void loadInitiative() // new character is added, sort list by original initiative, then update everyones initiative order
+        private void LoadInitiative() // new character is added, sort list by original initiative, then update everyones initiative order
         {
-            clearInit();
-            foreach (Character c in charDict.Values.OrderByDescending(c => c.init))
+            ClearInit();
+            foreach (Character c in charDict.Values.OrderByDescending(c => c.Init))
             {
-                lstInitiative.Items.Add(charToString(c));
+                lstInitiative.Items.Add(Utility.CharToString(c));
             }
-            updateInitiative();
+            UpdateInitiative();
         }
 
-        private void loadInitiativeReorder() // sort list by hidden initiative order number
+        private void LoadInitiativeReorder() // sort list by hidden initiative order number
         {
-            clearInit();
-            foreach (Character c in charDict.Values.OrderBy(c => c.initOrder))
+            ClearInit();
+            foreach (Character c in charDict.Values.OrderBy(c => c.InitOrder))
             {
-                lstInitiative.Items.Add(charToString(c));
+                lstInitiative.Items.Add(Utility.CharToString(c));
             }
         }
 
-        private void updateInitiative()
+        private void UpdateInitiative()
         {
             for (int i = 2; i < lstInitiative.Items.Count; i++)
             {
-                Character temp = getCharFromInitList(i);
-                temp.initOrder = i;
-                charDict.Remove(temp.name);
-                charDict.Add(temp.name, temp);
+                Character temp = GetCharFromInitList(i);
+                temp.InitOrder = i;
+                charDict.Remove(temp.Name);
+                charDict.Add(temp.Name, temp);
             }
         }
 
-        private string charToString(Character c)
-        {
-            string health;
-            string name = c.name;
-            string ac = c.AC.ToString();
-
-            for (int i = 0; name.Length < 24; i++)
-            {
-                name += " ";
-            }
-
-            if (c.health > 999) c.health = 999; // I don't think anything gets this high?
-
-            if (c.health < 100) health = c.health + " ";
-            else health = c.health.ToString();
-
-            if (c.AC > 99) ac = "99";
-            if (c.AC < 10) ac += " ";
-
-            return $"| {name} | {health} | {ac} |";
-        }
-
-        private string getNameFromInitList(int selection)
+        private string GetNameFromInitList(int selection)
         {
             if (selection < 2) selection = 2;
             else if (selection > lstInitiative.Items.Count - 1) selection = lstInitiative.Items.Count - 1;
             return lstInitiative.Items[selection].ToString().Split("|")[1].Trim();
         }
 
-        private Character getCharFromInitList(int selection)
+        private Character GetCharFromInitList(int selection)
         {
-            return charDict[getNameFromInitList(selection)];
+            return charDict[GetNameFromInitList(selection)];
         }
 
-        private bool isValidSel()
+        private bool IsValidSel()
         {
             if (selIndex >= lstInitiative.Items.Count) return false; return true;
         }
 
-        private void addCharToDict(Character character)
+        private void AddCharToDict(Character character)
         {
-            if (charDict.ContainsKey(character.name)) MessageBox.Show($"{character.name} already exists! It will not be added");
-            else charDict.Add(character.name, character);
+            if (charDict.ContainsKey(character.Name)) MessageBox.Show($"{character.Name} already exists! It will not be added");
+            else charDict.Add(character.Name, character);
         }
 
-        private void loadParties()
+        private void LoadParties()
         {
             cbParty.Items.Clear();
-            foreach (string f in Utility.getPartyFiles())
+            foreach (string f in Utility.GetPartyFiles())
             {
                 cbParty.Items.Add(f.Split("\\")[^1][..^5]);
             }
         }
 
-        private void loadStatblocks()
+        private void LoadStatblocks()
         {
             cbStatBlock.Items.Clear();
-            foreach (string f in Utility.getStatFiles())
+            foreach (string f in Utility.GetStatFiles())
             {
                 cbStatBlock.Items.Add(f.Split("\\")[^1][..^5]);
             }
+        }
+
+        private void ClearInit()
+        {
+            lstInitiative.Items.Clear();
+            lstInitiative.Items.Add("| Name                     | HP  | AC |");
+            lstInitiative.Items.Add("---------------------------------------");
         }
 
         // event functions
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
             // restructure to make pressing the button perform the action with the number in the input box
-            int num = Utility.keyToNum(e);
+            int num = Utility.KeyToNum(e);
             if (num == -1)
             {
                 switch (e.Modifiers)
                 {
-                    case Keys.Control: selIndex = selIndex = (int)numInput.Value + 1; numInput.Value = 0; select(); break;
-                    case Keys.Shift: btnHeal_Click(sender, e); break;
-                    case Keys.Alt: btnDamage_Click(sender, e); e.SuppressKeyPress = true; break;
+                    case Keys.Control: selIndex = selIndex = (int)numInput.Value + 1; numInput.Value = 0; SelectInit(); break;
+                    case Keys.Shift: BtnHeal_Click(sender, e); break;
+                    case Keys.Alt: BtnDamage_Click(sender, e); e.SuppressKeyPress = true; break;
                 }
                 switch (e.KeyCode)
                 {
                     case Keys.Back: numInput.Value = 0; break;
                     // case Keys.Enter: btnChar_Click(sender, e); break; // might be annoying to include
-                    case Keys.Z: undoLog(); break;
-                    case Keys.Delete: btnDelete_Click(sender, e); break;
+                    case Keys.Z: UndoLog(); break;
+                    case Keys.Delete: BtnDelete_Click(sender, e); break;
                 }
             }
             else
@@ -284,28 +258,28 @@ namespace BattleManager
             lstInitiative.Items.Add("---------------------------------------");
 
             // Initialize folders if needed
-            Utility.initializeFolders();
-            loadParties();
-            loadStatblocks();
+            Utility.InitializeFolders();
+            LoadParties();
+            LoadStatblocks();
         }
 
 
         // drag and drop reorder
-        private void lstInitiative_MouseDown(object sender, MouseEventArgs e)
+        private void LstInitiative_MouseDown(object sender, MouseEventArgs e)
         {
             if (lstInitiative.SelectedItem == null) return;
             selIndex = lstInitiative.SelectedIndex;
             if (selIndex < 2) return;
-            select();
+            SelectInit();
             lstInitiative.DoDragDrop(lstInitiative.SelectedItem, DragDropEffects.Move);
         }
 
-        private void lstInitiative_DragOver(object sender, DragEventArgs e)
+        private void LstInitiative_DragOver(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
-        private void lstInitiative_DragDrop(object sender, DragEventArgs e)
+        private void LstInitiative_DragDrop(object sender, DragEventArgs e)
         {
             Point point = lstInitiative.PointToClient(new Point(e.X, e.Y));
             int index = lstInitiative.IndexFromPoint(point);
@@ -315,14 +289,14 @@ namespace BattleManager
             object data = e.Data.GetData(typeof(String));
             lstInitiative.Items.Remove(data);
             lstInitiative.Items.Insert(index, data);
-            updateInitiative();
-            loadCharacterDisplay();
+            UpdateInitiative();
+            LoadCharacterDisplay();
         }
         // end drag and drop reorder
 
 
         // BUTTONS
-        private void btnChar_Click(object sender, EventArgs e)
+        private void BtnChar_Click(object sender, EventArgs e)
         {
             int niV = (int)numInput.Value;
             for (int i = 1; i <= niV; i++)
@@ -333,37 +307,37 @@ namespace BattleManager
                 {
                     foreach (Character dupe in win.duplicates)
                     {
-                        addCharToDict(dupe);
+                        AddCharToDict(dupe);
                     }
                 }
-                else addCharToDict(win.character);
+                else AddCharToDict(win.character);
             }
             // clear initiative and redraw it for each person in the charDict
-            loadInitiative();
+            LoadInitiative();
         }
 
-        private void btnHeal_Click(object sender, EventArgs e)
+        private void BtnHeal_Click(object sender, EventArgs e)
         {
-            if (!isValidSel()) return;
+            if (!IsValidSel()) return;
             int num = (int)numInput.Value;
             if (num == 0) return;
-            modHealth(num, selIndex);
-            appendLog(num, selIndex);
+            ModHealth(num, selIndex);
+            AppendLog(num, selIndex);
         }
 
-        private void btnDamage_Click(object sender, EventArgs e)
+        private void BtnDamage_Click(object sender, EventArgs e)
         {
-            if (!isValidSel()) return;
+            if (!IsValidSel()) return;
             int num = (int)numInput.Value * -1;
             if (num == 0) return;
-            modHealth(num, selIndex);
-            appendLog(num, selIndex);
+            ModHealth(num, selIndex);
+            AppendLog(num, selIndex);
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void BtnClear_Click(object sender, EventArgs e)
         {
             charDict.Clear();
-            clearInit();
+            ClearInit();
             lstLog.Items.Clear();
             for (int i = 0; i < log.GetLength(0); i++)
             {
@@ -373,94 +347,87 @@ namespace BattleManager
             lblDebug.Text = "Welcome to BattleManager!";
         }
 
-        private void clearInit()
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
-            lstInitiative.Items.Clear();
-            lstInitiative.Items.Add("| Name                     | HP  | AC |");
-            lstInitiative.Items.Add("---------------------------------------");
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (!isValidSel()) return;
+            if (!IsValidSel()) return;
+            charDict.Remove(GetCharFromInitList(selIndex).Name);
             lstInitiative.Items.RemoveAt(selIndex);
-            charDict.Remove(getCharFromInitList(selIndex).name);
         }
 
-        private void btnDebugChars_Click(object sender, EventArgs e)
+        private void BtnDebugChars_Click(object sender, EventArgs e)
         {
             for (int i = 1; i <= 3; i++)
             {
                 Character character = new(name: $"char{i}", AC: 10 + i, health: 20 + i);
-                addCharToDict(character);
+                AddCharToDict(character);
             }
-            loadInitiative();
+            LoadInitiative();
         }
 
-        private void btnUndo_Click(object sender, EventArgs e)
+        private void BtnUndo_Click(object sender, EventArgs e)
         {
-            undoLog();
+            UndoLog();
         }
 
-        private void btnCreateParty_Click(object sender, EventArgs e)
+        private void BtnCreateParty_Click(object sender, EventArgs e)
         {
             addParty win = new();
             win.ShowDialog();
-            loadParties();
+            LoadParties();
         }
 
-        private void btnDeleteParty_Click(object sender, EventArgs e)
+        private void BtnDeleteParty_Click(object sender, EventArgs e)
         {
-            Utility.deletePartyFile(cbParty.Text);
+            Utility.DeletePartyFile(cbParty.Text);
             cbParty.Text = "";
-            loadParties();
+            LoadParties();
         }
 
-        private void btnAddParty_Click(object sender, EventArgs e)
+        private void BtnAddParty_Click(object sender, EventArgs e)
         {
-            if (Utility.getParty(cbParty.Text) == null) return;
-            foreach (Character c in Utility.getParty(cbParty.Text).Values)
+            if (Utility.GetParty(cbParty.Text) == null) return;
+            foreach (Character c in Utility.GetParty(cbParty.Text).Values)
             {
                 addChar win = new(c);
                 win.ShowDialog();
-                addCharToDict(win.character);
+                AddCharToDict(win.character);
             }
-            loadInitiative();
+            LoadInitiative();
         }
 
-        private void btnEditParty_Click(object sender, EventArgs e)
+        private void BtnEditParty_Click(object sender, EventArgs e)
         {
             Dictionary<string, Character> members = new();
-            if (Utility.getParty(cbParty.Text) == null) return;
-            foreach (Character c in Utility.getParty(cbParty.Text).Values)
+            if (Utility.GetParty(cbParty.Text) == null) return;
+            foreach (Character c in Utility.GetParty(cbParty.Text).Values)
             {
                 addChar win = new(c);
                 win.ShowDialog();
-                members.Add(win.character.name, win.character);
+                members.Add(win.character.Name, win.character);
             }
-            Utility.writePartyFile(cbParty.Text, members);
+            Utility.WritePartyFile(cbParty.Text, members);
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if (!isValidSel()) return;
-            Character c = getCharFromInitList(selIndex);
-            charDict.Remove(c.name);
+            if (!IsValidSel()) return;
+            Character c = GetCharFromInitList(selIndex);
+            charDict.Remove(c.Name);
             addChar win = new(c);
             win.ShowDialog();
-            addCharToDict(win.character);
-            loadInitiativeReorder();
-            loadCharacterDisplay();
+            AddCharToDict(win.character);
+            LoadInitiativeReorder();
+            LoadCharacterDisplay();
         }
 
-        private void btnMore_Click(object sender, EventArgs e)
+        private void BtnMore_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not Implemented");
         }
 
-        private void numInput_KeyDown(object sender, KeyEventArgs e)
+        private void NumInput_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Utility.keyToNum(e) != -1) 
+            if (Utility.KeyToNum(e) != -1) 
             {
                 e.SuppressKeyPress = true;
             }

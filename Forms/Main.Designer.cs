@@ -115,9 +115,9 @@
             lstInitiative.Name = "lstInitiative";
             lstInitiative.Size = new System.Drawing.Size(370, 655);
             lstInitiative.TabIndex = 2;
-            lstInitiative.DragDrop += lstInitiative_DragDrop;
-            lstInitiative.DragOver += lstInitiative_DragOver;
-            lstInitiative.MouseDown += lstInitiative_MouseDown;
+            lstInitiative.DragDrop += LstInitiative_DragDrop;
+            lstInitiative.DragOver += LstInitiative_DragOver;
+            lstInitiative.MouseDown += LstInitiative_MouseDown;
             // 
             // btnChar
             // 
@@ -128,7 +128,7 @@
             btnChar.TabIndex = 3;
             btnChar.Text = "Add Chars";
             btnChar.UseVisualStyleBackColor = true;
-            btnChar.Click += btnChar_Click;
+            btnChar.Click += BtnChar_Click;
             // 
             // numInput
             // 
@@ -138,7 +138,7 @@
             numInput.Name = "numInput";
             numInput.Size = new System.Drawing.Size(93, 23);
             numInput.TabIndex = 9;
-            numInput.KeyDown += numInput_KeyDown;
+            numInput.KeyDown += NumInput_KeyDown;
             // 
             // lblDebug
             // 
@@ -160,7 +160,7 @@
             btnClear.TabIndex = 16;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
+            btnClear.Click += BtnClear_Click;
             // 
             // btnDebugChars
             // 
@@ -171,7 +171,7 @@
             btnDebugChars.TabIndex = 17;
             btnDebugChars.Text = "Add Test Characters";
             btnDebugChars.UseVisualStyleBackColor = true;
-            btnDebugChars.Click += btnDebugChars_Click;
+            btnDebugChars.Click += BtnDebugChars_Click;
             // 
             // lstLog
             // 
@@ -193,7 +193,7 @@
             btnHeal.TabIndex = 19;
             btnHeal.Text = "Heal";
             btnHeal.UseVisualStyleBackColor = true;
-            btnHeal.Click += btnHeal_Click;
+            btnHeal.Click += BtnHeal_Click;
             // 
             // btnDamage
             // 
@@ -204,7 +204,7 @@
             btnDamage.TabIndex = 20;
             btnDamage.Text = "Damage";
             btnDamage.UseVisualStyleBackColor = true;
-            btnDamage.Click += btnDamage_Click;
+            btnDamage.Click += BtnDamage_Click;
             // 
             // btnUndo
             // 
@@ -215,7 +215,7 @@
             btnUndo.TabIndex = 21;
             btnUndo.Text = "Undo";
             btnUndo.UseVisualStyleBackColor = true;
-            btnUndo.Click += btnUndo_Click;
+            btnUndo.Click += BtnUndo_Click;
             // 
             // btnDelete
             // 
@@ -226,7 +226,7 @@
             btnDelete.TabIndex = 22;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+            btnDelete.Click += BtnDelete_Click;
             // 
             // pnlMain
             // 
@@ -252,7 +252,7 @@
             btnEdit.TabIndex = 23;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
+            btnEdit.Click += BtnEdit_Click;
             // 
             // btnCreateParty
             // 
@@ -262,7 +262,7 @@
             btnCreateParty.TabIndex = 0;
             btnCreateParty.Text = "Create Party";
             btnCreateParty.UseVisualStyleBackColor = true;
-            btnCreateParty.Click += btnCreateParty_Click;
+            btnCreateParty.Click += BtnCreateParty_Click;
             // 
             // btnAddParty
             // 
@@ -272,7 +272,7 @@
             btnAddParty.TabIndex = 1;
             btnAddParty.Text = "Add\r\nParty";
             btnAddParty.UseVisualStyleBackColor = true;
-            btnAddParty.Click += btnAddParty_Click;
+            btnAddParty.Click += BtnAddParty_Click;
             // 
             // btnDeleteParty
             // 
@@ -282,7 +282,7 @@
             btnDeleteParty.TabIndex = 2;
             btnDeleteParty.Text = "Delete Party";
             btnDeleteParty.UseVisualStyleBackColor = true;
-            btnDeleteParty.Click += btnDeleteParty_Click;
+            btnDeleteParty.Click += BtnDeleteParty_Click;
             // 
             // gpParty
             // 
@@ -306,7 +306,7 @@
             btnEditParty.TabIndex = 4;
             btnEditParty.Text = "Edit\r\nParty";
             btnEditParty.UseVisualStyleBackColor = true;
-            btnEditParty.Click += btnEditParty_Click;
+            btnEditParty.Click += BtnEditParty_Click;
             // 
             // cbParty
             // 
@@ -418,7 +418,7 @@
             btnMore.TabIndex = 5;
             btnMore.Text = "More Info";
             btnMore.UseVisualStyleBackColor = true;
-            btnMore.Click += btnMore_Click;
+            btnMore.Click += BtnMore_Click;
             // 
             // gpImmunities
             // 

@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BattleManager.Forms
@@ -20,12 +13,12 @@ namespace BattleManager.Forms
 
         public Dictionary<string, Character> members = new();
 
-        private void addParty_Load(object sender, EventArgs e)
+        private void AddParty_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnDone_Click(object sender, EventArgs e)
+        private void BtnDone_Click(object sender, EventArgs e)
         {
             for (int i = 1; i <= numCount.Value; i++)
             {
@@ -33,9 +26,9 @@ namespace BattleManager.Forms
                 win.numInit.Enabled = false;
                 win.txtName.Text = $"Party {i}";
                 win.ShowDialog();
-                members.Add(win.character.name, win.character);
+                members.Add(win.character.Name, win.character);
             }
-            Utility.writePartyFile(txtPartyName.Text, members);
+            Utility.WritePartyFile(txtPartyName.Text, members);
             Close();
         }
     }

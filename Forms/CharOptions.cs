@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BattleManager.Character;
 
@@ -25,111 +18,111 @@ namespace BattleManager.Forms
 
         private void CharOptions_Load(object sender, EventArgs e)
         {
-            numStr.Value = character.stats[Stat.Str][0];
-            numDex.Value = character.stats[Stat.Dex][0];
-            numCon.Value = character.stats[Stat.Con][0];
-            numInt.Value = character.stats[Stat.Int][0];
-            numWis.Value = character.stats[Stat.Wis][0];
-            numCha.Value = character.stats[Stat.Cha][0];
-            chkStrAdv.Checked = character.stats[Stat.Str][2] == 1;
-            chkDexAdv.Checked = character.stats[Stat.Dex][2] == 1;
-            chkConAdv.Checked = character.stats[Stat.Con][2] == 1;
-            chkIntAdv.Checked = character.stats[Stat.Int][2] == 1;
-            chkWisAdv.Checked = character.stats[Stat.Wis][2] == 1;
-            chkChaAdv.Checked = character.stats[Stat.Cha][2] == 1;
-            numLevel.Value = character.level;
-            numStrMod.Value = character.stats[Stat.Str][1];
-            numDexMod.Value = character.stats[Stat.Dex][1];
-            numConMod.Value = character.stats[Stat.Con][1];
-            numIntMod.Value = character.stats[Stat.Int][1];
-            numWisMod.Value = character.stats[Stat.Wis][1];
-            numChaMod.Value = character.stats[Stat.Cha][1];
+            numStr.Value = character.Stats[Stat.Str][0];
+            numDex.Value = character.Stats[Stat.Dex][0];
+            numCon.Value = character.Stats[Stat.Con][0];
+            numInt.Value = character.Stats[Stat.Int][0];
+            numWis.Value = character.Stats[Stat.Wis][0];
+            numCha.Value = character.Stats[Stat.Cha][0];
+            chkStrAdv.Checked = character.Stats[Stat.Str][2] == 1;
+            chkDexAdv.Checked = character.Stats[Stat.Dex][2] == 1;
+            chkConAdv.Checked = character.Stats[Stat.Con][2] == 1;
+            chkIntAdv.Checked = character.Stats[Stat.Int][2] == 1;
+            chkWisAdv.Checked = character.Stats[Stat.Wis][2] == 1;
+            chkChaAdv.Checked = character.Stats[Stat.Cha][2] == 1;
+            numLevel.Value = character.Level;
+            numStrMod.Value = character.Stats[Stat.Str][1];
+            numDexMod.Value = character.Stats[Stat.Dex][1];
+            numConMod.Value = character.Stats[Stat.Con][1];
+            numIntMod.Value = character.Stats[Stat.Int][1];
+            numWisMod.Value = character.Stats[Stat.Wis][1];
+            numChaMod.Value = character.Stats[Stat.Cha][1];
 
-            switch (character.resistances[DmgType.Acid])
+            switch (character.Resistances[DmgType.Acid])
             {
                 case ResType.Resistant: rdbAcidR.Checked = true; break;
                 case ResType.Vulnerable: rdbAcidV.Checked = true; break;
                 case ResType.Immune: rdbAcidI.Checked = true; break;
                 case ResType.None: rdbAcidN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Cold])
+            switch (character.Resistances[DmgType.Cold])
             {
                 case ResType.Resistant: rdbColdR.Checked = true; break;
                 case ResType.Vulnerable: rdbColdV.Checked = true; break;
                 case ResType.Immune: rdbColdI.Checked = true; break;
                 case ResType.None: rdbColdN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Fire])
+            switch (character.Resistances[DmgType.Fire])
             {
                 case ResType.Resistant: rdbFireR.Checked = true; break;
                 case ResType.Vulnerable: rdbFireV.Checked = true; break;
                 case ResType.Immune: rdbFireI.Checked = true; break;
                 case ResType.None: rdbFireN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Force])
+            switch (character.Resistances[DmgType.Force])
             {
                 case ResType.Resistant: rdbForceR.Checked = true; break;
                 case ResType.Vulnerable: rdbForceV.Checked = true; break;
                 case ResType.Immune: rdbForceI.Checked = true; break;
                 case ResType.None: rdbForceN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Lightning])
+            switch (character.Resistances[DmgType.Lightning])
             {
                 case ResType.Resistant: rdbLightningR.Checked = true; break;
                 case ResType.Vulnerable: rdbLightningV.Checked = true; break;
                 case ResType.Immune: rdbLightningI.Checked = true; break;
                 case ResType.None: rdbLightningN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Necrotic])
+            switch (character.Resistances[DmgType.Necrotic])
             {
                 case ResType.Resistant: rdbNecroticR.Checked = true; break;
                 case ResType.Vulnerable: rdbNecroticV.Checked = true; break;
                 case ResType.Immune: rdbNecroticI.Checked = true; break;
                 case ResType.None: rdbNecroticN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Poison])
+            switch (character.Resistances[DmgType.Poison])
             {
                 case ResType.Resistant: rdbPoisonR.Checked = true; break;
                 case ResType.Vulnerable: rdbPoisonV.Checked = true; break;
                 case ResType.Immune: rdbPoisonI.Checked = true; break;
                 case ResType.None: rdbPoisonN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Psychic])
+            switch (character.Resistances[DmgType.Psychic])
             {
                 case ResType.Resistant: rdbPsychicR.Checked = true; break;
                 case ResType.Vulnerable: rdbPsychicV.Checked = true; break;
                 case ResType.Immune: rdbPsychicI.Checked = true; break;
                 case ResType.None: rdbPsychicN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Radiant])
+            switch (character.Resistances[DmgType.Radiant])
             {
                 case ResType.Resistant: rdbRadiantR.Checked = true; break;
                 case ResType.Vulnerable: rdbRadiantV.Checked = true; break;
                 case ResType.Immune: rdbRadiantI.Checked = true; break;
                 case ResType.None: rdbRadiantN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Thunder])
+            switch (character.Resistances[DmgType.Thunder])
             {
                 case ResType.Resistant: rdbThunderR.Checked = true; break;
                 case ResType.Vulnerable: rdbThunderV.Checked = true; break;
                 case ResType.Immune: rdbThunderI.Checked = true; break;
                 case ResType.None: rdbThunderN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Bludgeoning])
+            switch (character.Resistances[DmgType.Bludgeoning])
             {
                 case ResType.Resistant: rdbBludgeoningR.Checked = true; break;
                 case ResType.Vulnerable: rdbBludgeoningV.Checked = true; break;
                 case ResType.Immune: rdbBludgeoningI.Checked = true; break;
                 case ResType.None: rdbBludgeoningN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Piercing])
+            switch (character.Resistances[DmgType.Piercing])
             {
                 case ResType.Resistant: rdbPiercingR.Checked = true; break;
                 case ResType.Vulnerable: rdbPiercingV.Checked = true; break;
                 case ResType.Immune: rdbPiercingI.Checked = true; break;
                 case ResType.None: rdbPiercingN.Checked = true; break;
             }
-            switch (character.resistances[DmgType.Slashing])
+            switch (character.Resistances[DmgType.Slashing])
             {
                 case ResType.Resistant: rdbSlashingR.Checked = true; break;
                 case ResType.Vulnerable: rdbSlashingV.Checked = true; break;
@@ -142,18 +135,19 @@ namespace BattleManager.Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnDone_Click(sender, e);
+                BtnDone_Click(sender, e);
             }
         }
 
-        private void btnDone_Click(object sender, EventArgs e)
+        private void BtnDone_Click(object sender, EventArgs e)
         {
-            character.resistances = getResDict();
-            character.stats = getStatDict();
+            character.Resistances = GetResDict();
+            character.Stats = GetStatDict();
+            character.Level = (int)numLevel.Value;
             Close();
         }
 
-        private Dictionary<Stat, int[]> getStatDict()
+        private Dictionary<Stat, int[]> GetStatDict()
         {
             return new Dictionary<Stat, int[]>()
             {
@@ -166,7 +160,7 @@ namespace BattleManager.Forms
             };
         }
 
-        private Dictionary<DmgType, ResType> getResDict()
+        private Dictionary<DmgType, ResType> GetResDict()
         {
             return new Dictionary<DmgType, ResType>()
             {
@@ -200,44 +194,44 @@ namespace BattleManager.Forms
 
         }
 
-        private void numStr_ValueChanged(object sender, EventArgs e)
+        private void NumStr_ValueChanged(object sender, EventArgs e)
         {
-            numStrMod.Value = Utility.getMod((int)numStr.Value, (int)numLevel.Value, chkStrAdv.Checked);
+            numStrMod.Value = Utility.GetMod((int)numStr.Value, (int)numLevel.Value, chkStrAdv.Checked);
         }
 
-        private void numDex_ValueChanged(object sender, EventArgs e)
+        private void NumDex_ValueChanged(object sender, EventArgs e)
         {
-            numDexMod.Value = Utility.getMod((int)numDex.Value, (int)numLevel.Value, chkDexAdv.Checked);
+            numDexMod.Value = Utility.GetMod((int)numDex.Value, (int)numLevel.Value, chkDexAdv.Checked);
         }
 
-        private void numCon_ValueChanged(object sender, EventArgs e)
+        private void NumCon_ValueChanged(object sender, EventArgs e)
         {
-            numConMod.Value = Utility.getMod((int)numCon.Value, (int)numLevel.Value, chkConAdv.Checked);
+            numConMod.Value = Utility.GetMod((int)numCon.Value, (int)numLevel.Value, chkConAdv.Checked);
         }
 
-        private void numInt_ValueChanged(object sender, EventArgs e)
+        private void NumInt_ValueChanged(object sender, EventArgs e)
         {
-            numIntMod.Value = Utility.getMod((int)numInt.Value, (int)numLevel.Value, chkIntAdv.Checked);
+            numIntMod.Value = Utility.GetMod((int)numInt.Value, (int)numLevel.Value, chkIntAdv.Checked);
         }
 
-        private void numWis_ValueChanged(object sender, EventArgs e)
+        private void NumWis_ValueChanged(object sender, EventArgs e)
         {
-            numWisMod.Value = Utility.getMod((int)numWis.Value, (int)numLevel.Value, chkWisAdv.Checked);
+            numWisMod.Value = Utility.GetMod((int)numWis.Value, (int)numLevel.Value, chkWisAdv.Checked);
         }
 
-        private void numCha_ValueChanged(object sender, EventArgs e)
+        private void NumCha_ValueChanged(object sender, EventArgs e)
         {
-            numChaMod.Value = Utility.getMod((int)numCha.Value, (int)numLevel.Value, chkChaAdv.Checked);
+            numChaMod.Value = Utility.GetMod((int)numCha.Value, (int)numLevel.Value, chkChaAdv.Checked);
         }
 
-        private void numLevel_ValueChanged(object sender, EventArgs e)
+        private void NumLevel_ValueChanged(object sender, EventArgs e)
         {
-            numStr_ValueChanged(sender, e);
-            numDex_ValueChanged(sender, e);
-            numCon_ValueChanged(sender, e);
-            numInt_ValueChanged(sender, e);
-            numWis_ValueChanged(sender, e);
-            numCha_ValueChanged(sender, e);
+            NumStr_ValueChanged(sender, e);
+            NumDex_ValueChanged(sender, e);
+            NumCon_ValueChanged(sender, e);
+            NumInt_ValueChanged(sender, e);
+            NumWis_ValueChanged(sender, e);
+            NumCha_ValueChanged(sender, e);
         }
     }
 }

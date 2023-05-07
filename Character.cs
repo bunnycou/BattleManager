@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 
 namespace BattleManager
 {
@@ -44,7 +39,7 @@ namespace BattleManager
             Slashing
         }
 
-        private Dictionary<Stat, int[]> defaultSaves()
+        private static Dictionary<Stat, int[]> DefaultSaves()
         {
             return new Dictionary<Stat, int[]>() // [stat, mod, prof]
             {
@@ -57,7 +52,7 @@ namespace BattleManager
             };
         }
 
-        private Dictionary<DmgType, ResType> defaultRes()
+        private static Dictionary<DmgType, ResType> DefaultRes()
         {
             return new Dictionary<DmgType, ResType>()
             {
@@ -81,14 +76,14 @@ namespace BattleManager
         {
             return new Character
                 (
-                name: this.name, 
-                init: this.init, 
-                initOrder: this.initOrder, 
-                health: this.health, 
+                name: this.Name, 
+                init: this.Init, 
+                initOrder: this.InitOrder, 
+                health: this.Health, 
                 AC: this.AC, 
-                level: this.level, 
-                stats: this.stats, 
-                resistances: this.resistances
+                level: this.Level, 
+                stats: this.Stats, 
+                resistances: this.Resistances
                 );
         }
 
@@ -104,24 +99,24 @@ namespace BattleManager
             Dictionary<DmgType, ResType> resistances = null
             )
         {
-            this.name = name;
-            this.init = init;
-            this.initOrder = initOrder;
-            this.health = health;
+            this.Name = name;
+            this.Init = init;
+            this.InitOrder = initOrder;
+            this.Health = health;
             this.AC = AC;
-            this.level = level;
-            this.stats = stats ?? defaultSaves();
-            this.resistances = resistances ?? defaultRes();
+            this.Level = level;
+            this.Stats = stats ?? DefaultSaves();
+            this.Resistances = resistances ?? DefaultRes();
         }
 
-        public Dictionary<string, string> actions { get; set; }
-        public Dictionary<Stat, int[]> stats { get; set; }
-        public Dictionary<DmgType, ResType> resistances { get; set; }
-        public string name { get; set; }
-        public int init { get; set; }
-        public int health { get; set; }
+        public Dictionary<string, string> Actions { get; set; }
+        public Dictionary<Stat, int[]> Stats { get; set; }
+        public Dictionary<DmgType, ResType> Resistances { get; set; }
+        public string Name { get; set; }
+        public int Init { get; set; }
+        public int Health { get; set; }
         public int AC { get; set; }
-        public int level { get; set; }
-        public int initOrder { get; set; }
+        public int Level { get; set; }
+        public int InitOrder { get; set; }
     }
 }

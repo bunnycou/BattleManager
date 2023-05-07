@@ -106,7 +106,7 @@
             txtName.Size = new System.Drawing.Size(139, 23);
             txtName.TabIndex = 1;
             txtName.Text = "Char";
-            txtName.TextChanged += txtName_TextChanged;
+            txtName.TextChanged += TxtName_TextChanged;
             // 
             // btnDone
             // 
@@ -118,7 +118,7 @@
             btnDone.TabIndex = 5;
             btnDone.Text = "Finish";
             btnDone.UseVisualStyleBackColor = true;
-            btnDone.Click += btnDone_Click;
+            btnDone.Click += BtnDone_Click;
             // 
             // numInit
             // 
@@ -148,7 +148,7 @@
             btnOptions.TabIndex = 6;
             btnOptions.Text = "Advanced Options";
             btnOptions.UseVisualStyleBackColor = true;
-            btnOptions.Click += btnOptions_Click;
+            btnOptions.Click += BtnOptions_Click;
             // 
             // numDuplicate
             // 
@@ -170,7 +170,7 @@
             chkDuplicate.TabIndex = 8;
             chkDuplicate.Text = "Make Duplicates?";
             chkDuplicate.UseVisualStyleBackColor = true;
-            chkDuplicate.CheckedChanged += chkDuplicate_CheckedChanged;
+            chkDuplicate.CheckedChanged += ChkDuplicate_CheckedChanged;
             // 
             // addChar
             // 
@@ -194,8 +194,8 @@
             Name = "addChar";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Character";
-            Load += addChar_Load;
-            KeyDown += onEnter;
+            Load += AddChar_Load;
+            KeyDown += OnEnter;
             ((System.ComponentModel.ISupportInitialize)numHealth).EndInit();
             ((System.ComponentModel.ISupportInitialize)numAC).EndInit();
             ((System.ComponentModel.ISupportInitialize)numInit).EndInit();

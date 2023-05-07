@@ -1387,7 +1387,7 @@
             numLevel.Size = new System.Drawing.Size(44, 23);
             numLevel.TabIndex = 14;
             numLevel.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numLevel.ValueChanged += numLevel_ValueChanged;
+            numLevel.ValueChanged += NumLevel_ValueChanged;
             // 
             // lblLevel
             // 
@@ -1411,7 +1411,7 @@
             chkChaAdv.Size = new System.Drawing.Size(17, 24);
             chkChaAdv.TabIndex = 12;
             chkChaAdv.UseVisualStyleBackColor = true;
-            chkChaAdv.CheckedChanged += numCha_ValueChanged;
+            chkChaAdv.CheckedChanged += NumCha_ValueChanged;
             // 
             // chkWisAdv
             // 
@@ -1423,7 +1423,7 @@
             chkWisAdv.Size = new System.Drawing.Size(17, 24);
             chkWisAdv.TabIndex = 11;
             chkWisAdv.UseVisualStyleBackColor = true;
-            chkWisAdv.CheckedChanged += numWis_ValueChanged;
+            chkWisAdv.CheckedChanged += NumWis_ValueChanged;
             // 
             // chkIntAdv
             // 
@@ -1435,7 +1435,7 @@
             chkIntAdv.Size = new System.Drawing.Size(17, 24);
             chkIntAdv.TabIndex = 10;
             chkIntAdv.UseVisualStyleBackColor = true;
-            chkIntAdv.CheckedChanged += numInt_ValueChanged;
+            chkIntAdv.CheckedChanged += NumInt_ValueChanged;
             // 
             // chkConAdv
             // 
@@ -1447,7 +1447,7 @@
             chkConAdv.Size = new System.Drawing.Size(17, 24);
             chkConAdv.TabIndex = 9;
             chkConAdv.UseVisualStyleBackColor = true;
-            chkConAdv.CheckedChanged += numCon_ValueChanged;
+            chkConAdv.CheckedChanged += NumCon_ValueChanged;
             // 
             // chkDexAdv
             // 
@@ -1459,7 +1459,7 @@
             chkDexAdv.Size = new System.Drawing.Size(17, 24);
             chkDexAdv.TabIndex = 8;
             chkDexAdv.UseVisualStyleBackColor = true;
-            chkDexAdv.CheckedChanged += numDex_ValueChanged;
+            chkDexAdv.CheckedChanged += NumDex_ValueChanged;
             // 
             // numStr
             // 
@@ -1471,7 +1471,7 @@
             numStr.Size = new System.Drawing.Size(44, 23);
             numStr.TabIndex = 1;
             numStr.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numStr.ValueChanged += numStr_ValueChanged;
+            numStr.ValueChanged += NumStr_ValueChanged;
             // 
             // numDex
             // 
@@ -1483,7 +1483,7 @@
             numDex.Size = new System.Drawing.Size(44, 23);
             numDex.TabIndex = 2;
             numDex.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numDex.ValueChanged += numDex_ValueChanged;
+            numDex.ValueChanged += NumDex_ValueChanged;
             // 
             // numCon
             // 
@@ -1495,7 +1495,7 @@
             numCon.Size = new System.Drawing.Size(44, 23);
             numCon.TabIndex = 3;
             numCon.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numCon.ValueChanged += numCon_ValueChanged;
+            numCon.ValueChanged += NumCon_ValueChanged;
             // 
             // numInt
             // 
@@ -1507,7 +1507,7 @@
             numInt.Size = new System.Drawing.Size(44, 23);
             numInt.TabIndex = 4;
             numInt.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numInt.ValueChanged += numInt_ValueChanged;
+            numInt.ValueChanged += NumInt_ValueChanged;
             // 
             // numWis
             // 
@@ -1519,7 +1519,7 @@
             numWis.Size = new System.Drawing.Size(44, 23);
             numWis.TabIndex = 5;
             numWis.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numWis.ValueChanged += numWis_ValueChanged;
+            numWis.ValueChanged += NumWis_ValueChanged;
             // 
             // numCha
             // 
@@ -1531,7 +1531,7 @@
             numCha.Size = new System.Drawing.Size(44, 23);
             numCha.TabIndex = 6;
             numCha.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numCha.ValueChanged += numCha_ValueChanged;
+            numCha.ValueChanged += NumCha_ValueChanged;
             // 
             // lblStrength
             // 
@@ -1615,7 +1615,7 @@
             chkStrAdv.Size = new System.Drawing.Size(17, 24);
             chkStrAdv.TabIndex = 7;
             chkStrAdv.UseVisualStyleBackColor = true;
-            chkStrAdv.CheckedChanged += numStr_ValueChanged;
+            chkStrAdv.CheckedChanged += NumStr_ValueChanged;
             // 
             // btnDone
             // 
@@ -1627,7 +1627,7 @@
             btnDone.TabIndex = 3;
             btnDone.Text = "Done";
             btnDone.UseVisualStyleBackColor = true;
-            btnDone.Click += btnDone_Click;
+            btnDone.Click += BtnDone_Click;
             // 
             // panel1
             // 

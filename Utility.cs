@@ -2,10 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BattleManager
@@ -17,7 +14,7 @@ namespace BattleManager
         static readonly string stats = $"{bm}/statblocks";
         static readonly string parties = $"{bm}/party";
 
-        public static int keyToNum(KeyEventArgs e)
+        public static int KeyToNum(KeyEventArgs e)
         {
             return e.KeyData switch
             {
@@ -35,7 +32,37 @@ namespace BattleManager
             };
         }
 
-        public static int getProfMod(int level)
+        public static string CharToString(Character c)
+        {
+            string health;
+            string name = c.Name;
+            string ac = c.AC.ToString();
+
+            for (int i = 0; name.Length < 24; i++)
+            {
+                name += " ";
+            }
+
+            if (c.Health > 999) c.Health = 999; // I don't think anything gets this high?
+
+            if (c.Health < 100) health = c.Health + " ";
+            else health = c.Health.ToString();
+
+            if (c.AC > 99) ac = "99";
+            if (c.AC < 10) ac += " ";
+
+            return $"| {name} | {health} | {ac} |";
+        }
+
+        public static string GetStatString(Character c, Character.Stat stat)
+        {
+            string result = c.Stats[stat][0].ToString() + " (";
+            if (c.Stats[stat][1] > -1) result += "+" + c.Stats[stat][1] + ")";
+            else result += c.Stats[stat][1] + ")";
+            return result;
+        }
+
+        public static int GetProfMod(int level)
         {
             return level switch
             {
@@ -48,7 +75,7 @@ namespace BattleManager
             };
         }
 
-        public static int getStatMod(int stat)
+        public static int GetStatMod(int stat)
         {
             return stat switch
             {
@@ -72,52 +99,52 @@ namespace BattleManager
             };
         }
 
-        public static int getMod(int stat, int level, bool prof)
+        public static int GetMod(int stat, int level, bool prof)
         {
-            return prof ? getStatMod(stat) + getProfMod(level) : getStatMod(stat);
+            return prof ? GetStatMod(stat) + GetProfMod(level) : GetStatMod(stat);
         }
 
-        public static void writePartyFile(string name, Dictionary<string, Character> obj)
+        public static void WritePartyFile(string name, Dictionary<string, Character> obj)
         {
             string path = $"{parties}/{name}.json";
             string content = JsonSerializer.Serialize(obj, new JsonSerializerOptions() { WriteIndented = true });
             File.WriteAllText(path, content);
         }
 
-        public static void deletePartyFile(string name)
+        public static void DeletePartyFile(string name)
         {
             string path = $"{parties}/{name}.json";
             if (File.Exists(path)) File.Delete(path);
         }
 
-        public static Dictionary<string, Character> getParty(string name)
+        public static Dictionary<string, Character> GetParty(string name)
         {
             string path = $"{parties}/{name}.json";
             if (File.Exists(path)) return JsonSerializer.Deserialize<Dictionary<string, Character>>(File.ReadAllText(path));
             else return null;
         }
 
-        public static IEnumerable getPartyFiles()
+        public static IEnumerable GetPartyFiles()
         {
             return Directory.EnumerateFiles(parties);
 
         }
 
-        public static IEnumerable getStatFiles()
+        public static IEnumerable GetStatFiles()
         {
             return Directory.EnumerateFiles(stats);
         }
 
-        public static void makeFolder(string name)
+        public static void MakeFolder(string name)
         {
             string path = $"{bm}/{name}";
             Directory.CreateDirectory(path);
         }
 
-        public static void initializeFolders()
+        public static void InitializeFolders()
         {
-            makeFolder("party");
-            makeFolder("statblocks");
+            MakeFolder("party");
+            MakeFolder("statblocks");
         }
     }
 }

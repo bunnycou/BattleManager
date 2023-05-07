@@ -106,7 +106,7 @@
             btnDone.TabIndex = 3;
             btnDone.Text = "Create Party";
             btnDone.UseVisualStyleBackColor = true;
-            btnDone.Click += btnDone_Click;
+            btnDone.Click += BtnDone_Click;
             // 
             // addParty
             // 
@@ -117,7 +117,7 @@
             Controls.Add(tblParty);
             Name = "addParty";
             Text = "New Party";
-            Load += addParty_Load;
+            Load += AddParty_Load;
             tblParty.ResumeLayout(false);
             tblParty.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numCount).EndInit();
