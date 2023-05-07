@@ -76,8 +76,7 @@ namespace BattleManager
         {
             CharOptions charOptions = new(txtName.Text, character);
             charOptions.ShowDialog();
-            character.stats = charOptions.character.stats;
-            character.resistances = charOptions.character.resistances;
+            character = charOptions.character;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
