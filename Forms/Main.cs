@@ -144,8 +144,13 @@ namespace BattleManager
 
         private void LoadInitiative() // new character is added, sort list by original initiative, then update everyones initiative order
         {
-            ClearInit();
+            List<Character> newChars = new();
             foreach (Character c in charDict.Values.OrderByDescending(c => c.Init))
+            {
+                if (c.InitOrder == -1) newChars.Add(c);
+                // lstInitiative.Items.Add(Utility.CharToString(c));
+            }
+            foreach (Character c in newChars.OrderByDescending(c => c.Init))
             {
                 lstInitiative.Items.Add(Utility.CharToString(c));
             }
@@ -184,7 +189,7 @@ namespace BattleManager
 
         private bool IsValidSel()
         {
-            if (selIndex >= lstInitiative.Items.Count) return false; return true;
+            if (selIndex >= lstInitiative.Items.Count || selIndex < 2) return false; return true;
         }
 
         private void AddCharToDict(Character character)

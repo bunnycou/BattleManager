@@ -116,6 +116,7 @@
             rdbSlashingV = new System.Windows.Forms.RadioButton();
             gbDC = new System.Windows.Forms.GroupBox();
             tblDC = new System.Windows.Forms.TableLayoutPanel();
+            label1 = new System.Windows.Forms.Label();
             numLevel = new System.Windows.Forms.NumericUpDown();
             lblLevel = new System.Windows.Forms.Label();
             chkChaAdv = new System.Windows.Forms.CheckBox();
@@ -1343,6 +1344,7 @@
             tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            tblDC.Controls.Add(label1, 2, 6);
             tblDC.Controls.Add(numLevel, 1, 6);
             tblDC.Controls.Add(lblLevel, 0, 6);
             tblDC.Controls.Add(chkChaAdv, 2, 5);
@@ -1376,6 +1378,16 @@
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tblDC.Size = new System.Drawing.Size(121, 209);
             tblDC.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(103, 180);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(17, 30);
+            label1.TabIndex = 5;
+            label1.Text = "proficiency?";
             // 
             // numLevel
             // 
@@ -2005,5 +2017,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label1;
     }
 }

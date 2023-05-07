@@ -44,8 +44,10 @@ namespace BattleManager
             }
 
             if (c.Health > 999) c.Health = 999; // I don't think anything gets this high?
+            if (c.Health < -99) c.Health = -99; // prevent underflow
 
             if (c.Health < 100) health = c.Health + " ";
+            else if (c.Health < 10) health = c.Health + "  ";
             else health = c.Health.ToString();
 
             if (c.AC > 99) ac = "99";
