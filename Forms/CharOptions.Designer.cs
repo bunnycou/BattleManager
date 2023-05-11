@@ -116,7 +116,6 @@
             rdbSlashingV = new System.Windows.Forms.RadioButton();
             gbDC = new System.Windows.Forms.GroupBox();
             tblDC = new System.Windows.Forms.TableLayoutPanel();
-            label1 = new System.Windows.Forms.Label();
             numLevel = new System.Windows.Forms.NumericUpDown();
             lblLevel = new System.Windows.Forms.Label();
             chkChaAdv = new System.Windows.Forms.CheckBox();
@@ -137,6 +136,7 @@
             lblWisdom = new System.Windows.Forms.Label();
             lblCharisma = new System.Windows.Forms.Label();
             chkStrAdv = new System.Windows.Forms.CheckBox();
+            label1 = new System.Windows.Forms.Label();
             btnDone = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
             groupBox1 = new System.Windows.Forms.GroupBox();
@@ -153,6 +153,9 @@
             label5 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
+            btnEditAct = new System.Windows.Forms.Button();
+            cmbAct = new System.Windows.Forms.ComboBox();
+            btnDeleteAct = new System.Windows.Forms.Button();
             tblAcid.SuspendLayout();
             tblHeaders.SuspendLayout();
             tblDamageTypes.SuspendLayout();
@@ -1344,7 +1347,6 @@
             tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             tblDC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            tblDC.Controls.Add(label1, 2, 6);
             tblDC.Controls.Add(numLevel, 1, 6);
             tblDC.Controls.Add(lblLevel, 0, 6);
             tblDC.Controls.Add(chkChaAdv, 2, 5);
@@ -1378,16 +1380,6 @@
             tblDC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tblDC.Size = new System.Drawing.Size(121, 209);
             tblDC.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(103, 180);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(17, 30);
-            label1.TabIndex = 5;
-            label1.Text = "proficiency?";
             // 
             // numLevel
             // 
@@ -1629,6 +1621,16 @@
             chkStrAdv.UseVisualStyleBackColor = true;
             chkStrAdv.CheckedChanged += NumStr_ValueChanged;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(97, 243);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(63, 13);
+            label1.TabIndex = 5;
+            label1.Text = "proficiency?";
+            // 
             // btnDone
             // 
             btnDone.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1825,11 +1827,45 @@
             label7.Text = "CHA";
             label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnEditAct
+            // 
+            btnEditAct.Location = new System.Drawing.Point(151, 259);
+            btnEditAct.Name = "btnEditAct";
+            btnEditAct.Size = new System.Drawing.Size(114, 26);
+            btnEditAct.TabIndex = 6;
+            btnEditAct.Text = "Add/Edit Action";
+            btnEditAct.UseVisualStyleBackColor = true;
+            btnEditAct.Click += BtnAddAction_Click;
+            // 
+            // cmbAct
+            // 
+            cmbAct.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            cmbAct.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            cmbAct.FormattingEnabled = true;
+            cmbAct.Location = new System.Drawing.Point(18, 262);
+            cmbAct.Name = "cmbAct";
+            cmbAct.Size = new System.Drawing.Size(121, 23);
+            cmbAct.TabIndex = 7;
+            // 
+            // btnDeleteAct
+            // 
+            btnDeleteAct.Location = new System.Drawing.Point(151, 290);
+            btnDeleteAct.Name = "btnDeleteAct";
+            btnDeleteAct.Size = new System.Drawing.Size(114, 26);
+            btnDeleteAct.TabIndex = 8;
+            btnDeleteAct.Text = "Delete Action";
+            btnDeleteAct.UseVisualStyleBackColor = true;
+            btnDeleteAct.Click += BtnDelAct_Click;
+            // 
             // CharOptions
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 487);
+            Controls.Add(btnDeleteAct);
+            Controls.Add(cmbAct);
+            Controls.Add(btnEditAct);
+            Controls.Add(label1);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             Controls.Add(gbDC);
@@ -1890,6 +1926,7 @@
             ((System.ComponentModel.ISupportInitialize)numWisMod).EndInit();
             ((System.ComponentModel.ISupportInitialize)numChaMod).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -2018,5 +2055,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEditAct;
+        private System.Windows.Forms.ComboBox cmbAct;
+        private System.Windows.Forms.Button btnDeleteAct;
     }
 }

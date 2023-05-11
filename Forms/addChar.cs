@@ -5,30 +5,21 @@ using System.Windows.Forms;
 
 namespace BattleManager
 {
-    public partial class addChar : Form
+    public partial class AddChar : Form
     {
         public Character character = new();
         public List<Character> duplicates = new();
         public bool duplicate = false;
-        public addChar(int num)
+
+        public AddChar(int num, bool creature = false)
         {
             InitializeComponent();
 
             txtName.Text = $"Char {num}";
+            character.Creature = creature;
         }
 
-        public addChar(int num, Character c)
-        {
-            InitializeComponent();
-
-            txtName.Text = $"{c.Name} {num}";
-            numHealth.Value = c.Health;
-            numAC.Value = c.AC;
-            numInit.Value = c.Init;
-            character = c;
-        }
-
-        public addChar(Character c)
+        public AddChar(Character c)
         {
             InitializeComponent();
 

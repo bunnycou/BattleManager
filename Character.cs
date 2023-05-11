@@ -41,7 +41,7 @@ namespace BattleManager
 
         private static Dictionary<Stat, int[]> DefaultSaves()
         {
-            return new Dictionary<Stat, int[]>() // [stat, mod, prof]
+            return new Dictionary<Stat, int[]>() // [stat, mod, prof(1/0)]
             {
                 { Stat.Str, new int[] { 10, 0, 0} },
                 { Stat.Dex, new int[] { 10, 0, 0} },
@@ -83,20 +83,23 @@ namespace BattleManager
                 AC: this.AC, 
                 level: this.Level, 
                 stats: this.Stats, 
-                resistances: this.Resistances
+                resistances: this.Resistances,
+                actions: this.Actions
                 );
         }
 
         public Character
             (
-            string name = "blank", 
-            int init = 10, 
-            int initOrder = -1, 
-            int health = 20, 
-            int AC = 10, 
-            int level = 1, 
-            Dictionary<Stat, int[]> stats = null, 
-            Dictionary<DmgType, ResType> resistances = null
+            string name = "blank",
+            int init = 10,
+            int initOrder = -1,
+            int health = 20,
+            int AC = 10,
+            int level = 1,
+            bool creature = false,
+            Dictionary<Stat, int[]> stats = null,
+            Dictionary<DmgType, ResType> resistances = null,
+            Dictionary<string, string> actions = null
             )
         {
             this.Name = name;
@@ -105,13 +108,16 @@ namespace BattleManager
             this.Health = health;
             this.AC = AC;
             this.Level = level;
+            this.Creature = creature;
             this.Stats = stats ?? DefaultSaves();
             this.Resistances = resistances ?? DefaultRes();
+            this.Actions = actions ?? new();
         }
 
         public Dictionary<string, string> Actions { get; set; }
         public Dictionary<Stat, int[]> Stats { get; set; }
         public Dictionary<DmgType, ResType> Resistances { get; set; }
+        public bool Creature { get; set; }
         public string Name { get; set; }
         public int Init { get; set; }
         public int Health { get; set; }

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace BattleManager.Forms
 {
-    public partial class addParty : Form
+    public partial class AddParty : Form
     {
-        public addParty()
+        public AddParty()
         {
             InitializeComponent();
         }
@@ -22,13 +22,13 @@ namespace BattleManager.Forms
         {
             for (int i = 1; i <= numCount.Value; i++)
             {
-                addChar win = new(i);
+                AddChar win = new(i);
                 win.numInit.Enabled = false;
                 win.txtName.Text = $"Party {i}";
                 win.ShowDialog();
                 members.Add(win.character.Name, win.character);
             }
-            Utility.WritePartyFile(txtPartyName.Text, members);
+            Utils.WritePartyFile(txtPartyName.Text, members);
             Close();
         }
     }

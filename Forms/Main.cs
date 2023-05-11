@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 using BattleManager.Forms;
+using System.Diagnostics;
 
 namespace BattleManager
 {
@@ -18,7 +19,7 @@ namespace BattleManager
         private readonly int[,] log = new int[100, 2];
         private readonly Dictionary<string, Character> charDict = new(); // string will be 20 char ID, Character will contain the character data // Dictionaries are not sorted!
 
-        // custom functions
+        //1 custom functions
         private void SelectInit()
         {
             if (!IsValidSel()) return;
@@ -41,12 +42,12 @@ namespace BattleManager
             lblLevel.Text = c.Level.ToString();
             //set Stats
             // update todo
-            lblStrVal.Text = Utility.GetStatString(c, Character.Stat.Str);
-            lblDexVal.Text = Utility.GetStatString(c, Character.Stat.Dex);
-            lblConVal.Text = Utility.GetStatString(c, Character.Stat.Con);
-            lblIntVal.Text = Utility.GetStatString(c, Character.Stat.Int);
-            lblWisVal.Text = Utility.GetStatString(c, Character.Stat.Wis);
-            lblChaVal.Text = Utility.GetStatString(c, Character.Stat.Cha);
+            lblStrVal.Text = Utils.GetStatString(c, Character.Stat.Str);
+            lblDexVal.Text = Utils.GetStatString(c, Character.Stat.Dex);
+            lblConVal.Text = Utils.GetStatString(c, Character.Stat.Con);
+            lblIntVal.Text = Utils.GetStatString(c, Character.Stat.Int);
+            lblWisVal.Text = Utils.GetStatString(c, Character.Stat.Wis);
+            lblChaVal.Text = Utils.GetStatString(c, Character.Stat.Cha);
             // dc adv   
             cbStrAdv.Checked = c.Stats[Character.Stat.Str][2] == 1;
             cbDexAdv.Checked = c.Stats[Character.Stat.Dex][2] == 1;
@@ -74,6 +75,22 @@ namespace BattleManager
             if (lblResistances.Text == "") lblResistances.Text = "None";
             if (lblVulnerabilities.Text == "") lblVulnerabilities.Text = "None";
             if (lblImmunities.Text == "") lblImmunities.Text = "None";
+
+            flwActions.Controls.Clear();
+            if (c.Actions.Count == 0) flwActions.Controls.Add(new Label() { Text = "None" });
+            else
+            {
+                foreach (KeyValuePair<string, string> act in c.Actions)
+                {
+                    AddAction(act.Key, act.Value);
+                }
+            }
+        }
+
+        private void AddAction(string action, string actionDesc)
+        {
+            flwActions.Controls.Add(new Label() { Text = action, Font = new Font("Segoe UI", 12F, FontStyle.Bold), AutoSize = true, MaximumSize = new Size(235, 0) });
+            flwActions.Controls.Add(new Label() { Text = actionDesc, AutoSize = true, MaximumSize = new Size(235, 0) });
         }
 
         private void UndoLog()
@@ -152,17 +169,26 @@ namespace BattleManager
             }
             foreach (Character c in newChars.OrderByDescending(c => c.Init))
             {
-                lstInitiative.Items.Add(Utility.CharToString(c));
+                lstInitiative.Items.Add(Utils.CharToString(c));
             }
             UpdateInitiative();
+            LoadInitiativeReorder();
         }
 
         private void LoadInitiativeReorder() // sort list by hidden initiative order number
         {
             ClearInit();
+            int i = 2;
             foreach (Character c in charDict.Values.OrderBy(c => c.InitOrder))
             {
-                lstInitiative.Items.Add(Utility.CharToString(c));
+                string name = Utils.CharToString(c);
+                if (i == selIndex)
+                {
+                    name = $"|*{name[2..]}";
+                    i = -999;
+                }
+                else i++;
+                lstInitiative.Items.Add(name);
             }
         }
 
@@ -179,7 +205,10 @@ namespace BattleManager
 
         private string GetNameFromInitList(int selection)
         {
-            return !IsValidSel() ? null : lstInitiative.Items[selection].ToString().Split("|")[1].Trim();
+            if (!IsValidSel()) return null;
+            string name = lstInitiative.Items[selection].ToString().Split("|")[1].Trim();
+            if (name.StartsWith("*")) name = name[1..];
+            return name;
         }
 
         private Character GetCharFromInitList(int selection)
@@ -200,19 +229,55 @@ namespace BattleManager
 
         private void LoadParties()
         {
-            cbParty.Items.Clear();
-            foreach (string f in Utility.GetPartyFiles())
+            EditPartyMenu.DropDownItems.Clear();
+            AddPartyMenu.DropDownItems.Clear();
+            DeletePartyMenu.DropDownItems.Clear();
+
+            foreach (string f in Utils.GetPartyFiles())
             {
-                cbParty.Items.Add(f.Split("\\")[^1][..^5]);
+                string name = f.Split("\\")[^1][..^5];
+                AddPartyMenu.DropDownItems.Add(name);
+                EditPartyMenu.DropDownItems.Add(name);
+                DeletePartyMenu.DropDownItems.Add(name);
+            }
+
+            if (AddPartyMenu.DropDownItems.Count == 0)
+            {
+                AddPartyMenu.Enabled = false;
+                EditPartyMenu.Enabled = false;
+                DeletePartyMenu.Enabled = false;
+            }
+            else
+            {
+                AddPartyMenu.Enabled = true;
+                EditPartyMenu.Enabled = true;
+                DeletePartyMenu.Enabled = true;
             }
         }
 
         private void LoadStatblocks()
         {
-            cbStatBlock.Items.Clear();
-            foreach (string f in Utility.GetStatFiles())
+            cmbStatMenu.Items.Clear();
+
+            foreach (string f in Utils.GetStatFiles())
             {
-                cbStatBlock.Items.Add(f.Split("\\")[^1][..^5]);
+                string name = f.Split("\\")[^1][..^5];
+                cmbStatMenu.Items.Add(name);
+            }
+
+            if (cmbStatMenu.Items.Count == 0)
+            {
+                AddStatMenu.Enabled = false;
+                EditStatMenu.Enabled = false;
+                DeleteStatMenu.Enabled = false;
+                cmbStatMenu.Enabled = false;
+            }
+            else
+            {
+                AddStatMenu.Enabled = true;
+                EditStatMenu.Enabled = true;
+                DeleteStatMenu.Enabled = true;
+                cmbStatMenu.Enabled = true;
             }
         }
 
@@ -223,11 +288,32 @@ namespace BattleManager
             lstInitiative.Items.Add("---------------------------------------");
         }
 
-        // event functions
+        private static void OpenExplorer(string path)
+        {
+            ProcessStartInfo startInfo = new()
+            {
+                Arguments = path,
+                FileName = "explorer.exe"
+            };
+
+            Process.Start(startInfo);
+        }
+
+        private bool ValidateCreature()
+        {
+            return Utils.GetStat(cmbStatMenu.Text) != null;
+        }
+
+        private static void NotImplemented()
+        {
+            MessageBox.Show("Not Implemented");
+        }
+
+        //1 event functions
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
             // restructure to make pressing the button perform the action with the number in the input box
-            int num = Utility.KeyToNum(e);
+            int num = Utils.KeyToNum(e);
             if (num == -1)
             {
                 switch (e.Modifiers)
@@ -262,13 +348,13 @@ namespace BattleManager
             lstInitiative.Items.Add("---------------------------------------");
 
             // Initialize folders if needed
-            Utility.InitializeFolders();
+            Utils.InitializeFolders();
             LoadParties();
             LoadStatblocks();
         }
 
 
-        // drag and drop reorder
+        //2 drag and drop reorder
         private void LstInitiative_MouseDown(object sender, MouseEventArgs e)
         {
             if (lstInitiative.SelectedItem == null) return;
@@ -276,6 +362,7 @@ namespace BattleManager
             if (selIndex < 2) return;
             SelectInit();
             lstInitiative.DoDragDrop(lstInitiative.SelectedItem, DragDropEffects.Move);
+            LoadInitiativeReorder();
         }
 
         private void LstInitiative_DragOver(object sender, DragEventArgs e)
@@ -296,30 +383,10 @@ namespace BattleManager
             UpdateInitiative();
             LoadCharacterDisplay();
         }
-        // end drag and drop reorder
+        //2 end drag and drop reorder
 
 
-        // BUTTONS
-        private void BtnChar_Click(object sender, EventArgs e)
-        {
-            int niV = (int)numInput.Value;
-            for (int i = 1; i <= niV; i++)
-            {
-                addChar win = new(i);
-                win.ShowDialog();
-                if (win.duplicate)
-                {
-                    foreach (Character dupe in win.duplicates)
-                    {
-                        AddCharToDict(dupe);
-                    }
-                }
-                else AddCharToDict(win.character);
-            }
-            // clear initiative and redraw it for each person in the charDict
-            LoadInitiative();
-        }
-
+        //1 BUTTONS
         private void BtnHeal_Click(object sender, EventArgs e)
         {
             if (!IsValidSel()) return;
@@ -338,19 +405,6 @@ namespace BattleManager
             AppendLog(num, selIndex);
         }
 
-        private void BtnClear_Click(object sender, EventArgs e)
-        {
-            charDict.Clear();
-            ClearInit();
-            lstLog.Items.Clear();
-            for (int i = 0; i < log.GetLength(0); i++)
-            {
-                log[i, 0] = 0;
-                log[i, 1] = 0;
-            }
-            lblDebug.Text = "Welcome to BattleManager!";
-        }
-
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (!IsValidSel()) return;
@@ -366,7 +420,82 @@ namespace BattleManager
             }
         }
 
-        private void BtnDebugChars_Click(object sender, EventArgs e)
+        private void BtnUndo_Click(object sender, EventArgs e)
+        {
+            UndoLog();
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            if (!IsValidSel()) return;
+            Character c = GetCharFromInitList(selIndex);
+            charDict.Remove(c.Name);
+            AddChar win = new(c);
+            win.ShowDialog();
+            AddCharToDict(win.character);
+            LoadInitiativeReorder();
+            LoadCharacterDisplay();
+        }
+
+        private void BtnMore_Click(object sender, EventArgs e)
+        {
+            NotImplemented();
+        }
+
+        private void NumInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Utils.KeyToNum(e) != -1)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void PartiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenExplorer(Utils.GetPartyPath());
+        }
+
+        private void StatBlocksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenExplorer(Utils.GetStatPath());
+        }
+
+        private void ClearInitiativeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            charDict.Clear();
+            ClearInit();
+            lstLog.Items.Clear();
+            for (int i = 0; i < log.GetLength(0); i++)
+            {
+                log[i, 0] = 0;
+                log[i, 1] = 0;
+            }
+            lblDebug.Text = "Initiative Cleared!";
+        }
+
+        private void HelpToolButton_Click(object sender, EventArgs e)
+        {
+            HelpKeys help = new();
+            help.Show();
+        }
+
+        private void AddCharsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddChar win = new(1);
+            win.ShowDialog();
+            if (win.duplicate)
+            {
+                foreach (Character dupe in win.duplicates)
+                {
+                    AddCharToDict(dupe);
+                }
+            }
+            else AddCharToDict(win.character);
+            // clear initiative and redraw it for each person in the charDict
+            LoadInitiative();
+        }
+
+        private void AddTestCharactersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             for (int i = 1; i <= 3; i++)
             {
@@ -376,73 +505,82 @@ namespace BattleManager
             LoadInitiative();
         }
 
-        private void BtnUndo_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UndoLog();
+            About about = new();
+            about.ShowDialog();
         }
 
-        private void BtnCreateParty_Click(object sender, EventArgs e)
+        private void CreatePartyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            addParty win = new();
+            AddParty win = new();
             win.ShowDialog();
             LoadParties();
         }
 
-        private void BtnDeleteParty_Click(object sender, EventArgs e)
+        private void AddPartyMenu_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            Utility.DeletePartyFile(cbParty.Text);
-            cbParty.Text = "";
-            LoadParties();
-        }
-
-        private void BtnAddParty_Click(object sender, EventArgs e)
-        {
-            if (Utility.GetParty(cbParty.Text) == null) return;
-            foreach (Character c in Utility.GetParty(cbParty.Text).Values)
+            foreach (Character c in Utils.GetParty(e.ClickedItem.Text).Values)
             {
-                addChar win = new(c);
+                AddChar win = new(c);
                 win.ShowDialog();
                 AddCharToDict(win.character);
             }
             LoadInitiative();
         }
 
-        private void BtnEditParty_Click(object sender, EventArgs e)
+        private void EditPartyMenu_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             Dictionary<string, Character> members = new();
-            if (Utility.GetParty(cbParty.Text) == null) return;
-            foreach (Character c in Utility.GetParty(cbParty.Text).Values)
+            foreach (Character c in Utils.GetParty(e.ClickedItem.Text).Values)
             {
-                addChar win = new(c);
+                AddChar win = new(c);
                 win.ShowDialog();
                 members.Add(win.character.Name, win.character);
             }
-            Utility.WritePartyFile(cbParty.Text, members);
+            Utils.WritePartyFile(e.ClickedItem.Text, members);
         }
 
-        private void BtnEdit_Click(object sender, EventArgs e)
+        private void DeletePartyMenu_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            if (!IsValidSel()) return;
-            Character c = GetCharFromInitList(selIndex);
-            charDict.Remove(c.Name);
-            addChar win = new(c);
+            Utils.DeletePartyFile(e.ClickedItem.Text);
+            LoadParties();
+        }
+
+        private void CreateCreatureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddChar win = new(1, true);
+            win.ShowDialog();
+            Utils.WriteStatFile(win.character);
+            LoadStatblocks();
+        }
+
+        private void AddStatMenu_Click(object sender, EventArgs e)
+        {
+            if (!ValidateCreature()) return;
+            Character c = Utils.GetStat(cmbStatMenu.Text);
+            AddChar win = new(c);
             win.ShowDialog();
             AddCharToDict(win.character);
-            LoadInitiativeReorder();
-            LoadCharacterDisplay();
+            LoadInitiative();
         }
 
-        private void BtnMore_Click(object sender, EventArgs e)
+        private void EditStatMenu_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Implemented");
+            if (!ValidateCreature()) return;
+            Character c = Utils.GetStat(cmbStatMenu.Text);
+            AddChar win = new(c);
+            win.ShowDialog();
+            Utils.DeleteStatFile(cmbStatMenu.Text); // delete and readd because they can change the creature name
+            Utils.WriteStatFile(win.character);
+            LoadStatblocks();
         }
 
-        private void NumInput_KeyDown(object sender, KeyEventArgs e)
+        private void DeleteStatMenu_Click(object sender, EventArgs e)
         {
-            if (Utility.KeyToNum(e) != -1)
-            {
-                e.SuppressKeyPress = true;
-            }
+            if (!ValidateCreature()) return;
+            Utils.DeleteStatFile(cmbStatMenu.Text);
+            LoadStatblocks();
         }
     }
 }

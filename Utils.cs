@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Forms;
 
 namespace BattleManager
 {
-    internal class Utility
+    internal class Utils
     {
         static readonly string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        static readonly string bm = $"{documents}/BattleManager";
-        static readonly string stats = $"{bm}/statblocks";
-        static readonly string parties = $"{bm}/party";
+        static readonly string bm = $"{documents}\\BattleManager";
+        static readonly string stats = $"{bm}\\statblocks";
+        static readonly string parties = $"{bm}\\party";
 
         public static int KeyToNum(KeyEventArgs e)
         {
@@ -130,6 +131,36 @@ namespace BattleManager
         {
             return Directory.EnumerateFiles(parties);
 
+        }
+
+        public static string GetPartyPath()
+        {
+            return parties;
+        }
+
+        public static void WriteStatFile(Character obj)
+        {
+            string path = $"{stats}/{obj.Name}.json";
+            string content = JsonSerializer.Serialize(obj, new JsonSerializerOptions() { WriteIndented = true });
+            File.WriteAllText(path, content);
+        }
+
+        public static void DeleteStatFile(string name)
+        {
+            string path = $"{stats}/{name}.json";
+            if (File.Exists(path)) File.Delete(path);
+        }
+
+        public static Character GetStat(string name)
+        {
+            string path = $"{stats}/{name}.json";
+            if (File.Exists(path)) return JsonSerializer.Deserialize<Character>(File.ReadAllText(path));
+            else return null;
+        }
+
+        public static string GetStatPath()
+        {
+            return stats;
         }
 
         public static IEnumerable GetStatFiles()

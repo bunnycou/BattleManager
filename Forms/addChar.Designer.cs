@@ -1,6 +1,6 @@
 ﻿namespace BattleManager
 {
-    partial class addChar
+    partial class AddChar
     {
         /// <summary>
         /// Required designer variable.
@@ -166,13 +166,13 @@
             chkDuplicate.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             chkDuplicate.Location = new System.Drawing.Point(14, 194);
             chkDuplicate.Name = "chkDuplicate";
-            chkDuplicate.Size = new System.Drawing.Size(118, 19);
+            chkDuplicate.Size = new System.Drawing.Size(107, 19);
             chkDuplicate.TabIndex = 8;
-            chkDuplicate.Text = "Make Duplicates?";
+            chkDuplicate.Text = "Make Multiple?";
             chkDuplicate.UseVisualStyleBackColor = true;
             chkDuplicate.CheckedChanged += ChkDuplicate_CheckedChanged;
             // 
-            // addChar
+            // AddChar
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -191,7 +191,7 @@
             Controls.Add(lblHealth);
             Controls.Add(lblName);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            Name = "addChar";
+            Name = "AddChar";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Character";
             Load += AddChar_Load;

@@ -1,6 +1,6 @@
 ﻿namespace BattleManager.Forms
 {
-    partial class addParty
+    partial class AddParty
     {
         /// <summary>
         /// Required designer variable.
@@ -108,14 +108,15 @@
             btnDone.UseVisualStyleBackColor = true;
             btnDone.Click += BtnDone_Click;
             // 
-            // addParty
+            // AddParty
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(434, 176);
             Controls.Add(btnDone);
             Controls.Add(tblParty);
-            Name = "addParty";
+            Name = "AddParty";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "New Party";
             Load += AddParty_Load;
             tblParty.ResumeLayout(false);

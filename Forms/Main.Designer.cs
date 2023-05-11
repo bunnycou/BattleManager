@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             lstInitiative = new System.Windows.Forms.ListBox();
-            btnChar = new System.Windows.Forms.Button();
             numInput = new System.Windows.Forms.NumericUpDown();
             lblDebug = new System.Windows.Forms.Label();
-            btnClear = new System.Windows.Forms.Button();
-            btnDebugChars = new System.Windows.Forms.Button();
             lstLog = new System.Windows.Forms.ListBox();
             btnHeal = new System.Windows.Forms.Button();
             btnDamage = new System.Windows.Forms.Button();
@@ -41,19 +39,6 @@
             btnDelete = new System.Windows.Forms.Button();
             pnlMain = new System.Windows.Forms.Panel();
             btnEdit = new System.Windows.Forms.Button();
-            btnCreateParty = new System.Windows.Forms.Button();
-            btnAddParty = new System.Windows.Forms.Button();
-            btnDeleteParty = new System.Windows.Forms.Button();
-            gpParty = new System.Windows.Forms.GroupBox();
-            btnEditParty = new System.Windows.Forms.Button();
-            cbParty = new System.Windows.Forms.ComboBox();
-            gpStatBlocks = new System.Windows.Forms.GroupBox();
-            label1 = new System.Windows.Forms.Label();
-            btnEditStatBlock = new System.Windows.Forms.Button();
-            cbStatBlock = new System.Windows.Forms.ComboBox();
-            btnDeleteStatBlock = new System.Windows.Forms.Button();
-            btnCreateStatBlock = new System.Windows.Forms.Button();
-            btnAddStatBlock = new System.Windows.Forms.Button();
             gpCharacter = new System.Windows.Forms.GroupBox();
             label4 = new System.Windows.Forms.Label();
             btnMore = new System.Windows.Forms.Button();
@@ -91,16 +76,42 @@
             lblHealth = new System.Windows.Forms.Label();
             lblAC = new System.Windows.Forms.Label();
             lblInit = new System.Windows.Forms.Label();
+            toolStrip1 = new System.Windows.Forms.ToolStrip();
+            tsddMain = new System.Windows.Forms.ToolStripDropDownButton();
+            addCharsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            clearInitiativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            openFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            partiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            statBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            addTestCharactersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            createPartyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            AddPartyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            EditPartyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            DeletePartyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            createCreatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            AddStatMenu = new System.Windows.Forms.ToolStripMenuItem();
+            EditStatMenu = new System.Windows.Forms.ToolStripMenuItem();
+            DeleteStatMenu = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            HelpToolButton = new System.Windows.Forms.ToolStripButton();
+            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            cmbStatMenu = new System.Windows.Forms.ToolStripComboBox();
+            gpActions = new System.Windows.Forms.GroupBox();
+            flwActions = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
             pnlMain.SuspendLayout();
-            gpParty.SuspendLayout();
-            gpStatBlocks.SuspendLayout();
             gpCharacter.SuspendLayout();
             gpImmunities.SuspendLayout();
             gpVulnerabilities.SuspendLayout();
             gpResistances.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            gpActions.SuspendLayout();
             SuspendLayout();
             // 
             // lstInitiative
@@ -110,29 +121,18 @@
             lstInitiative.FormattingEnabled = true;
             lstInitiative.ImeMode = System.Windows.Forms.ImeMode.On;
             lstInitiative.ItemHeight = 21;
-            lstInitiative.Location = new System.Drawing.Point(13, 12);
+            lstInitiative.Location = new System.Drawing.Point(13, 33);
             lstInitiative.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             lstInitiative.Name = "lstInitiative";
-            lstInitiative.Size = new System.Drawing.Size(359, 655);
+            lstInitiative.Size = new System.Drawing.Size(359, 592);
             lstInitiative.TabIndex = 2;
             lstInitiative.DragDrop += LstInitiative_DragDrop;
             lstInitiative.DragOver += LstInitiative_DragOver;
             lstInitiative.MouseDown += LstInitiative_MouseDown;
             // 
-            // btnChar
-            // 
-            btnChar.Location = new System.Drawing.Point(105, 7);
-            btnChar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnChar.Name = "btnChar";
-            btnChar.Size = new System.Drawing.Size(93, 27);
-            btnChar.TabIndex = 3;
-            btnChar.Text = "Add Chars";
-            btnChar.UseVisualStyleBackColor = true;
-            btnChar.Click += BtnChar_Click;
-            // 
             // numInput
             // 
-            numInput.Location = new System.Drawing.Point(4, 40);
+            numInput.Location = new System.Drawing.Point(10, 11);
             numInput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             numInput.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             numInput.Name = "numInput";
@@ -144,41 +144,19 @@
             // 
             lblDebug.AutoSize = true;
             lblDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblDebug.Location = new System.Drawing.Point(746, 486);
+            lblDebug.Location = new System.Drawing.Point(380, 417);
             lblDebug.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblDebug.Name = "lblDebug";
             lblDebug.Size = new System.Drawing.Size(277, 25);
             lblDebug.TabIndex = 15;
             lblDebug.Text = "Welcome to BattleManager!";
             // 
-            // btnClear
-            // 
-            btnClear.Location = new System.Drawing.Point(206, 7);
-            btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new System.Drawing.Size(93, 27);
-            btnClear.TabIndex = 16;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += BtnClear_Click;
-            // 
-            // btnDebugChars
-            // 
-            btnDebugChars.Location = new System.Drawing.Point(746, 618);
-            btnDebugChars.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnDebugChars.Name = "btnDebugChars";
-            btnDebugChars.Size = new System.Drawing.Size(93, 48);
-            btnDebugChars.TabIndex = 17;
-            btnDebugChars.Text = "Add Test Characters";
-            btnDebugChars.UseVisualStyleBackColor = true;
-            btnDebugChars.Click += BtnDebugChars_Click;
-            // 
             // lstLog
             // 
             lstLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lstLog.FormattingEnabled = true;
             lstLog.ItemHeight = 16;
-            lstLog.Location = new System.Drawing.Point(379, 486);
+            lstLog.Location = new System.Drawing.Point(380, 445);
             lstLog.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             lstLog.Name = "lstLog";
             lstLog.Size = new System.Drawing.Size(359, 180);
@@ -186,10 +164,10 @@
             // 
             // btnHeal
             // 
-            btnHeal.Location = new System.Drawing.Point(105, 40);
+            btnHeal.Location = new System.Drawing.Point(111, 7);
             btnHeal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnHeal.Name = "btnHeal";
-            btnHeal.Size = new System.Drawing.Size(93, 27);
+            btnHeal.Size = new System.Drawing.Size(70, 27);
             btnHeal.TabIndex = 19;
             btnHeal.Text = "Heal";
             btnHeal.UseVisualStyleBackColor = true;
@@ -197,10 +175,10 @@
             // 
             // btnDamage
             // 
-            btnDamage.Location = new System.Drawing.Point(105, 73);
+            btnDamage.Location = new System.Drawing.Point(111, 40);
             btnDamage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnDamage.Name = "btnDamage";
-            btnDamage.Size = new System.Drawing.Size(93, 27);
+            btnDamage.Size = new System.Drawing.Size(70, 27);
             btnDamage.TabIndex = 20;
             btnDamage.Text = "Damage";
             btnDamage.UseVisualStyleBackColor = true;
@@ -208,21 +186,21 @@
             // 
             // btnUndo
             // 
-            btnUndo.Location = new System.Drawing.Point(104, 123);
+            btnUndo.Location = new System.Drawing.Point(33, 40);
             btnUndo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnUndo.Name = "btnUndo";
-            btnUndo.Size = new System.Drawing.Size(93, 46);
+            btnUndo.Size = new System.Drawing.Size(70, 27);
             btnUndo.TabIndex = 21;
-            btnUndo.Text = "Undo Heal/Dmg";
+            btnUndo.Text = "Undo";
             btnUndo.UseVisualStyleBackColor = true;
             btnUndo.Click += BtnUndo_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Location = new System.Drawing.Point(206, 40);
+            btnDelete.Location = new System.Drawing.Point(189, 40);
             btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new System.Drawing.Size(93, 27);
+            btnDelete.Size = new System.Drawing.Size(70, 27);
             btnDelete.TabIndex = 22;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -234,155 +212,23 @@
             pnlMain.Controls.Add(numInput);
             pnlMain.Controls.Add(btnUndo);
             pnlMain.Controls.Add(btnDelete);
-            pnlMain.Controls.Add(btnChar);
-            pnlMain.Controls.Add(btnClear);
             pnlMain.Controls.Add(btnDamage);
             pnlMain.Controls.Add(btnHeal);
-            pnlMain.Location = new System.Drawing.Point(379, 12);
+            pnlMain.Location = new System.Drawing.Point(379, 34);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new System.Drawing.Size(309, 172);
+            pnlMain.Size = new System.Drawing.Size(309, 79);
             pnlMain.TabIndex = 23;
             // 
             // btnEdit
             // 
-            btnEdit.Location = new System.Drawing.Point(206, 73);
+            btnEdit.Location = new System.Drawing.Point(189, 7);
             btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new System.Drawing.Size(93, 27);
+            btnEdit.Size = new System.Drawing.Size(70, 27);
             btnEdit.TabIndex = 23;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += BtnEdit_Click;
-            // 
-            // btnCreateParty
-            // 
-            btnCreateParty.Location = new System.Drawing.Point(6, 22);
-            btnCreateParty.Name = "btnCreateParty";
-            btnCreateParty.Size = new System.Drawing.Size(75, 47);
-            btnCreateParty.TabIndex = 0;
-            btnCreateParty.Text = "Create Party";
-            btnCreateParty.UseVisualStyleBackColor = true;
-            btnCreateParty.Click += BtnCreateParty_Click;
-            // 
-            // btnAddParty
-            // 
-            btnAddParty.Location = new System.Drawing.Point(6, 75);
-            btnAddParty.Name = "btnAddParty";
-            btnAddParty.Size = new System.Drawing.Size(75, 47);
-            btnAddParty.TabIndex = 1;
-            btnAddParty.Text = "Add\r\nParty";
-            btnAddParty.UseVisualStyleBackColor = true;
-            btnAddParty.Click += BtnAddParty_Click;
-            // 
-            // btnDeleteParty
-            // 
-            btnDeleteParty.Location = new System.Drawing.Point(6, 128);
-            btnDeleteParty.Name = "btnDeleteParty";
-            btnDeleteParty.Size = new System.Drawing.Size(75, 47);
-            btnDeleteParty.TabIndex = 2;
-            btnDeleteParty.Text = "Delete Party";
-            btnDeleteParty.UseVisualStyleBackColor = true;
-            btnDeleteParty.Click += BtnDeleteParty_Click;
-            // 
-            // gpParty
-            // 
-            gpParty.Controls.Add(btnEditParty);
-            gpParty.Controls.Add(cbParty);
-            gpParty.Controls.Add(btnDeleteParty);
-            gpParty.Controls.Add(btnCreateParty);
-            gpParty.Controls.Add(btnAddParty);
-            gpParty.Location = new System.Drawing.Point(1038, 12);
-            gpParty.Name = "gpParty";
-            gpParty.Size = new System.Drawing.Size(218, 185);
-            gpParty.TabIndex = 25;
-            gpParty.TabStop = false;
-            gpParty.Text = "Party";
-            // 
-            // btnEditParty
-            // 
-            btnEditParty.Location = new System.Drawing.Point(111, 22);
-            btnEditParty.Name = "btnEditParty";
-            btnEditParty.Size = new System.Drawing.Size(75, 47);
-            btnEditParty.TabIndex = 4;
-            btnEditParty.Text = "Edit\r\nParty";
-            btnEditParty.UseVisualStyleBackColor = true;
-            btnEditParty.Click += BtnEditParty_Click;
-            // 
-            // cbParty
-            // 
-            cbParty.FormattingEnabled = true;
-            cbParty.Location = new System.Drawing.Point(87, 88);
-            cbParty.Name = "cbParty";
-            cbParty.Size = new System.Drawing.Size(121, 23);
-            cbParty.TabIndex = 3;
-            // 
-            // gpStatBlocks
-            // 
-            gpStatBlocks.Controls.Add(label1);
-            gpStatBlocks.Controls.Add(btnEditStatBlock);
-            gpStatBlocks.Controls.Add(cbStatBlock);
-            gpStatBlocks.Controls.Add(btnDeleteStatBlock);
-            gpStatBlocks.Controls.Add(btnCreateStatBlock);
-            gpStatBlocks.Controls.Add(btnAddStatBlock);
-            gpStatBlocks.Location = new System.Drawing.Point(1038, 203);
-            gpStatBlocks.Name = "gpStatBlocks";
-            gpStatBlocks.Size = new System.Drawing.Size(218, 182);
-            gpStatBlocks.TabIndex = 26;
-            gpStatBlocks.TabStop = false;
-            gpStatBlocks.Text = "Stat Blocks";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(96, 141);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(99, 15);
-            label1.TabIndex = 28;
-            label1.Text = "not implemented";
-            // 
-            // btnEditStatBlock
-            // 
-            btnEditStatBlock.Location = new System.Drawing.Point(110, 19);
-            btnEditStatBlock.Name = "btnEditStatBlock";
-            btnEditStatBlock.Size = new System.Drawing.Size(75, 47);
-            btnEditStatBlock.TabIndex = 8;
-            btnEditStatBlock.Text = "Edit\r\nStat Block";
-            btnEditStatBlock.UseVisualStyleBackColor = true;
-            // 
-            // cbStatBlock
-            // 
-            cbStatBlock.FormattingEnabled = true;
-            cbStatBlock.Location = new System.Drawing.Point(86, 85);
-            cbStatBlock.Name = "cbStatBlock";
-            cbStatBlock.Size = new System.Drawing.Size(121, 23);
-            cbStatBlock.TabIndex = 7;
-            // 
-            // btnDeleteStatBlock
-            // 
-            btnDeleteStatBlock.Location = new System.Drawing.Point(5, 125);
-            btnDeleteStatBlock.Name = "btnDeleteStatBlock";
-            btnDeleteStatBlock.Size = new System.Drawing.Size(75, 47);
-            btnDeleteStatBlock.TabIndex = 6;
-            btnDeleteStatBlock.Text = "Delete\r\nStat Block";
-            btnDeleteStatBlock.UseVisualStyleBackColor = true;
-            // 
-            // btnCreateStatBlock
-            // 
-            btnCreateStatBlock.Location = new System.Drawing.Point(5, 19);
-            btnCreateStatBlock.Name = "btnCreateStatBlock";
-            btnCreateStatBlock.Size = new System.Drawing.Size(75, 47);
-            btnCreateStatBlock.TabIndex = 4;
-            btnCreateStatBlock.Text = "Create\r\nStat Block";
-            btnCreateStatBlock.UseVisualStyleBackColor = true;
-            // 
-            // btnAddStatBlock
-            // 
-            btnAddStatBlock.Location = new System.Drawing.Point(5, 72);
-            btnAddStatBlock.Name = "btnAddStatBlock";
-            btnAddStatBlock.Size = new System.Drawing.Size(75, 47);
-            btnAddStatBlock.TabIndex = 5;
-            btnAddStatBlock.Text = "Add\r\n Stat Block";
-            btnAddStatBlock.UseVisualStyleBackColor = true;
             // 
             // gpCharacter
             // 
@@ -393,7 +239,7 @@
             gpCharacter.Controls.Add(gpResistances);
             gpCharacter.Controls.Add(tableLayoutPanel3);
             gpCharacter.Controls.Add(tableLayoutPanel1);
-            gpCharacter.Location = new System.Drawing.Point(379, 193);
+            gpCharacter.Location = new System.Drawing.Point(379, 119);
             gpCharacter.Name = "gpCharacter";
             gpCharacter.Size = new System.Drawing.Size(359, 287);
             gpCharacter.TabIndex = 27;
@@ -412,7 +258,7 @@
             // 
             // btnMore
             // 
-            btnMore.Location = new System.Drawing.Point(145, 22);
+            btnMore.Location = new System.Drawing.Point(145, 39);
             btnMore.Name = "btnMore";
             btnMore.Size = new System.Drawing.Size(52, 43);
             btnMore.TabIndex = 5;
@@ -855,33 +701,227 @@
             lblInit.Text = "0";
             lblInit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // toolStrip1
+            // 
+            toolStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsddMain, toolStripSeparator1, toolStripDropDownButton1, toolStripDropDownButton2, toolStripSeparator2, HelpToolButton, toolStripSeparator3, cmbStatMenu });
+            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new System.Drawing.Size(1006, 25);
+            toolStrip1.TabIndex = 28;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // tsddMain
+            // 
+            tsddMain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            tsddMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { addCharsToolStripMenuItem, clearInitiativeToolStripMenuItem, openFolderToolStripMenuItem, addTestCharactersToolStripMenuItem, aboutToolStripMenuItem });
+            tsddMain.Image = (System.Drawing.Image)resources.GetObject("tsddMain.Image");
+            tsddMain.ImageTransparentColor = System.Drawing.Color.Magenta;
+            tsddMain.Name = "tsddMain";
+            tsddMain.Size = new System.Drawing.Size(38, 22);
+            tsddMain.Text = "BM";
+            // 
+            // addCharsToolStripMenuItem
+            // 
+            addCharsToolStripMenuItem.Name = "addCharsToolStripMenuItem";
+            addCharsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            addCharsToolStripMenuItem.Text = "Add Characters";
+            addCharsToolStripMenuItem.Click += AddCharsToolStripMenuItem_Click;
+            // 
+            // clearInitiativeToolStripMenuItem
+            // 
+            clearInitiativeToolStripMenuItem.Name = "clearInitiativeToolStripMenuItem";
+            clearInitiativeToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            clearInitiativeToolStripMenuItem.Text = "Clear Initiative";
+            clearInitiativeToolStripMenuItem.Click += ClearInitiativeToolStripMenuItem_Click;
+            // 
+            // openFolderToolStripMenuItem
+            // 
+            openFolderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { partiesToolStripMenuItem, statBlocksToolStripMenuItem });
+            openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
+            openFolderToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            openFolderToolStripMenuItem.Text = "Open Folder...";
+            // 
+            // partiesToolStripMenuItem
+            // 
+            partiesToolStripMenuItem.Name = "partiesToolStripMenuItem";
+            partiesToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            partiesToolStripMenuItem.Text = "Parties";
+            partiesToolStripMenuItem.Click += PartiesToolStripMenuItem_Click;
+            // 
+            // statBlocksToolStripMenuItem
+            // 
+            statBlocksToolStripMenuItem.Name = "statBlocksToolStripMenuItem";
+            statBlocksToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            statBlocksToolStripMenuItem.Text = "Stat Blocks";
+            statBlocksToolStripMenuItem.Click += StatBlocksToolStripMenuItem_Click;
+            // 
+            // addTestCharactersToolStripMenuItem
+            // 
+            addTestCharactersToolStripMenuItem.Name = "addTestCharactersToolStripMenuItem";
+            addTestCharactersToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            addTestCharactersToolStripMenuItem.Text = "Add Test Characters";
+            addTestCharactersToolStripMenuItem.Click += AddTestCharactersToolStripMenuItem_Click;
+            // 
+            // aboutToolStripMenuItem
+            // 
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripDropDownButton1
+            // 
+            toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { createPartyToolStripMenuItem, AddPartyMenu, EditPartyMenu, DeletePartyMenu });
+            toolStripDropDownButton1.Image = (System.Drawing.Image)resources.GetObject("toolStripDropDownButton1.Image");
+            toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            toolStripDropDownButton1.Size = new System.Drawing.Size(47, 22);
+            toolStripDropDownButton1.Text = "Party";
+            // 
+            // createPartyToolStripMenuItem
+            // 
+            createPartyToolStripMenuItem.Name = "createPartyToolStripMenuItem";
+            createPartyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            createPartyToolStripMenuItem.Text = "Create Party";
+            createPartyToolStripMenuItem.Click += CreatePartyToolStripMenuItem_Click;
+            // 
+            // AddPartyMenu
+            // 
+            AddPartyMenu.Name = "AddPartyMenu";
+            AddPartyMenu.Size = new System.Drawing.Size(146, 22);
+            AddPartyMenu.Text = "Add Party...";
+            AddPartyMenu.DropDownItemClicked += AddPartyMenu_DropDownItemClicked;
+            // 
+            // EditPartyMenu
+            // 
+            EditPartyMenu.Name = "EditPartyMenu";
+            EditPartyMenu.Size = new System.Drawing.Size(146, 22);
+            EditPartyMenu.Text = "Edit Party...";
+            EditPartyMenu.DropDownItemClicked += EditPartyMenu_DropDownItemClicked;
+            // 
+            // DeletePartyMenu
+            // 
+            DeletePartyMenu.Name = "DeletePartyMenu";
+            DeletePartyMenu.Size = new System.Drawing.Size(146, 22);
+            DeletePartyMenu.Text = "Delete Party...";
+            DeletePartyMenu.DropDownItemClicked += DeletePartyMenu_DropDownItemClicked;
+            // 
+            // toolStripDropDownButton2
+            // 
+            toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { createCreatureToolStripMenuItem, AddStatMenu, EditStatMenu, DeleteStatMenu });
+            toolStripDropDownButton2.Image = (System.Drawing.Image)resources.GetObject("toolStripDropDownButton2.Image");
+            toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            toolStripDropDownButton2.Size = new System.Drawing.Size(70, 22);
+            toolStripDropDownButton2.Text = "Creatures";
+            // 
+            // createCreatureToolStripMenuItem
+            // 
+            createCreatureToolStripMenuItem.Name = "createCreatureToolStripMenuItem";
+            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            createCreatureToolStripMenuItem.Text = "Create Creature";
+            createCreatureToolStripMenuItem.Click += CreateCreatureToolStripMenuItem_Click;
+            // 
+            // AddStatMenu
+            // 
+            AddStatMenu.Name = "AddStatMenu";
+            AddStatMenu.Size = new System.Drawing.Size(164, 22);
+            AddStatMenu.Text = "Add Creature...";
+            AddStatMenu.Click += AddStatMenu_Click;
+            // 
+            // EditStatMenu
+            // 
+            EditStatMenu.Name = "EditStatMenu";
+            EditStatMenu.Size = new System.Drawing.Size(164, 22);
+            EditStatMenu.Text = "Edit Creature...";
+            EditStatMenu.Click += EditStatMenu_Click;
+            // 
+            // DeleteStatMenu
+            // 
+            DeleteStatMenu.Name = "DeleteStatMenu";
+            DeleteStatMenu.Size = new System.Drawing.Size(164, 22);
+            DeleteStatMenu.Text = "Delete Creature...";
+            DeleteStatMenu.Click += DeleteStatMenu_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // HelpToolButton
+            // 
+            HelpToolButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            HelpToolButton.Image = Properties.Resources.help_google_icon;
+            HelpToolButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            HelpToolButton.Name = "HelpToolButton";
+            HelpToolButton.Size = new System.Drawing.Size(23, 22);
+            HelpToolButton.Text = "Help";
+            HelpToolButton.Click += HelpToolButton_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // cmbStatMenu
+            // 
+            cmbStatMenu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            cmbStatMenu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            cmbStatMenu.MaxDropDownItems = 99;
+            cmbStatMenu.Name = "cmbStatMenu";
+            cmbStatMenu.Size = new System.Drawing.Size(121, 25);
+            cmbStatMenu.Text = "Creatures";
+            // 
+            // gpActions
+            // 
+            gpActions.Controls.Add(flwActions);
+            gpActions.Location = new System.Drawing.Point(746, 28);
+            gpActions.Name = "gpActions";
+            gpActions.Size = new System.Drawing.Size(250, 597);
+            gpActions.TabIndex = 29;
+            gpActions.TabStop = false;
+            gpActions.Text = "Actions";
+            // 
+            // flwActions
+            // 
+            flwActions.AutoSize = true;
+            flwActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flwActions.Location = new System.Drawing.Point(6, 22);
+            flwActions.Name = "flwActions";
+            flwActions.Size = new System.Drawing.Size(238, 569);
+            flwActions.TabIndex = 0;
+            // 
             // Main
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1264, 681);
+            ClientSize = new System.Drawing.Size(1006, 631);
+            Controls.Add(gpActions);
+            Controls.Add(toolStrip1);
             Controls.Add(gpCharacter);
-            Controls.Add(gpStatBlocks);
-            Controls.Add(gpParty);
             Controls.Add(pnlMain);
             Controls.Add(lstLog);
-            Controls.Add(btnDebugChars);
             Controls.Add(lblDebug);
             Controls.Add(lstInitiative);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            HelpButton = true;
             KeyPreview = true;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "Main";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "BattleManager";
             Load += Main_Load;
             KeyDown += Main_KeyDown;
             KeyUp += Main_KeyUp;
             ((System.ComponentModel.ISupportInitialize)numInput).EndInit();
             pnlMain.ResumeLayout(false);
-            gpParty.ResumeLayout(false);
-            gpStatBlocks.ResumeLayout(false);
-            gpStatBlocks.PerformLayout();
             gpCharacter.ResumeLayout(false);
             gpCharacter.PerformLayout();
             gpImmunities.ResumeLayout(false);
@@ -891,35 +931,24 @@
             tableLayoutPanel3.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            gpActions.ResumeLayout(false);
+            gpActions.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private System.Windows.Forms.ListBox lstInitiative;
-        private System.Windows.Forms.Button btnChar;
         private System.Windows.Forms.NumericUpDown numInput;
         private System.Windows.Forms.Label lblDebug;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnDebugChars;
         private System.Windows.Forms.ListBox lstLog;
         private System.Windows.Forms.Button btnHeal;
         private System.Windows.Forms.Button btnDamage;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Button btnDeleteParty;
-        private System.Windows.Forms.Button btnAddParty;
-        private System.Windows.Forms.Button btnCreateParty;
-        private System.Windows.Forms.GroupBox gpParty;
-        private System.Windows.Forms.ComboBox cbParty;
-        private System.Windows.Forms.GroupBox gpStatBlocks;
-        private System.Windows.Forms.ComboBox cbStatBlock;
-        private System.Windows.Forms.Button btnDeleteStatBlock;
-        private System.Windows.Forms.Button btnCreateStatBlock;
-        private System.Windows.Forms.Button btnAddStatBlock;
-        private System.Windows.Forms.Button btnEditParty;
-        private System.Windows.Forms.Button btnEditStatBlock;
         private System.Windows.Forms.GroupBox gpCharacter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -953,12 +982,37 @@
         private System.Windows.Forms.CheckBox cbConAdv;
         private System.Windows.Forms.CheckBox cbDexAdv;
         private System.Windows.Forms.CheckBox cbStrAdv;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMore;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton tsddMain;
+        private System.Windows.Forms.ToolStripMenuItem clearInitiativeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton HelpToolButton;
+        private System.Windows.Forms.ToolStripMenuItem openFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem partiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statBlocksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCharsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem createPartyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditPartyMenu;
+        private System.Windows.Forms.ToolStripMenuItem AddPartyMenu;
+        private System.Windows.Forms.ToolStripMenuItem DeletePartyMenu;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripMenuItem createCreatureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditStatMenu;
+        private System.Windows.Forms.ToolStripMenuItem AddStatMenu;
+        private System.Windows.Forms.ToolStripMenuItem DeleteStatMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem addTestCharactersToolStripMenuItem;
+        private System.Windows.Forms.GroupBox gpActions;
+        private System.Windows.Forms.FlowLayoutPanel flwActions;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripComboBox cmbStatMenu;
     }
 }
 

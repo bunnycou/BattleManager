@@ -129,6 +129,28 @@ namespace BattleManager.Forms
                 case ResType.Immune: rdbSlashingI.Checked = true; break;
                 case ResType.None: rdbSlashingN.Checked = true; break;
             }
+
+            if (character.Creature)
+            {
+                btnEditAct.Visible = true; cmbAct.Visible = true; btnDeleteAct.Visible = true;
+                LoadActs();
+            }
+            else { btnEditAct.Visible = false; cmbAct.Visible = false; btnDeleteAct.Visible = false; }
+
+        }
+
+        private void LoadActs()
+        {
+            cmbAct.Items.Clear();
+            foreach (string action in character.Actions.Keys)
+            {
+                cmbAct.Items.Add(action);
+            }
+        }
+
+        private bool VerifyAct()
+        {
+            return character.Actions.ContainsKey(cmbAct.Text);
         }
 
         private void CharOptions_KeyDown(object sender, KeyEventArgs e)
@@ -196,32 +218,32 @@ namespace BattleManager.Forms
 
         private void NumStr_ValueChanged(object sender, EventArgs e)
         {
-            numStrMod.Value = Utility.GetMod((int)numStr.Value, (int)numLevel.Value, chkStrAdv.Checked);
+            numStrMod.Value = Utils.GetMod((int)numStr.Value, (int)numLevel.Value, chkStrAdv.Checked);
         }
 
         private void NumDex_ValueChanged(object sender, EventArgs e)
         {
-            numDexMod.Value = Utility.GetMod((int)numDex.Value, (int)numLevel.Value, chkDexAdv.Checked);
+            numDexMod.Value = Utils.GetMod((int)numDex.Value, (int)numLevel.Value, chkDexAdv.Checked);
         }
 
         private void NumCon_ValueChanged(object sender, EventArgs e)
         {
-            numConMod.Value = Utility.GetMod((int)numCon.Value, (int)numLevel.Value, chkConAdv.Checked);
+            numConMod.Value = Utils.GetMod((int)numCon.Value, (int)numLevel.Value, chkConAdv.Checked);
         }
 
         private void NumInt_ValueChanged(object sender, EventArgs e)
         {
-            numIntMod.Value = Utility.GetMod((int)numInt.Value, (int)numLevel.Value, chkIntAdv.Checked);
+            numIntMod.Value = Utils.GetMod((int)numInt.Value, (int)numLevel.Value, chkIntAdv.Checked);
         }
 
         private void NumWis_ValueChanged(object sender, EventArgs e)
         {
-            numWisMod.Value = Utility.GetMod((int)numWis.Value, (int)numLevel.Value, chkWisAdv.Checked);
+            numWisMod.Value = Utils.GetMod((int)numWis.Value, (int)numLevel.Value, chkWisAdv.Checked);
         }
 
         private void NumCha_ValueChanged(object sender, EventArgs e)
         {
-            numChaMod.Value = Utility.GetMod((int)numCha.Value, (int)numLevel.Value, chkChaAdv.Checked);
+            numChaMod.Value = Utils.GetMod((int)numCha.Value, (int)numLevel.Value, chkChaAdv.Checked);
         }
 
         private void NumLevel_ValueChanged(object sender, EventArgs e)
@@ -232,6 +254,31 @@ namespace BattleManager.Forms
             NumInt_ValueChanged(sender, e);
             NumWis_ValueChanged(sender, e);
             NumCha_ValueChanged(sender, e);
+        }
+
+        private void BtnAddAction_Click(object sender, EventArgs e)
+        {
+            if (character.Actions.ContainsKey(cmbAct.Text)) // edit
+            {
+                Action action = new(cmbAct.Text, character.Actions[cmbAct.Text]);
+                action.ShowDialog();
+                character.Actions.Remove(cmbAct.Text);
+                character.Actions.Add(action.txtActName.Text, action.txtActDesc.Text);
+            }
+            else // new
+            {
+                Action action = new();
+                action.ShowDialog();
+                character.Actions.Add(action.txtActName.Text, action.txtActDesc.Text);
+            }
+            LoadActs();
+        }
+
+        private void BtnDelAct_Click(object sender, EventArgs e)
+        {
+            if (!VerifyAct()) return;
+            character.Actions.Remove(cmbAct.Text);
+            LoadActs();
         }
     }
 }
