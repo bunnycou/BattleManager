@@ -29,19 +29,21 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            label7 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
-            label11 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,6 +53,8 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            tableLayoutPanel1.Controls.Add(label15, 1, 7);
+            tableLayoutPanel1.Controls.Add(label14, 0, 7);
             tableLayoutPanel1.Controls.Add(label7, 1, 3);
             tableLayoutPanel1.Controls.Add(label6, 1, 2);
             tableLayoutPanel1.Controls.Add(label4, 0, 2);
@@ -66,7 +70,7 @@
             tableLayoutPanel1.Controls.Add(label9, 0, 4);
             tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowCount = 8;
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -74,8 +78,45 @@
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(490, 264);
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(490, 302);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label7.Location = new System.Drawing.Point(146, 119);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(340, 35);
+            label7.TabIndex = 6;
+            label7.Text = "Damage Selected Character";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label6.Location = new System.Drawing.Point(146, 83);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(340, 35);
+            label6.TabIndex = 5;
+            label6.Text = "Heal Selected Character";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label4.Location = new System.Drawing.Point(4, 83);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(135, 35);
+            label4.TabIndex = 3;
+            label4.Text = "SHIFT";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
@@ -114,18 +155,6 @@
             label3.Text = "Select Character Based on Number in Input Box";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label4.Location = new System.Drawing.Point(4, 83);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(135, 35);
-            label4.TabIndex = 3;
-            label4.Text = "SHIFT";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -138,53 +167,29 @@
             label5.Text = "ALT";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label6
+            // label12
             // 
-            label6.AutoSize = true;
-            label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            label6.Location = new System.Drawing.Point(146, 83);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(340, 35);
-            label6.TabIndex = 5;
-            label6.Text = "Heal Selected Character";
-            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label12.AutoSize = true;
+            label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label12.Location = new System.Drawing.Point(146, 227);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(340, 35);
+            label12.TabIndex = 12;
+            label12.Text = "Clear Input Box to 0";
+            label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label7
+            // label13
             // 
-            label7.AutoSize = true;
-            label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            label7.Location = new System.Drawing.Point(146, 119);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(340, 35);
-            label7.TabIndex = 6;
-            label7.Text = "Damage Selected Character";
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            label8.Location = new System.Drawing.Point(146, 155);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(340, 35);
-            label8.TabIndex = 8;
-            label8.Text = "Delete Selected Character";
-            label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            label9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label9.Location = new System.Drawing.Point(4, 155);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(135, 35);
-            label9.TabIndex = 7;
-            label9.Text = "DEL";
-            label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label13.AutoSize = true;
+            label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label13.Location = new System.Drawing.Point(4, 227);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(135, 35);
+            label13.TabIndex = 11;
+            label13.Text = "BACKSPACE";
+            label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
@@ -210,35 +215,59 @@
             label11.Text = "Z";
             label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label12
+            // label8
             // 
-            label12.AutoSize = true;
-            label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            label12.Location = new System.Drawing.Point(146, 227);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(340, 36);
-            label12.TabIndex = 12;
-            label12.Text = "Clear Input Box to 0";
-            label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label8.AutoSize = true;
+            label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label8.Location = new System.Drawing.Point(146, 155);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(340, 35);
+            label8.TabIndex = 8;
+            label8.Text = "Delete Selected Character";
+            label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label13
+            // label9
             // 
-            label13.AutoSize = true;
-            label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label13.Location = new System.Drawing.Point(4, 227);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(135, 36);
-            label13.TabIndex = 11;
-            label13.Text = "BACKSPACE";
-            label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label9.AutoSize = true;
+            label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            label9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label9.Location = new System.Drawing.Point(4, 155);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(135, 35);
+            label9.TabIndex = 7;
+            label9.Text = "DEL";
+            label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            label14.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label14.Location = new System.Drawing.Point(4, 263);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(135, 38);
+            label14.TabIndex = 13;
+            label14.Text = "UP/DOWN";
+            label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label15.Location = new System.Drawing.Point(146, 263);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(340, 38);
+            label15.TabIndex = 14;
+            label15.Text = "Move Selection Up or Down";
+            label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // HelpKeys
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(513, 286);
+            ClientSize = new System.Drawing.Size(513, 326);
             Controls.Add(tableLayoutPanel1);
             Name = "HelpKeys";
             Text = "HelpKeys";
@@ -263,5 +292,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
     }
 }

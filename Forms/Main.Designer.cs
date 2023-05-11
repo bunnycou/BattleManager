@@ -91,15 +91,15 @@
             AddPartyMenu = new System.Windows.Forms.ToolStripMenuItem();
             EditPartyMenu = new System.Windows.Forms.ToolStripMenuItem();
             DeletePartyMenu = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             createCreatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             AddStatMenu = new System.Windows.Forms.ToolStripMenuItem();
             EditStatMenu = new System.Windows.Forms.ToolStripMenuItem();
             DeleteStatMenu = new System.Windows.Forms.ToolStripMenuItem();
+            cmbStatMenu = new System.Windows.Forms.ToolStripComboBox();
             toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             HelpToolButton = new System.Windows.Forms.ToolStripButton();
-            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            cmbStatMenu = new System.Windows.Forms.ToolStripComboBox();
             gpActions = new System.Windows.Forms.GroupBox();
             flwActions = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
@@ -264,6 +264,7 @@
             btnMore.TabIndex = 5;
             btnMore.Text = "More Info";
             btnMore.UseVisualStyleBackColor = true;
+            btnMore.Visible = false;
             btnMore.Click += BtnMore_Click;
             // 
             // gpImmunities
@@ -704,7 +705,7 @@
             // toolStrip1
             // 
             toolStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsddMain, toolStripSeparator1, toolStripDropDownButton1, toolStripDropDownButton2, toolStripSeparator2, HelpToolButton, toolStripSeparator3, cmbStatMenu });
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsddMain, toolStripSeparator1, toolStripDropDownButton1, toolStripSeparator3, toolStripDropDownButton2, cmbStatMenu, toolStripSeparator2, HelpToolButton });
             toolStrip1.Location = new System.Drawing.Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new System.Drawing.Size(1006, 25);
@@ -813,6 +814,11 @@
             DeletePartyMenu.Text = "Delete Party...";
             DeletePartyMenu.DropDownItemClicked += DeletePartyMenu_DropDownItemClicked;
             // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripDropDownButton2
             // 
             toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -820,36 +826,45 @@
             toolStripDropDownButton2.Image = (System.Drawing.Image)resources.GetObject("toolStripDropDownButton2.Image");
             toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            toolStripDropDownButton2.Size = new System.Drawing.Size(70, 22);
-            toolStripDropDownButton2.Text = "Creatures";
+            toolStripDropDownButton2.Size = new System.Drawing.Size(65, 22);
+            toolStripDropDownButton2.Text = "Creature";
             // 
             // createCreatureToolStripMenuItem
             // 
             createCreatureToolStripMenuItem.Name = "createCreatureToolStripMenuItem";
-            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             createCreatureToolStripMenuItem.Text = "Create Creature";
             createCreatureToolStripMenuItem.Click += CreateCreatureToolStripMenuItem_Click;
             // 
             // AddStatMenu
             // 
             AddStatMenu.Name = "AddStatMenu";
-            AddStatMenu.Size = new System.Drawing.Size(164, 22);
+            AddStatMenu.Size = new System.Drawing.Size(180, 22);
             AddStatMenu.Text = "Add Creature...";
             AddStatMenu.Click += AddStatMenu_Click;
             // 
             // EditStatMenu
             // 
             EditStatMenu.Name = "EditStatMenu";
-            EditStatMenu.Size = new System.Drawing.Size(164, 22);
+            EditStatMenu.Size = new System.Drawing.Size(180, 22);
             EditStatMenu.Text = "Edit Creature...";
             EditStatMenu.Click += EditStatMenu_Click;
             // 
             // DeleteStatMenu
             // 
             DeleteStatMenu.Name = "DeleteStatMenu";
-            DeleteStatMenu.Size = new System.Drawing.Size(164, 22);
+            DeleteStatMenu.Size = new System.Drawing.Size(180, 22);
             DeleteStatMenu.Text = "Delete Creature...";
             DeleteStatMenu.Click += DeleteStatMenu_Click;
+            // 
+            // cmbStatMenu
+            // 
+            cmbStatMenu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            cmbStatMenu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            cmbStatMenu.MaxDropDownItems = 99;
+            cmbStatMenu.Name = "cmbStatMenu";
+            cmbStatMenu.Size = new System.Drawing.Size(121, 25);
+            cmbStatMenu.Text = "Creatures...";
             // 
             // toolStripSeparator2
             // 
@@ -865,20 +880,6 @@
             HelpToolButton.Size = new System.Drawing.Size(23, 22);
             HelpToolButton.Text = "Help";
             HelpToolButton.Click += HelpToolButton_Click;
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // cmbStatMenu
-            // 
-            cmbStatMenu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            cmbStatMenu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            cmbStatMenu.MaxDropDownItems = 99;
-            cmbStatMenu.Name = "cmbStatMenu";
-            cmbStatMenu.Size = new System.Drawing.Size(121, 25);
-            cmbStatMenu.Text = "Creatures";
             // 
             // gpActions
             // 

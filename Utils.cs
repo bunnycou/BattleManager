@@ -35,24 +35,14 @@ namespace BattleManager
 
         public static string CharToString(Character c)
         {
-            string health;
+            string health = c.Health.ToString();
             string name = c.Name;
+            if (c.AC > 99) c.AC = 99;
             string ac = c.AC.ToString();
 
-            for (int i = 0; name.Length < 24; i++)
-            {
-                name += " ";
-            }
-
-            if (c.Health > 999) c.Health = 999; // I don't think anything gets this high?
-            if (c.Health < -99) c.Health = -99; // prevent underflow
-
-            if (c.Health < 100) health = c.Health + " ";
-            else if (c.Health < 10) health = c.Health + "  ";
-            else health = c.Health.ToString();
-
-            if (c.AC > 99) ac = "99";
-            if (c.AC < 10) ac += " ";
+            while (name.Length < 24) name += " ";
+            while (health.Length < 3) health += " ";
+            while (ac.Length < 2) ac += " ";
 
             return $"| {name} | {health} | {ac} |";
         }

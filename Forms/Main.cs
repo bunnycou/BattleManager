@@ -28,6 +28,7 @@ namespace BattleManager
             lblDebug.Text = $"Selected {GetNameFromInitList(selIndex)}";
             numInput.Value = 0;
             LoadCharacterDisplay();
+            LoadInitiativeReorder();
         }
 
         private void LoadCharacterDisplay()
@@ -122,6 +123,8 @@ namespace BattleManager
             if (i == 0) return;
             Character character = charDict[GetNameFromInitList(index)];
             character.Health += i;
+            if (character.Health > 999) character.Health = 999;
+            if (character.Health < -99) character.Health = -99;
             LoadInitiativeReorder();
             if (i > -1)
             { //healed
@@ -328,6 +331,8 @@ namespace BattleManager
                     // case Keys.Enter: btnChar_Click(sender, e); break; // might be annoying to include
                     case Keys.Z: UndoLog(); break;
                     case Keys.Delete: BtnDelete_Click(sender, e); break;
+                    case Keys.Up: if (selIndex > 2) selIndex--; SelectInit(); break;
+                    case Keys.Down: if (selIndex < lstInitiative.Items.Count) selIndex++; SelectInit(); break;
                 }
             }
             else
@@ -360,9 +365,8 @@ namespace BattleManager
             if (lstInitiative.SelectedItem == null) return;
             selIndex = lstInitiative.SelectedIndex;
             if (selIndex < 2) return;
-            SelectInit();
             lstInitiative.DoDragDrop(lstInitiative.SelectedItem, DragDropEffects.Move);
-            LoadInitiativeReorder();
+            SelectInit();
         }
 
         private void LstInitiative_DragOver(object sender, DragEventArgs e)

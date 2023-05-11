@@ -58,7 +58,9 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [x] Display Info
 
 ### Version 0.3.0 - Foe's
-- [ ] Custom Stat Blocks
+- [x] Custom Stat Blocks
+
+### Version 0.4.0 - Existing Foe's
 - [ ] Existing Stat Blocks
 
 ### Version 1.0.0
