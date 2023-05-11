@@ -38,8 +38,8 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - ### Backspace
   - Clear number input to 0
 
-- ### Number keys
-  - Input numbers into input box
+- ### Up/Down Arrow
+  - Change Selection
 
 ## Version Roadmap
 ### Version 0.1.0 - Battle Manager w/ Shortcuts
