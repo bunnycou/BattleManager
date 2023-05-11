@@ -14,7 +14,7 @@ Existing initiative trackers never feel good to use. They always feel less effic
 - [x] Create/Add Parties
 - [x] Keyboard shortcuts to make things easy!
 - [x] Battle Log
-- [ ] Custom Stat Blocks
+- [x] Custom Stat Blocks
 - [ ] Existing Stat Blocks
 
 ## Download and install the  [dotnet 7 runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-7.0.5-windows-x64-installer) if the program does not run
