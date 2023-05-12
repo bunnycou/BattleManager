@@ -1,5 +1,5 @@
-# Battle Manager
-
+# BattleManager
+![Battle Manager Logo](Resources/battlemanager.png)
 ### A Battle Tracker for DND
 
 ## Why?
@@ -65,4 +65,4 @@ Existing initiative trackers never feel good to use. They always feel less effic
 
 ### Version 1.0.0
 - [ ] Everything above
-- [ ] App Icon and cleaned up UI
+- [x] App Icon and cleaned up UI

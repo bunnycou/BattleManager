@@ -99,7 +99,8 @@ namespace BattleManager
             bool creature = false,
             Dictionary<Stat, int[]> stats = null,
             Dictionary<DmgType, ResType> resistances = null,
-            Dictionary<string, string> actions = null
+            Dictionary<string, string> actions = null,
+            Dictionary<string, string> traits = null
             )
         {
             this.Name = name;
@@ -112,9 +113,11 @@ namespace BattleManager
             this.Stats = stats ?? DefaultSaves();
             this.Resistances = resistances ?? DefaultRes();
             this.Actions = actions ?? new();
+            this.Traits = traits ?? new();
         }
 
         public Dictionary<string, string> Actions { get; set; }
+        public Dictionary<string, string> Traits { get; set; }
         public Dictionary<Stat, int[]> Stats { get; set; }
         public Dictionary<DmgType, ResType> Resistances { get; set; }
         public bool Creature { get; set; }

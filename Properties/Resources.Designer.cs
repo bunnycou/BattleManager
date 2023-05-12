@@ -63,6 +63,16 @@ namespace BattleManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap battlemanager {
+            get {
+                object obj = ResourceManager.GetObject("battlemanager", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help_google_icon {
             get {
                 object obj = ResourceManager.GetObject("help_google_icon", resourceCulture);
@@ -71,7 +81,7 @@ namespace BattleManager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to v0.3.0.
+        ///   Looks up a localized string similar to v0.3.1.
         /// </summary>
         internal static string version {
             get {

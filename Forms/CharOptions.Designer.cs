@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharOptions));
             tblAcid = new System.Windows.Forms.TableLayoutPanel();
             rdbAcidI = new System.Windows.Forms.RadioButton();
             rdbAcidN = new System.Windows.Forms.RadioButton();
@@ -1870,6 +1871,7 @@
             Controls.Add(panel1);
             Controls.Add(gbDC);
             Controls.Add(tblDamageTypes);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "CharOptions";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "CharOptions";

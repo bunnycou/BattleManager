@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddParty));
             lblPartyName = new System.Windows.Forms.Label();
             txtPartyName = new System.Windows.Forms.TextBox();
             tblParty = new System.Windows.Forms.TableLayoutPanel();
@@ -115,6 +116,7 @@
             ClientSize = new System.Drawing.Size(434, 176);
             Controls.Add(btnDone);
             Controls.Add(tblParty);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "AddParty";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "New Party";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddChar));
             lblName = new System.Windows.Forms.Label();
             lblHealth = new System.Windows.Forms.Label();
             lblAC = new System.Windows.Forms.Label();
@@ -174,10 +175,8 @@
             // 
             // AddChar
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(246, 229);
-            ControlBox = false;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            ClientSize = new System.Drawing.Size(235, 226);
             Controls.Add(chkDuplicate);
             Controls.Add(numDuplicate);
             Controls.Add(btnOptions);
@@ -190,6 +189,7 @@
             Controls.Add(lblAC);
             Controls.Add(lblHealth);
             Controls.Add(lblName);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "AddChar";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpKeys));
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            label15 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -42,8 +45,6 @@
             label11 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
-            label14 = new System.Windows.Forms.Label();
-            label15 = new System.Windows.Forms.Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,6 +82,30 @@
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new System.Drawing.Size(490, 302);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label15.Location = new System.Drawing.Point(146, 263);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(340, 38);
+            label15.TabIndex = 14;
+            label15.Text = "Move Selection Up or Down";
+            label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            label14.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label14.Location = new System.Drawing.Point(4, 263);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(135, 38);
+            label14.TabIndex = 13;
+            label14.Text = "UP/DOWN";
+            label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
@@ -239,36 +264,13 @@
             label9.Text = "DEL";
             label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            label14.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label14.Location = new System.Drawing.Point(4, 263);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(135, 38);
-            label14.TabIndex = 13;
-            label14.Text = "UP/DOWN";
-            label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            label15.Location = new System.Drawing.Point(146, 263);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(340, 38);
-            label15.TabIndex = 14;
-            label15.Text = "Move Selection Up or Down";
-            label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // HelpKeys
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(513, 326);
             Controls.Add(tableLayoutPanel1);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "HelpKeys";
             Text = "HelpKeys";
             tableLayoutPanel1.ResumeLayout(false);

@@ -832,28 +832,28 @@
             // createCreatureToolStripMenuItem
             // 
             createCreatureToolStripMenuItem.Name = "createCreatureToolStripMenuItem";
-            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             createCreatureToolStripMenuItem.Text = "Create Creature";
             createCreatureToolStripMenuItem.Click += CreateCreatureToolStripMenuItem_Click;
             // 
             // AddStatMenu
             // 
             AddStatMenu.Name = "AddStatMenu";
-            AddStatMenu.Size = new System.Drawing.Size(180, 22);
+            AddStatMenu.Size = new System.Drawing.Size(164, 22);
             AddStatMenu.Text = "Add Creature...";
             AddStatMenu.Click += AddStatMenu_Click;
             // 
             // EditStatMenu
             // 
             EditStatMenu.Name = "EditStatMenu";
-            EditStatMenu.Size = new System.Drawing.Size(180, 22);
+            EditStatMenu.Size = new System.Drawing.Size(164, 22);
             EditStatMenu.Text = "Edit Creature...";
             EditStatMenu.Click += EditStatMenu_Click;
             // 
             // DeleteStatMenu
             // 
             DeleteStatMenu.Name = "DeleteStatMenu";
-            DeleteStatMenu.Size = new System.Drawing.Size(180, 22);
+            DeleteStatMenu.Size = new System.Drawing.Size(164, 22);
             DeleteStatMenu.Text = "Delete Creature...";
             DeleteStatMenu.Click += DeleteStatMenu_Click;
             // 
@@ -913,6 +913,7 @@
             Controls.Add(lblDebug);
             Controls.Add(lstInitiative);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "Main";
