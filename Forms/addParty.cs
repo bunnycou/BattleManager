@@ -24,6 +24,7 @@ namespace BattleManager.Forms
             {
                 AddChar win = new(i);
                 win.numInit.Enabled = false;
+                win.chkDuplicate.Enabled = false;
                 win.txtName.Text = $"Party {i}";
                 win.ShowDialog();
                 members.Add(win.character.Name, win.character);

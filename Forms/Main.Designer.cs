@@ -102,6 +102,7 @@
             HelpToolButton = new System.Windows.Forms.ToolStripButton();
             gpActions = new System.Windows.Forms.GroupBox();
             flwActions = new System.Windows.Forms.FlowLayoutPanel();
+            genTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
             pnlMain.SuspendLayout();
             gpCharacter.SuspendLayout();
@@ -822,7 +823,7 @@
             // toolStripDropDownButton2
             // 
             toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { createCreatureToolStripMenuItem, AddStatMenu, EditStatMenu, DeleteStatMenu });
+            toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { createCreatureToolStripMenuItem, AddStatMenu, EditStatMenu, DeleteStatMenu, genTestToolStripMenuItem });
             toolStripDropDownButton2.Image = (System.Drawing.Image)resources.GetObject("toolStripDropDownButton2.Image");
             toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             toolStripDropDownButton2.Name = "toolStripDropDownButton2";
@@ -832,28 +833,28 @@
             // createCreatureToolStripMenuItem
             // 
             createCreatureToolStripMenuItem.Name = "createCreatureToolStripMenuItem";
-            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             createCreatureToolStripMenuItem.Text = "Create Creature";
             createCreatureToolStripMenuItem.Click += CreateCreatureToolStripMenuItem_Click;
             // 
             // AddStatMenu
             // 
             AddStatMenu.Name = "AddStatMenu";
-            AddStatMenu.Size = new System.Drawing.Size(164, 22);
+            AddStatMenu.Size = new System.Drawing.Size(180, 22);
             AddStatMenu.Text = "Add Creature...";
             AddStatMenu.Click += AddStatMenu_Click;
             // 
             // EditStatMenu
             // 
             EditStatMenu.Name = "EditStatMenu";
-            EditStatMenu.Size = new System.Drawing.Size(164, 22);
+            EditStatMenu.Size = new System.Drawing.Size(180, 22);
             EditStatMenu.Text = "Edit Creature...";
             EditStatMenu.Click += EditStatMenu_Click;
             // 
             // DeleteStatMenu
             // 
             DeleteStatMenu.Name = "DeleteStatMenu";
-            DeleteStatMenu.Size = new System.Drawing.Size(164, 22);
+            DeleteStatMenu.Size = new System.Drawing.Size(180, 22);
             DeleteStatMenu.Text = "Delete Creature...";
             DeleteStatMenu.Click += DeleteStatMenu_Click;
             // 
@@ -899,6 +900,13 @@
             flwActions.Name = "flwActions";
             flwActions.Size = new System.Drawing.Size(238, 569);
             flwActions.TabIndex = 0;
+            // 
+            // genTestToolStripMenuItem
+            // 
+            genTestToolStripMenuItem.Name = "genTestToolStripMenuItem";
+            genTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            genTestToolStripMenuItem.Text = "Gen Test";
+            genTestToolStripMenuItem.Click += genTestToolStripMenuItem_Click;
             // 
             // Main
             // 
@@ -1015,6 +1023,7 @@
         private System.Windows.Forms.FlowLayoutPanel flwActions;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripComboBox cmbStatMenu;
+        private System.Windows.Forms.ToolStripMenuItem genTestToolStripMenuItem;
     }
 }
 

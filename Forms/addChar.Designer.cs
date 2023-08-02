@@ -216,6 +216,6 @@
         public System.Windows.Forms.Label lblInit;
         public System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.NumericUpDown numDuplicate;
-        private System.Windows.Forms.CheckBox chkDuplicate;
+        public System.Windows.Forms.CheckBox chkDuplicate;
     }
 }

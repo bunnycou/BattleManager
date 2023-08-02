@@ -74,7 +74,7 @@ namespace BattleManager
 
         public Character Clone()
         {
-            return new Character
+            /*return new Character
                 (
                 name: this.Name, 
                 init: this.Init, 
@@ -85,7 +85,8 @@ namespace BattleManager
                 stats: this.Stats, 
                 resistances: this.Resistances,
                 actions: this.Actions
-                );
+                );*/
+            return new Character(this);
         }
 
         public Character
@@ -114,6 +115,21 @@ namespace BattleManager
             this.Resistances = resistances ?? DefaultRes();
             this.Actions = actions ?? new();
             this.Traits = traits ?? new();
+        }
+
+        public Character (Character character)
+        {
+            this.Name = character.Name;
+            this.Init = character.Init;
+            this.InitOrder = character.InitOrder;
+            this.Health = character.Health;
+            this.AC = character.AC;
+            this.Level = character.Level;
+            this.Creature = character.Creature;
+            this.Stats = character.Stats;
+            this.Resistances = character.Resistances;
+            this.Actions = character.Actions;
+            this.Traits = character.Traits;
         }
 
         public Dictionary<string, string> Actions { get; set; }

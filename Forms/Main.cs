@@ -586,5 +586,10 @@ namespace BattleManager
             Utils.DeleteStatFile(cmbStatMenu.Text);
             LoadStatblocks();
         }
+
+        private void genTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MMJson.GenerateCreatureStatBlocks();
+        }
     }
 }
