@@ -10,7 +10,7 @@ namespace BattleManager
 {
     internal class MMJson
     {
-        private const string mmjsonString = "blank"// very long string of the entire Monster Manual as json;
+        private const string mmjsonString = "blank";// very long string of the entire Monster Manual as json
         // source: https://raw.githubusercontent.com/5etools-mirror-1/5etools-mirror-1.github.io/master/data/bestiary/bestiary-mm.json
 
         public static void GenerateCreatureStatBlocks()
