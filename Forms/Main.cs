@@ -25,7 +25,7 @@ namespace BattleManager
             if (!IsValidSel()) return;
             if (selIndex >= lstInitiative.Items.Count) selIndex = lstInitiative.Items.Count - 1;
             if (selIndex < 2) selIndex = 2;
-            lblDebug.Text = $"Selected {GetNameFromInitList(selIndex)}";
+            lblLogTop.Text = $"Selected {GetNameFromInitList(selIndex)}";
             numInput.Value = 0;
             LoadCharacterDisplay();
             LoadInitiativeReorder();
@@ -103,11 +103,11 @@ namespace BattleManager
             if (amount == 0) return;
             if (amount > -1)
             {
-                lblDebug.Text = $"Undid {amount} healing to {GetNameFromInitList(selection)}";
+                lblLogTop.Text = $"Undid {amount} healing to {GetNameFromInitList(selection)}";
             }
             else
             {
-                lblDebug.Text = $"Undid {amount * -1} damage to {GetNameFromInitList(selection)}";
+                lblLogTop.Text = $"Undid {amount * -1} damage to {GetNameFromInitList(selection)}";
             }
             // handle reverting the log array and log list
             lstLog.Items.RemoveAt(0);
@@ -128,11 +128,11 @@ namespace BattleManager
             LoadInitiativeReorder();
             if (i > -1)
             { //healed
-                lblDebug.Text = $"Healed {GetNameFromInitList(index)} for {i}";
+                lblLogTop.Text = $"Healed {GetNameFromInitList(index)} for {i}";
             }
             else // damaged
             {
-                lblDebug.Text = $"Damaged {GetNameFromInitList(index)} for {i * -1}";
+                lblLogTop.Text = $"Damaged {GetNameFromInitList(index)} for {i * -1}";
             }
             LoadCharacterDisplay();
         }
@@ -474,7 +474,7 @@ namespace BattleManager
                 log[i, 0] = 0;
                 log[i, 1] = 0;
             }
-            lblDebug.Text = "Initiative Cleared!";
+            lblLogTop.Text = "Initiative Cleared!";
         }
 
         private void HelpToolButton_Click(object sender, EventArgs e)

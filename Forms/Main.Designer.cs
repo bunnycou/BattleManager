@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             lstInitiative = new System.Windows.Forms.ListBox();
             numInput = new System.Windows.Forms.NumericUpDown();
-            lblDebug = new System.Windows.Forms.Label();
             lstLog = new System.Windows.Forms.ListBox();
             btnHeal = new System.Windows.Forms.Button();
             btnDamage = new System.Windows.Forms.Button();
@@ -97,12 +96,14 @@
             AddStatMenu = new System.Windows.Forms.ToolStripMenuItem();
             EditStatMenu = new System.Windows.Forms.ToolStripMenuItem();
             DeleteStatMenu = new System.Windows.Forms.ToolStripMenuItem();
+            genTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             cmbStatMenu = new System.Windows.Forms.ToolStripComboBox();
             toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             HelpToolButton = new System.Windows.Forms.ToolStripButton();
             gpActions = new System.Windows.Forms.GroupBox();
             flwActions = new System.Windows.Forms.FlowLayoutPanel();
-            genTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            lblLogTop = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)numInput).BeginInit();
             pnlMain.SuspendLayout();
             gpCharacter.SuspendLayout();
@@ -140,17 +141,6 @@
             numInput.Size = new System.Drawing.Size(93, 23);
             numInput.TabIndex = 9;
             numInput.KeyDown += NumInput_KeyDown;
-            // 
-            // lblDebug
-            // 
-            lblDebug.AutoSize = true;
-            lblDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblDebug.Location = new System.Drawing.Point(380, 417);
-            lblDebug.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            lblDebug.Name = "lblDebug";
-            lblDebug.Size = new System.Drawing.Size(277, 25);
-            lblDebug.TabIndex = 15;
-            lblDebug.Text = "Welcome to BattleManager!";
             // 
             // lstLog
             // 
@@ -706,7 +696,7 @@
             // toolStrip1
             // 
             toolStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsddMain, toolStripSeparator1, toolStripDropDownButton1, toolStripSeparator3, toolStripDropDownButton2, cmbStatMenu, toolStripSeparator2, HelpToolButton });
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsddMain, toolStripSeparator1, toolStripDropDownButton1, toolStripSeparator3, toolStripDropDownButton2, cmbStatMenu, toolStripSeparator2, HelpToolButton, toolStripSeparator4, lblLogTop });
             toolStrip1.Location = new System.Drawing.Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new System.Drawing.Size(1006, 25);
@@ -833,30 +823,37 @@
             // createCreatureToolStripMenuItem
             // 
             createCreatureToolStripMenuItem.Name = "createCreatureToolStripMenuItem";
-            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            createCreatureToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             createCreatureToolStripMenuItem.Text = "Create Creature";
             createCreatureToolStripMenuItem.Click += CreateCreatureToolStripMenuItem_Click;
             // 
             // AddStatMenu
             // 
             AddStatMenu.Name = "AddStatMenu";
-            AddStatMenu.Size = new System.Drawing.Size(180, 22);
+            AddStatMenu.Size = new System.Drawing.Size(164, 22);
             AddStatMenu.Text = "Add Creature...";
             AddStatMenu.Click += AddStatMenu_Click;
             // 
             // EditStatMenu
             // 
             EditStatMenu.Name = "EditStatMenu";
-            EditStatMenu.Size = new System.Drawing.Size(180, 22);
+            EditStatMenu.Size = new System.Drawing.Size(164, 22);
             EditStatMenu.Text = "Edit Creature...";
             EditStatMenu.Click += EditStatMenu_Click;
             // 
             // DeleteStatMenu
             // 
             DeleteStatMenu.Name = "DeleteStatMenu";
-            DeleteStatMenu.Size = new System.Drawing.Size(180, 22);
+            DeleteStatMenu.Size = new System.Drawing.Size(164, 22);
             DeleteStatMenu.Text = "Delete Creature...";
             DeleteStatMenu.Click += DeleteStatMenu_Click;
+            // 
+            // genTestToolStripMenuItem
+            // 
+            genTestToolStripMenuItem.Name = "genTestToolStripMenuItem";
+            genTestToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            genTestToolStripMenuItem.Text = "Gen Test";
+            genTestToolStripMenuItem.Click += genTestToolStripMenuItem_Click;
             // 
             // cmbStatMenu
             // 
@@ -901,12 +898,16 @@
             flwActions.Size = new System.Drawing.Size(238, 569);
             flwActions.TabIndex = 0;
             // 
-            // genTestToolStripMenuItem
+            // toolStripSeparator4
             // 
-            genTestToolStripMenuItem.Name = "genTestToolStripMenuItem";
-            genTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            genTestToolStripMenuItem.Text = "Gen Test";
-            genTestToolStripMenuItem.Click += genTestToolStripMenuItem_Click;
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblLogTop
+            // 
+            lblLogTop.Name = "lblLogTop";
+            lblLogTop.Size = new System.Drawing.Size(154, 22);
+            lblLogTop.Text = "Welcome to BattleManager!";
             // 
             // Main
             // 
@@ -918,7 +919,6 @@
             Controls.Add(gpCharacter);
             Controls.Add(pnlMain);
             Controls.Add(lstLog);
-            Controls.Add(lblDebug);
             Controls.Add(lstInitiative);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -952,7 +952,6 @@
         #endregion
         private System.Windows.Forms.ListBox lstInitiative;
         private System.Windows.Forms.NumericUpDown numInput;
-        private System.Windows.Forms.Label lblDebug;
         private System.Windows.Forms.ListBox lstLog;
         private System.Windows.Forms.Button btnHeal;
         private System.Windows.Forms.Button btnDamage;
@@ -1024,6 +1023,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripComboBox cmbStatMenu;
         private System.Windows.Forms.ToolStripMenuItem genTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripLabel lblLogTop;
     }
 }
 
